@@ -24,72 +24,117 @@ function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#080a0f]">
-      {/* Background grid */}
+    <section
+      id="hero"
+      className="relative isolate min-h-[100svh] w-full overflow-hidden bg-[#080a0f]"
+    >
+      {/* =====================================================
+          ATMOSPHERE
+      ===================================================== */}
+
+      <div aria-hidden="true" className="hero-grid absolute inset-0" />
+
+      <div aria-hidden="true" className="hero-vignette absolute inset-0" />
+
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
-          `,
-          backgroundSize: '64px 64px',
-        }}
+        className="hero-glow hero-glow-blue absolute left-[72%] top-[45%] h-[600px] w-[600px] rounded-full"
       />
 
-      {/* Ambient light */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-[68%] top-[45%] h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4d8dff]/[0.06] blur-[150px]"
+        className="hero-glow hero-glow-secondary absolute left-[20%] top-[30%] h-[400px] w-[400px] rounded-full"
       />
 
-      {/* Technical marker */}
-      <div className="pointer-events-none absolute right-6 top-28 hidden font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a] lg:block">
-        <span className="text-[#4d8dff]">SYS_01</span>
-        <br />
-        PERSONAL PORTFOLIO
+      {/* Moving scan line */}
+      <div aria-hidden="true" className="hero-scanline absolute inset-x-0 top-0" />
+
+      {/* Particles */}
+      <div aria-hidden="true" className="hero-particles absolute inset-0">
+        {Array.from({ length: 18 }).map((_, index) => (
+          <span
+            key={index}
+            className={`particle particle-${index + 1}`}
+          />
+        ))}
       </div>
 
-      {/* Main content */}
-      <div className="relative mx-auto grid min-h-screen w-full max-w-[1400px] items-center gap-10 px-6 pb-20 pt-32 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:pb-12 lg:pt-24">
-        {/* LEFT */}
-        <div className="relative z-10">
-          <div className="mb-8 flex items-center gap-3">
-            <span className="h-px w-8 bg-[#4d8dff]" />
+      {/* =====================================================
+          TECHNICAL MARKERS
+      ===================================================== */}
 
-            <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#626c7a]">
+      <div className="pointer-events-none absolute left-6 top-28 z-20 hidden font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a] sm:left-8 lg:left-12 lg:block">
+        <span className="text-[#4d8dff]">SYS_01</span>
+        <br />
+        PORTFOLIO / CORE
+      </div>
+
+      <div className="pointer-events-none absolute right-6 top-28 z-20 hidden text-right font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a] lg:right-12 lg:block">
+        <span className="text-[#4d8dff]">STATUS</span>
+        <br />
+        ONLINE
+      </div>
+
+      {/* =====================================================
+          MAIN
+      ===================================================== */}
+
+      <div className="relative z-10 mx-auto grid min-h-[100svh] w-full max-w-[1450px] grid-cols-1 items-center px-6 pb-16 pt-28 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12 lg:pb-10 lg:pt-20">
+        
+        {/* =================================================
+            LEFT
+        ================================================= */}
+
+        <div className="hero-copy relative z-20 lg:-translate-y-2">
+
+          {/* Label */}
+          <div className="hero-reveal mb-6 flex items-center gap-3">
+            <span className="h-px w-8 bg-[#4d8dff] shadow-[0_0_10px_rgba(77,141,255,0.7)]" />
+
+            <span className="font-mono text-[9px] uppercase tracking-[0.38em] text-[#626c7a]">
               Full-Stack Developer
             </span>
           </div>
 
-          <h1 className="max-w-5xl text-[clamp(4rem,10vw,8.5rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-[#f5f7fa]">
-            Ð R ƛ K E N
-            <span className="mt-2 block text-[#4d8dff]">他</span>
+          {/* Name */}
+          <h1 className="hero-title hero-reveal whitespace-nowrap text-[clamp(3.2rem,6vw,6.4rem)] font-semibold leading-[0.9] tracking-[-0.075em] text-[#f5f7fa]">
+            <span className="hero-name">DRΛKEN</span>
+            <span className="ml-3 text-[#4d8dff]">他</span>
           </h1>
 
-          <div className="mt-10 max-w-2xl">
-            <p className="text-xl leading-8 tracking-[-0.02em] text-[#dce1e8] sm:text-2xl">
+          {/* Main statement */}
+          <div className="hero-reveal mt-8 max-w-[650px]">
+            <p className="text-xl leading-[1.4] tracking-[-0.025em] text-[#dce1e8] sm:text-2xl lg:text-[27px]">
               I build software, AI systems,
-              <br className="hidden sm:block" />
-              {' '}and the infrastructure behind them.
+              <br />
+              and the infrastructure behind them.
             </p>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[#626c7a]">
-              Full-stack engineering with a focus on systems that connect
-              interfaces, APIs, intelligence, and real-world infrastructure.
-            </p>
+            {/* Typing line */}
+            <div className="mt-6 flex min-h-[24px] items-center font-mono text-[10px] tracking-[0.04em] text-[#626c7a] sm:text-xs">
+              <span className="mr-3 text-[#4d8dff]">&gt;_</span>
+
+              <span className="typing-line">
+                Just a guy trying to leave the internet a little better
+                than I found it.
+              </span>
+
+              <span className="typing-cursor ml-1" />
+            </div>
           </div>
 
-          {/* Actions */}
-          <div className="mt-10 flex flex-wrap gap-3">
+          {/* =================================================
+              BUTTONS
+          ================================================= */}
+
+          <div className="hero-reveal mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              className="group inline-flex items-center gap-4 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080a0f] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
+              className="hero-button hero-button-primary group"
             >
-              View my work
+              <span>View my work</span>
 
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#080a0f] text-[#f5f7fa] transition-transform duration-300 group-hover:translate-x-0.5">
+              <span className="hero-button-icon">
                 →
               </span>
             </a>
@@ -98,137 +143,155 @@ function Hero() {
               href="https://github.com/IrregDraken"
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex items-center gap-3 rounded-full border border-white/10 px-6 py-3.5 text-sm font-medium text-[#f5f7fa] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#4d8dff]/40 hover:bg-[#4d8dff]/[0.06]"
+              className="hero-button hero-button-secondary group"
             >
-              GitHub
-              <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+              <span>GitHub</span>
+
+              <span className="hero-button-icon">
                 ↗
               </span>
             </a>
           </div>
 
           {/* Metadata */}
-          <div className="mt-16 grid max-w-xl grid-cols-2 gap-8 border-t border-white/[0.07] pt-6 sm:grid-cols-3">
+          <div className="hero-reveal mt-10 grid max-w-[580px] grid-cols-3 border-t border-white/[0.07] pt-5">
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#626c7a]">
+              <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#626c7a]">
                 Focus
               </p>
 
-              <p className="mt-2 text-sm text-[#dce1e8]">
+              <p className="mt-2 text-xs text-[#dce1e8]">
                 AI · Backend
               </p>
             </div>
 
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#626c7a]">
+              <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#626c7a]">
                 Status
               </p>
 
               <div className="mt-2 flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#4d8dff] shadow-[0_0_10px_#4d8dff]" />
+                <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#4d8dff]" />
 
-                <span className="text-sm text-[#dce1e8]">
+                <span className="text-xs text-[#dce1e8]">
                   Building
                 </span>
               </div>
             </div>
 
-            <div className="hidden sm:block">
-              <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#626c7a]">
+            <div>
+              <p className="font-mono text-[8px] uppercase tracking-[0.3em] text-[#626c7a]">
                 Lagos
               </p>
 
-              <p className="mt-2 font-mono text-sm text-[#dce1e8]">
+              <p className="mt-2 font-mono text-xs text-[#dce1e8]">
                 {time || '--:--:--'}
               </p>
             </div>
           </div>
         </div>
 
-        {/* RIGHT SYSTEM VISUAL */}
-        <div className="relative flex min-h-[420px] items-center justify-center lg:min-h-[620px]">
-          {/* Outer rings */}
+        {/* =================================================
+            ORB
+        ================================================= */}
+
+        <div className="relative flex min-h-[470px] items-center justify-center lg:min-h-[650px] lg:-translate-y-3">
+
+          {/* Aura */}
           <div
             aria-hidden="true"
-            className="absolute h-[min(75vw,520px)] w-[min(75vw,520px)] max-h-[520px] max-w-[520px] rounded-full border border-white/[0.05]"
+            className="orb-aura absolute h-[420px] w-[420px] rounded-full"
+          />
+
+          {/* Outer orbital system */}
+          <div
+            aria-hidden="true"
+            className="orb-ring orb-ring-outer absolute h-[min(43vw,560px)] w-[min(43vw,560px)] max-h-[560px] max-w-[560px] rounded-full"
           />
 
           <div
             aria-hidden="true"
-            className="absolute h-[min(58vw,390px)] w-[min(58vw,390px)] max-h-[390px] max-w-[390px] rounded-full border border-[#4d8dff]/10"
-          />
-
-          <div
-            aria-hidden="true"
-            className="absolute h-[min(40vw,260px)] w-[min(40vw,260px)] max-h-[260px] max-w-[260px] rounded-full border border-white/[0.06]"
-          />
-
-          {/* Orbit */}
-          <div
-            aria-hidden="true"
-            className="absolute h-[min(65vw,430px)] w-[min(65vw,430px)] max-h-[430px] max-w-[430px] animate-[spin_24s_linear_infinite] rounded-full border border-dashed border-[#4d8dff]/15"
+            className="orb-ring orb-ring-dashed absolute h-[min(38vw,500px)] w-[min(38vw,500px)] max-h-[500px] max-w-[500px] rounded-full border border-dashed border-[#4d8dff]/20"
           >
-            <span className="absolute -right-1 top-1/2 h-2 w-2 rounded-full bg-[#4d8dff] shadow-[0_0_18px_#4d8dff]" />
+            <span className="orb-dot orb-dot-one" />
+            <span className="orb-dot orb-dot-two" />
           </div>
 
-          {/* Crosshair */}
           <div
             aria-hidden="true"
-            className="absolute h-px w-[min(70vw,500px)] bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
+            className="orb-ring orb-ring-middle absolute h-[min(33vw,430px)] w-[min(33vw,430px)] max-h-[430px] max-w-[430px] rounded-full"
           />
 
           <div
             aria-hidden="true"
-            className="absolute h-[min(70vw,500px)] w-px bg-gradient-to-b from-transparent via-white/[0.06] to-transparent"
+            className="orb-ring orb-ring-inner absolute h-[min(28vw,365px)] w-[min(28vw,365px)] max-h-[365px] max-w-[365px] rounded-full"
           />
 
-          {/* Core */}
-          <div className="relative flex h-36 w-36 items-center justify-center rounded-full border border-[#4d8dff]/30 bg-[#0d1118]/90 shadow-[0_0_100px_rgba(77,141,255,0.16)] backdrop-blur-xl sm:h-44 sm:w-44">
-            <div className="absolute inset-3 rounded-full border border-[#4d8dff]/10" />
-
-            <div className="absolute inset-8 rounded-full border border-[#4d8dff]/10" />
-
-            <div className="h-20 w-20 rounded-full bg-[#4d8dff]/10 shadow-[0_0_70px_rgba(77,141,255,0.4)] sm:h-24 sm:w-24" />
-
-            <span className="absolute font-mono text-[9px] uppercase tracking-[0.3em] text-[#9aa4b2]">
-              DRKN
-            </span>
+          {/* Orbiting satellite */}
+          <div
+            aria-hidden="true"
+            className="orb-satellite absolute h-[min(38vw,490px)] w-[min(38vw,490px)] max-h-[490px] max-w-[490px] rounded-full"
+          >
+            <span />
           </div>
 
-          {/* System labels */}
-          <div className="absolute left-2 top-12 hidden font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] sm:block">
+          {/* Profile orb */}
+          <div className="profile-orb relative z-20 h-[min(27vw,350px)] w-[min(27vw,350px)] max-h-[350px] max-w-[350px] overflow-hidden rounded-full border-2 border-[#4d8dff]/60 bg-[#090d14]">
+            
+            <img
+              src="/draken.jpg"
+              alt="Draken"
+              className="profile-image h-full w-full object-cover object-[50%_58%]"
+            />
+
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.15),transparent_28%),linear-gradient(to_bottom,transparent_45%,rgba(3,6,12,0.42))]"
+            />
+
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full shadow-[inset_0_0_60px_rgba(77,141,255,0.38)]"
+            />
+
+            <div
+              aria-hidden="true"
+              className="orb-shine absolute inset-0"
+            />
+          </div>
+
+          {/* Orb edge */}
+          <div
+            aria-hidden="true"
+            className="absolute z-10 h-[min(28vw,365px)] w-[min(28vw,365px)] max-h-[365px] max-w-[365px] rounded-full border border-[#4d8dff]/25"
+          />
+
+          {/* Labels */}
+          <div className="absolute left-[8%] top-[25%] hidden font-mono text-[8px] uppercase tracking-[0.25em] text-[#626c7a] xl:block">
             <span className="block text-[#4d8dff]">01</span>
-            SYSTEM
+            IDENTITY
           </div>
 
-          <div className="absolute bottom-8 right-2 hidden text-right font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] sm:block">
+          <div className="absolute bottom-[16%] right-[4%] hidden text-right font-mono text-[8px] uppercase tracking-[0.25em] text-[#626c7a] xl:block">
             <span className="block text-[#4d8dff]">ONLINE</span>
             BUILD / CREATE
           </div>
-
-          <div
-            aria-hidden="true"
-            className="absolute right-[12%] top-[18%] h-1.5 w-1.5 rounded-full bg-[#4d8dff] shadow-[0_0_14px_#4d8dff]"
-          />
-
-          <div
-            aria-hidden="true"
-            className="absolute bottom-[18%] left-[12%] h-1 w-1 rounded-full bg-white/30"
-          />
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* =====================================================
+          SCROLL
+      ===================================================== */}
+
       <a
         href="#work"
-        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[#626c7a] transition-colors duration-300 hover:text-[#f5f7fa] sm:flex"
-        aria-label="Scroll to selected work"
+        className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 flex-col items-center gap-2 text-[#626c7a] transition-all duration-700 hover:text-[#f5f7fa] sm:flex"
       >
-        <span className="font-mono text-[9px] uppercase tracking-[0.35em]">
+        <span className="font-mono text-[8px] uppercase tracking-[0.4em]">
           Scroll
         </span>
 
-        <span className="h-10 w-px bg-gradient-to-b from-[#4d8dff] to-transparent" />
+        <span className="scroll-line h-9 w-px bg-gradient-to-b from-[#4d8dff] to-transparent" />
       </a>
     </section>
   )
