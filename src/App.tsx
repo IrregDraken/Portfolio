@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import Home from './pages/Home'
+import Footer from './components/Footer'
 import Navbar from './components/Navbar'
+import Home from './pages/Home'
 
 function App() {
   const [loaded, setLoaded] = useState(false)
@@ -19,8 +20,11 @@ function App() {
         loaded ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <Navbar />
-      <Home />
+      <div id="top">
+        <Navbar />
+        <Home />
+        <Footer />
+      </div>
     </div>
   )
 }

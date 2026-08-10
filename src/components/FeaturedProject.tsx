@@ -92,7 +92,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           </p>
 
           <p className="mt-4 max-w-xl text-sm leading-7 text-[#626c7a]">
-            {project.longDescription}
+            {project.description}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2">
