@@ -4,7 +4,7 @@ import Engineering from '../components/Engineering'
 import FeaturedProject from '../components/FeaturedProject'
 import Hero from '../components/Hero'
 import { projects } from '../data/projects'
-import AdamCaseStudy from '../components/sections/AdamCasestudy'
+import AdamCaseStudy from '../components/sections/AdamCaseStudy'
 
 function Home() {
   const featuredProjects = projects.filter((project) => project.featured)
