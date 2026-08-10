@@ -16,15 +16,18 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen bg-[#080a0f] transition-opacity duration-700 ${
+      id="top"
+      className={`min-h-screen bg-[#080a0f] text-[#f5f7fa] transition-opacity duration-700 ${
         loaded ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div id="top">
-        <Navbar />
+      <Navbar />
+
+      <main>
         <Home />
-        <Footer />
-      </div>
+      </main>
+
+      <Footer />
     </div>
   )
 }
