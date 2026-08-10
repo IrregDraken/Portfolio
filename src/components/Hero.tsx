@@ -24,10 +24,7 @@ function Hero() {
   }, [])
 
   return (
-    <section
-      id="top"
-      className="relative min-h-screen overflow-hidden border-b border-white/[0.06]"
-    >
+    <section className="relative min-h-screen overflow-hidden bg-[#080a0f]">
       {/* Background grid */}
       <div
         aria-hidden="true"
@@ -47,13 +44,14 @@ function Hero() {
         className="pointer-events-none absolute left-[68%] top-[45%] h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4d8dff]/[0.06] blur-[150px]"
       />
 
-      {/* Top technical marker */}
+      {/* Technical marker */}
       <div className="pointer-events-none absolute right-6 top-28 hidden font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a] lg:block">
         <span className="text-[#4d8dff]">SYS_01</span>
         <br />
         PERSONAL PORTFOLIO
       </div>
 
+      {/* Main content */}
       <div className="relative mx-auto grid min-h-screen w-full max-w-[1400px] items-center gap-10 px-6 pb-20 pt-32 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:pb-12 lg:pt-24">
         {/* LEFT */}
         <div className="relative z-10">
@@ -73,8 +71,8 @@ function Hero() {
           <div className="mt-10 max-w-2xl">
             <p className="text-xl leading-8 tracking-[-0.02em] text-[#dce1e8] sm:text-2xl">
               I build software, AI systems,
-              <br className="hidden sm:block" /> and the infrastructure behind
-              them.
+              <br className="hidden sm:block" />
+              {' '}and the infrastructure behind them.
             </p>
 
             <p className="mt-5 max-w-xl text-sm leading-7 text-[#626c7a]">
