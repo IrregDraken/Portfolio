@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useTypingEffect } from '../hooks/useTypingEffect'
 
 const typingPhrases = [
-  'Just a guy trying to leave the internet a little better than I found it.',
-  'Building software that solves actual problems.',
-  'AI systems, backend infrastructure, and strange experiments.',
+  'Full Stack Developer',
+  'Software Engineer',
+  'AI Engineer',
+  'Creative Technologist',
 ]
 
 function Hero() {
@@ -66,6 +67,9 @@ function Hero() {
           ))}
         </div>
       </div>
+
+      {/* Full-page noise grain */}
+      <div aria-hidden="true" className="grain-layer" />
 
       {/* =====================================================
           TECHNICAL MARKERS
@@ -170,6 +174,11 @@ function Hero() {
 
         <div className="orb-stage">
           <div aria-hidden="true" className="orb-aura" />
+
+          {/* Traveling node on the outer ring */}
+          <div aria-hidden="true" className="orb-traveler">
+            <span />
+          </div>
 
           {/* Outer ring */}
           <div aria-hidden="true" className="orb-ring orb-ring-outer">

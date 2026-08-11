@@ -6,7 +6,7 @@ function AdamDecisions() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
           <div className="mb-5 flex items-center gap-3">
-            <span className="h-px w-5 bg-[#39ff88]" />
+            <span className="h-px w-5 bg-[#00ff9c]" />
 
             <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
               04 / Engineering Decisions
@@ -24,7 +24,7 @@ function AdamDecisions() {
               key={decision.title}
               className="grid gap-6 py-8 sm:grid-cols-[80px_0.8fr_1.2fr] sm:items-start"
             >
-              <span className="font-mono text-[9px] tracking-[0.2em] text-[#39ff88]">
+              <span className="font-mono text-[9px] tracking-[0.2em] text-[#00ff9c]">
                 0{index + 1}
               </span>
 

@@ -12,21 +12,36 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg: #050706;
-  --bg-soft: #080a0f;
+  --bg-primary: #050807;
+  --bg-secondary: #080d0b;
+
+  --accent: #00ff9c;
+  --accent-bright: #00d98b;
+  --accent-deep: #00b878;
+  --accent-soft: rgba(0, 255, 156, 0.08);
+  --accent-glow: rgba(0, 255, 156, 0.22);
+
+  --text-primary: #f5f7fa;
+  --text-secondary: #dce1e8;
+  --text-muted: #a7b3ad;
+  --text-dim: #596660;
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Backward-compatible aliases used by section rules. */
+  --bg: #050807;
+  --bg-soft: #080d0b;
   --surface: #0b0f0d;
   --surface-raised: #101412;
 
   --text: #f5f7fa;
   --text-soft: #dce1e8;
-  --text-muted: #9aa4b2;
-  --text-dim: #4f5a6b;
 
-  --green: #39ff88;
-  --green-bright: #19e66f;
-  --green-deep: #0aff68;
-  --green-soft: rgba(57, 255, 136, 0.08);
-  --green-glow: rgba(57, 255, 136, 0.22);
+  --green: #00ff9c;
+  --green-bright: #00d98b;
+  --green-deep: #00d98b;
+  --green-soft: rgba(0, 255, 156, 0.08);
+  --green-glow: rgba(0, 255, 156, 0.22);
 }
 
 *,
@@ -107,27 +122,28 @@ section {
 }
 
 /* =========================================================
-   COMMON BLUE -> GREEN MIGRATION
-   Migrates any legacy Tailwind blue classes toward the
-   green accent system without rewriting each component.
+   BLUE-CLASS OVERRIDES (legacy Tailwind blue safety net)
+   Any leftover Tailwind arbitrary-value blue classes get
+   remapped to the green accent system so nothing blue
+   survives in the interface.
 ========================================================= */
-
-[class*="4d8dff"] {
-  --tw-text-opacity: 1;
-}
 
 .bg-\[\#4d8dff\]\/10,
 .bg-\[\#4d8dff\]\/15,
 .bg-\[\#4d8dff\]\/\[0\.035\],
 .bg-\[\#4d8dff\]\/\[0\.06\],
 .bg-\[\#4d8dff\]\/20,
-.bg-\[\#4d8dff\]\/70,
-.text-\[\#4d8dff\],
+.bg-\[\#4d8dff\]\/70 {
+  background-color: var(--accent-soft) !important;
+}
+
+.text-\[\#4d8dff\] {
+  color: var(--accent) !important;
+}
+
 .border-\[\#4d8dff\]\/10,
 .border-\[\#4d8dff\]\/20 {
-  background-color: rgba(57, 255, 136, 0.08);
-  color: var(--green);
-  border-color: rgba(57, 255, 136, 0.25);
+  border-color: rgba(0, 255, 156, 0.25) !important;
 }
 
 /* =========================================================
@@ -143,15 +159,15 @@ section {
   background:
     radial-gradient(
       circle at 72% 45%,
-      rgba(57, 255, 136, 0.075),
+      rgba(0, 255, 156, 0.085),
       transparent 27%
     ),
     radial-gradient(
       circle at 23% 75%,
-      rgba(10, 255, 104, 0.025),
+      rgba(0, 217, 139, 0.03),
       transparent 32%
     ),
-    #050706;
+    var(--bg-primary);
 }
 
 /* =========================================================
@@ -183,12 +199,12 @@ section {
 
   background-image:
     linear-gradient(
-      rgba(57, 255, 136, 0.12) 1px,
+      rgba(0, 255, 156, 0.12) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(57, 255, 136, 0.12) 1px,
+      rgba(0, 255, 156, 0.12) 1px,
       transparent 1px
     );
 
@@ -223,7 +239,7 @@ section {
     rotateX(70deg)
     scale(1.5);
 
-  animation: gridDrift 24s linear infinite;
+  animation: gridDrift 18s linear infinite;
   opacity: 0.22;
 }
 
@@ -238,7 +254,7 @@ section {
     rotateX(74deg)
     scale(1.7);
 
-  animation: gridDrift 14s linear infinite;
+  animation: gridDrift 11s linear infinite;
   opacity: 0.34;
 
   mask-image: linear-gradient(
@@ -274,7 +290,7 @@ section {
     90deg,
     transparent 0,
     transparent 48%,
-    rgba(57, 255, 136, 0.045) 49%,
+    rgba(0, 255, 156, 0.045) 49%,
     transparent 50%
   );
 
@@ -289,11 +305,11 @@ section {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(57, 255, 136, 0.18),
+    rgba(0, 255, 156, 0.18),
     transparent
   );
 
-  box-shadow: 0 0 30px rgba(57, 255, 136, 0.08);
+  box-shadow: 0 0 30px rgba(0, 255, 156, 0.08);
 }
 
 .hero-grid-glow {
@@ -302,12 +318,12 @@ section {
   background:
     radial-gradient(
       ellipse at 72% 48%,
-      rgba(57, 255, 136, 0.1),
+      rgba(0, 255, 156, 0.1),
       transparent 22%
     ),
     radial-gradient(
       ellipse at 43% 100%,
-      rgba(10, 255, 104, 0.05),
+      rgba(0, 217, 139, 0.05),
       transparent 32%
     );
 
@@ -343,17 +359,17 @@ section {
 
   background-image:
     radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, 0.5), transparent),
-    radial-gradient(1px 1px at 27% 64%, rgba(57, 255, 136, 0.35), transparent),
+    radial-gradient(1px 1px at 27% 64%, rgba(0, 255, 156, 0.35), transparent),
     radial-gradient(1px 1px at 44% 12%, rgba(255, 255, 255, 0.4), transparent),
-    radial-gradient(1px 1px at 61% 58%, rgba(57, 255, 136, 0.28), transparent),
+    radial-gradient(1px 1px at 61% 58%, rgba(0, 255, 156, 0.28), transparent),
     radial-gradient(1px 1px at 78% 19%, rgba(255, 255, 255, 0.45), transparent),
-    radial-gradient(1px 1px at 86% 62%, rgba(57, 255, 136, 0.3), transparent),
+    radial-gradient(1px 1px at 86% 62%, rgba(0, 255, 156, 0.3), transparent),
     radial-gradient(1px 1px at 94% 34%, rgba(255, 255, 255, 0.35), transparent),
-    radial-gradient(1px 1px at 5% 52%, rgba(57, 255, 136, 0.25), transparent),
+    radial-gradient(1px 1px at 5% 52%, rgba(0, 255, 156, 0.25), transparent),
     radial-gradient(1px 1px at 36% 84%, rgba(255, 255, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 70% 82%, rgba(57, 255, 136, 0.22), transparent),
+    radial-gradient(1px 1px at 70% 82%, rgba(0, 255, 156, 0.22), transparent),
     radial-gradient(1px 1px at 53% 38%, rgba(255, 255, 255, 0.28), transparent),
-    radial-gradient(1.5px 1.5px at 19% 39%, rgba(57, 255, 136, 0.45), transparent);
+    radial-gradient(1.5px 1.5px at 19% 39%, rgba(0, 255, 156, 0.45), transparent);
 }
 
 .hero-glow {
@@ -368,7 +384,7 @@ section {
   right: -4%;
   top: 15%;
 
-  background: rgba(57, 255, 136, 0.07);
+  background: rgba(0, 255, 156, 0.07);
 
   animation: ambientFloat 9s ease-in-out infinite;
 }
@@ -380,7 +396,7 @@ section {
   left: 12%;
   bottom: -18%;
 
-  background: rgba(10, 255, 104, 0.035);
+  background: rgba(0, 217, 139, 0.035);
 
   animation: ambientFloatSecondary 12s ease-in-out infinite;
 }
@@ -393,11 +409,11 @@ section {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(57, 255, 136, 0.18),
+    rgba(0, 255, 156, 0.18),
     transparent
   );
 
-  box-shadow: 0 0 20px rgba(57, 255, 136, 0.12);
+  box-shadow: 0 0 20px rgba(0, 255, 156, 0.12);
 
   opacity: 0.55;
 
@@ -425,7 +441,7 @@ section {
 
   box-shadow:
     0 0 8px var(--green),
-    0 0 18px rgba(57, 255, 136, 0.42);
+    0 0 18px rgba(0, 255, 156, 0.42);
 
   animation:
     particleFloat 6s ease-in-out infinite,
@@ -518,6 +534,18 @@ section {
   }
 }
 
+/* Secondary drift — some particles also drift slowly downward */
+@keyframes particleDriftDown {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-5px, 12px, 0);
+  }
+}
+
 @keyframes particleBlink {
   0%,
   100% {
@@ -578,7 +606,7 @@ section {
 
   background: var(--green);
 
-  box-shadow: 0 0 10px rgba(57, 255, 136, 0.6);
+  box-shadow: 0 0 10px rgba(0, 255, 156, 0.6);
 }
 
 .hero-eyebrow p {
@@ -628,7 +656,7 @@ section {
 
   color: var(--green);
 
-  filter: drop-shadow(0 0 18px rgba(57, 255, 136, 0.2));
+  filter: drop-shadow(0 0 18px rgba(0, 255, 156, 0.2));
 }
 
 .hero-statement {
@@ -661,13 +689,13 @@ section {
   font-family: "JetBrains Mono", monospace;
 
   font-size:
-    clamp(0.62rem, 0.8vw, 0.75rem);
+    clamp(0.95rem, 1.3vw, 1.15rem);
 
   line-height: 1.5;
 
   letter-spacing: 0.025em;
 
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 .typing-prefix {
@@ -682,19 +710,23 @@ section {
   min-height: 1.5em;
 
   display: inline;
+
+  white-space: nowrap;
 }
 
 .typing-cursor {
   flex: 0 0 auto;
 
+  align-self: center;
+
   width: 2px;
-  height: 16px;
+  height: 1.15em;
 
   margin-left: 5px;
 
   background: var(--green);
 
-  box-shadow: 0 0 8px rgba(57, 255, 136, 0.7);
+  box-shadow: 0 0 8px rgba(0, 255, 156, 0.7);
 
   animation: typingBlink 0.8s steps(1) infinite;
 }
@@ -804,7 +836,7 @@ section {
 .hero-button:hover .hero-button-icon {
   transform: translateX(3px);
 
-  box-shadow: 0 0 12px rgba(57, 255, 136, 0.28);
+  box-shadow: 0 0 12px rgba(0, 255, 156, 0.28);
 }
 
 .hero-button-primary {
@@ -837,13 +869,13 @@ section {
 }
 
 .hero-button-secondary:hover {
-  border-color: rgba(57, 255, 136, 0.42);
+  border-color: rgba(0, 255, 156, 0.42);
 
-  background: rgba(57, 255, 136, 0.065);
+  background: rgba(0, 255, 156, 0.065);
 
   box-shadow:
-    0 0 22px rgba(57, 255, 136, 0.09),
-    inset 0 0 20px rgba(57, 255, 136, 0.035);
+    0 0 22px rgba(0, 255, 156, 0.09),
+    inset 0 0 20px rgba(0, 255, 156, 0.035);
 }
 
 /* =========================================================
@@ -909,7 +941,7 @@ section {
 
   box-shadow:
     0 0 6px var(--green),
-    0 0 16px rgba(57, 255, 136, 0.45);
+    0 0 16px rgba(0, 255, 156, 0.45);
 
   animation: statusPulse 2s ease-in-out infinite;
 }
@@ -1017,8 +1049,8 @@ section {
 
   background: radial-gradient(
     circle,
-    rgba(57, 255, 136, 0.2) 0%,
-    rgba(57, 255, 136, 0.065) 38%,
+    rgba(0, 255, 156, 0.2) 0%,
+    rgba(0, 255, 156, 0.065) 38%,
     transparent 70%
   );
 
@@ -1047,27 +1079,27 @@ section {
 
   border: 1px solid rgba(255, 255, 255, 0.055);
 
-  animation: orbRotate 28s linear infinite;
+  animation: orbRotate 32s linear infinite -7s;
 }
 
 .orb-ring-dashed {
   width: min(44vw, 580px);
   height: min(44vw, 580px);
 
-  border: 1px dashed rgba(57, 255, 136, 0.3);
+  border: 1px dashed rgba(0, 255, 156, 0.3);
 
-  animation: orbRotateReverse 20s linear infinite;
+  animation: orbRotateReverse 17s linear infinite -3s;
 }
 
 .orb-ring-middle {
   width: min(39vw, 510px);
   height: min(39vw, 510px);
 
-  border: 1px solid rgba(57, 255, 136, 0.22);
+  border: 1px solid rgba(0, 255, 156, 0.22);
 
-  box-shadow: 0 0 38px rgba(57, 255, 136, 0.035);
+  box-shadow: 0 0 38px rgba(0, 255, 156, 0.035);
 
-  animation: orbRotate 15s linear infinite;
+  animation: orbRotate 12s linear infinite -5s;
 }
 
 .orb-ring-inner {
@@ -1078,7 +1110,7 @@ section {
 
   transform: rotateX(66deg);
 
-  animation: orbTiltRotate 13s linear infinite;
+  animation: orbTiltRotate 21s linear infinite -11s;
 }
 
 @keyframes orbRotate {
@@ -1115,6 +1147,10 @@ section {
   }
 }
 
+/* Visible rotation at different speeds/directions:
+   outer 32s clockwise, dashed 18s counter, middle 12s clockwise,
+   inner tilted 21s independent. Delays desynchronize the starts. */
+
 /* =========================================================
    SATELLITE ORBIT
 ========================================================= */
@@ -1131,7 +1167,7 @@ section {
 
   pointer-events: none;
 
-  animation: satelliteOrbit 18s linear infinite;
+  animation: satelliteOrbit 25s linear infinite -9s;
 }
 
 .orb-satellite::before {
@@ -1142,9 +1178,9 @@ section {
 
   border-radius: inherit;
 
-  border-top: 1px solid rgba(57, 255, 136, 0.34);
+  border-top: 1px solid rgba(0, 255, 156, 0.34);
 
-  border-bottom: 1px solid rgba(57, 255, 136, 0.08);
+  border-bottom: 1px solid rgba(0, 255, 156, 0.08);
 }
 
 .orb-satellite > span {
@@ -1162,7 +1198,7 @@ section {
 
   box-shadow:
     0 0 10px var(--green),
-    0 0 26px rgba(57, 255, 136, 0.7);
+    0 0 26px rgba(0, 255, 156, 0.7);
 
   transform: translate(-50%, -50%);
 }
@@ -1200,16 +1236,16 @@ section {
 
   border-radius: 50%;
 
-  border: 2px solid rgba(57, 255, 136, 0.78);
+  border: 2px solid rgba(0, 255, 156, 0.78);
 
   background: #090d0b;
 
   box-shadow:
-    0 0 34px rgba(57, 255, 136, 0.38),
-    0 0 105px rgba(57, 255, 136, 0.16),
+    0 0 34px rgba(0, 255, 156, 0.38),
+    0 0 105px rgba(0, 255, 156, 0.16),
     inset 0 0 45px rgba(255, 255, 255, 0.04);
 
-  animation: profileFloat 6s ease-in-out infinite;
+  animation: profileFloat 7s ease-in-out infinite;
 }
 
 .profile-orb::before {
@@ -1282,7 +1318,7 @@ section {
   border-radius: 50%;
 
   box-shadow:
-    inset 0 0 70px rgba(57, 255, 136, 0.22),
+    inset 0 0 70px rgba(0, 255, 156, 0.22),
     inset 0 -25px 60px rgba(0, 0, 0, 0.28);
 
   pointer-events: none;
@@ -1297,7 +1333,7 @@ section {
     rgba(255, 255, 255, 0.14),
     transparent 25%,
     transparent 68%,
-    rgba(57, 255, 136, 0.1)
+    rgba(0, 255, 156, 0.1)
   );
 
   transform: rotate(-10deg);
@@ -1317,11 +1353,11 @@ section {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(57, 255, 136, 0.7),
+    rgba(0, 255, 156, 0.7),
     transparent
   );
 
-  box-shadow: 0 0 12px rgba(57, 255, 136, 0.45);
+  box-shadow: 0 0 12px rgba(0, 255, 156, 0.45);
 
   animation: orbScan 4.8s ease-in-out infinite;
 
@@ -1385,9 +1421,9 @@ section {
 
   border-radius: 50%;
 
-  border: 1px solid rgba(57, 255, 136, 0.3);
+  border: 1px solid rgba(0, 255, 156, 0.3);
 
-  box-shadow: 0 0 25px rgba(57, 255, 136, 0.12);
+  box-shadow: 0 0 25px rgba(0, 255, 156, 0.12);
 
   pointer-events: none;
 
@@ -1420,7 +1456,7 @@ section {
 
   box-shadow:
     0 0 8px var(--green),
-    0 0 18px rgba(57, 255, 136, 0.55);
+    0 0 18px rgba(0, 255, 156, 0.55);
 }
 
 .orb-dot-one {
@@ -1433,6 +1469,39 @@ section {
 .orb-dot-two {
   right: 8%;
   bottom: 14%;
+}
+
+/* Traveling node — visibly orbits along the outer ring via its own
+   rotation layer, independent of the ring's rotation. */
+
+.orb-traveler {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  animation: orbRotate 19s linear infinite -14s;
+}
+
+.orb-traveler > span {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow:
+    0 0 8px var(--green),
+    0 0 20px rgba(0, 255, 156, 0.55);
+
+  transform: translate(-50%, -50%);
 }
 
 .orb-node {
@@ -1661,7 +1730,7 @@ section {
 
   background: var(--green);
 
-  box-shadow: 0 0 8px rgba(57, 255, 136, 0.75);
+  box-shadow: 0 0 8px rgba(0, 255, 156, 0.75);
 
   transform: translateX(-50%);
 
@@ -1671,9 +1740,9 @@ section {
 .nav-link:hover {
   color: var(--text);
 
-  border-color: rgba(57, 255, 136, 0.18);
+  border-color: rgba(0, 255, 156, 0.18);
 
-  background: rgba(57, 255, 136, 0.045);
+  background: rgba(0, 255, 156, 0.045);
 
   transform: translateY(-1px);
 }
@@ -1685,11 +1754,11 @@ section {
 .nav-link.is-active {
   color: var(--green);
 
-  border-color: rgba(57, 255, 136, 0.25);
+  border-color: rgba(0, 255, 156, 0.25);
 
-  background: rgba(57, 255, 136, 0.06);
+  background: rgba(0, 255, 156, 0.06);
 
-  box-shadow: 0 0 14px rgba(57, 255, 136, 0.08);
+  box-shadow: 0 0 14px rgba(0, 255, 156, 0.08);
 }
 
 .nav-link.is-active::after {
@@ -1730,11 +1799,11 @@ section {
 }
 
 .nav-github:hover {
-  border-color: rgba(57, 255, 136, 0.42);
+  border-color: rgba(0, 255, 156, 0.42);
 
-  background: rgba(57, 255, 136, 0.065);
+  background: rgba(0, 255, 156, 0.065);
 
-  box-shadow: 0 0 24px rgba(57, 255, 136, 0.09);
+  box-shadow: 0 0 24px rgba(0, 255, 156, 0.09);
 
   transform: translateY(-1px);
 }
@@ -1756,7 +1825,7 @@ section {
 .hero-marker {
   position: absolute;
   z-index: 30;
-  top: 62%;
+  top: 72%;
   transform: translateY(-50%);
   font-family: "JetBrains Mono", monospace;
   font-size: 8px;
@@ -1885,7 +1954,7 @@ section {
 
   border-radius: 50%;
 
-  background: rgba(57, 255, 136, 0.055);
+  background: rgba(0, 255, 156, 0.055);
 
   filter: blur(120px);
 }
@@ -1984,13 +2053,13 @@ section {
 
   padding: 13px 20px;
 
-  border: 1px solid rgba(57, 255, 136, 0.28);
+  border: 1px solid rgba(0, 255, 156, 0.28);
 
   border-radius: 999px;
 
   color: var(--text);
 
-  background: rgba(57, 255, 136, 0.055);
+  background: rgba(0, 255, 156, 0.055);
 
   font-size: 13px;
 }
@@ -2183,14 +2252,12 @@ section {
     font-size: 1.05rem;
   }
 
-  .typing-wrapper {
-    align-items: flex-start;
-
-    font-size: 9px;
+    .typing-wrapper {
+    align-items: center;
+    font-size: 0.85rem;
   }
-
   .typing-text {
-    max-width: calc(100vw - 74px);
+    max-width: calc(100vw - 92px);
   }
 
   .hero-actions {
@@ -2359,4 +2426,34 @@ section {
     opacity: 1;
     transform: none;
   }
+}
+
+/* =========================================================
+   NOISE GRAIN (subtle, full-page, pointer-safe)
+========================================================= */
+
+.grain-layer {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 40;
+
+  pointer-events: none;
+
+  opacity: 0.035;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  background-size: 120px 120px;
+
+  animation: grainShift 2.4s steps(4) infinite;
+}
+
+@keyframes grainShift {
+  0% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-10px, 7px, 0); }
+  50% { transform: translate3d(6px, -9px, 0); }
+  75% { transform: translate3d(-7px, -5px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }

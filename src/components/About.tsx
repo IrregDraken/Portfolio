@@ -69,14 +69,14 @@ function About() {
               ))}
             </div>
 
-            <div className="reveal mt-10 rounded-2xl border border-[#39ff88]/10 bg-[#39ff88]/[0.035] p-6" data-reveal-delay="270">
+            <div className="reveal mt-10 rounded-2xl border border-[#00ff9c]/10 bg-[#00ff9c]/[0.035] p-6" data-reveal-delay="270">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#39ff88] opacity-40" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#39ff88]" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00ff9c] opacity-40" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00ff9c]" />
                 </span>
 
-                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#39ff88]">
+                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#00ff9c]">
                   {siteConfig.availability.status}
                 </span>
               </div>
