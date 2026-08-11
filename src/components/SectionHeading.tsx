@@ -15,14 +15,14 @@ function SectionHeading({
     <div className="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
       <div>
         <div className="mb-5 flex items-center gap-3">
-          <span className="h-px w-6 bg-[#4d8dff]" />
+          <span className="h-px w-6 bg-[#39ff88]" />
 
           <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#626c7a]">
             {eyebrow}
           </span>
 
           {number && (
-            <span className="font-mono text-[10px] tracking-[0.2em] text-[#4d8dff]/60">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
               / {number}
             </span>
           )}
