@@ -10,8 +10,11 @@ export const siteConfig = {
 
   links: {
     github: 'https://github.com/IrregDraken',
-    linkedin: '',
-    email: '',
+    linkedin: 'https://www.linkedin.com/in/nnamdi-nwodim-5a183425b/',
+    instagram: 'https://instagram.com/irreg.draken',
+    x: 'https://x.com/IrregDrak3n',
+    youtube: 'https://youtube.com/@irreg.draken',
+    email: 'leedax7@gmail.com',
   },
 
   availability: {
@@ -22,5 +25,8 @@ export const siteConfig = {
   social: {
     github: 'GitHub',
     linkedin: 'LinkedIn',
+    instagram: 'Instagram',
+    x: 'X',
+    youtube: 'YouTube',
   },
 } as const

@@ -39,6 +39,48 @@ function Footer() {
             </a>
           )}
 
+          {siteConfig.links.email && (
+            <a
+              href={`mailto:${siteConfig.links.email}`}
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
+            >
+              {siteConfig.links.email}
+            </a>
+          )}
+
+          {siteConfig.links.x && (
+            <a
+              href={siteConfig.links.x}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
+            >
+              X
+            </a>
+          )}
+
+          {siteConfig.links.instagram && (
+            <a
+              href={siteConfig.links.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
+            >
+              Instagram
+            </a>
+          )}
+
+          {siteConfig.links.youtube && (
+            <a
+              href={siteConfig.links.youtube}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
+            >
+              YouTube
+            </a>
+          )}
+
           <a
             href="#top"
             className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"

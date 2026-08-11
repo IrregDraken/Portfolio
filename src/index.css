@@ -2456,6 +2456,36 @@ section {
     animation-iteration-count: initial !important;
     transition-duration: 420ms !important;
   }
+
+  /*
+   * The hero orb system (rings, satellite, traveler, nodes, pulse,
+   * scanline, glow) is signature motion for this portfolio. It always
+   * plays at its natural speed, even under prefers-reduced-motion.
+   * It is slow, looping, ambient motion rather than content-movement,
+   * so it is excluded from the blanket kill above.
+   */
+  .orb-ring,
+  .orb-ring-outer,
+  .orb-ring-dashed,
+  .orb-ring-middle,
+  .orb-ring-inner,
+  .orb-satellite,
+  .orb-traveler,
+  .orb-node,
+  .orb-edge,
+  .orb-aura,
+  .orb-scan,
+  .profile-orb,
+  .hero-glow,
+  .hero-grid,
+  .hero-horizon,
+  .hero-stars,
+  .hero-particles,
+  .particle {
+    animation-duration: initial !important;
+    animation-iteration-count: initial !important;
+    transition-duration: initial !important;
+  }
 }
 
 /* =========================================================
