@@ -11,9 +11,9 @@ const typingPhrases = [
 function Hero() {
   const [time, setTime] = useState('')
   const { text: typedText } = useTypingEffect(typingPhrases, {
-    typeSpeed: 48,
-    deleteSpeed: 28,
-    pauseDelay: 1600,
+    typeSpeed: 70,
+    deleteSpeed: 30,
+    pauseDelay: 2200,
   })
 
   useEffect(() => {
