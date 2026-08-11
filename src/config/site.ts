@@ -6,7 +6,9 @@ export const siteConfig = {
   description:
     'I build software, AI systems, and the infrastructure behind them.',
 
-  location: 'Nigeria',
+  fullName: 'Nnamdi Nwodim',
+
+  location: 'Port Harcourt, Nigeria',
 
   links: {
     github: 'https://github.com/IrregDraken',
@@ -15,11 +17,13 @@ export const siteConfig = {
     x: 'https://x.com/IrregDrak3n',
     youtube: 'https://youtube.com/@irreg.draken',
     email: 'leedax7@gmail.com',
+    resume: '/Nwodim_Nnamdi_Obinna_CV.pdf',
   },
 
   availability: {
-    status: 'Building',
-    label: 'Open to interesting opportunities',
+    status: 'Available',
+    label:
+      'Open to full-time, freelance, and contract opportunities — remote or on-site, and open to relocation.',
   },
 
   social: {

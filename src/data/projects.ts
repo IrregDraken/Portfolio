@@ -44,7 +44,7 @@ export const projects: Project[] = [
 
     featured: true,
 
-    githubUrl: '',
+    githubUrl: 'https://github.com/IrregDraken/A.D.A.M-V1.0',
     liveUrl: '',
   },
 
@@ -79,7 +79,7 @@ export const projects: Project[] = [
 
     featured: true,
 
-    githubUrl: '',
+    githubUrl: 'https://github.com/IrregDraken/Rune-OS-prototype',
     liveUrl: '',
   },
 
@@ -114,7 +114,7 @@ export const projects: Project[] = [
 
     featured: true,
 
-    githubUrl: '',
+    githubUrl: 'https://github.com/IrregDraken/E-learning-backend',
     liveUrl: '',
   },
 ]

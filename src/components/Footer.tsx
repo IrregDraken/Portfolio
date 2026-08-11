@@ -28,6 +28,17 @@ function Footer() {
             GitHub
           </a>
 
+          {siteConfig.links.resume && (
+            <a
+              href={siteConfig.links.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
+            >
+              Resume
+            </a>
+          )}
+
           {siteConfig.links.linkedin && (
             <a
               href={siteConfig.links.linkedin}

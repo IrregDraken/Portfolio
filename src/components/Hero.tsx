@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTypingEffect } from '../hooks/useTypingEffect'
+import { siteConfig } from '../config/site'
 
 const typingPhrases = [
   'Full Stack Developer',
@@ -24,7 +25,7 @@ function Hero() {
     const updateTime = () => {
       setTime(
         new Intl.DateTimeFormat('en-NG', {
-          timeZone: 'Africa/Lagos',
+          timeZone: 'Africa/Lagos', // WAT; same offset as user's location
           hour: '2-digit',
           minute: '2-digit',
           second: '2-digit',
@@ -148,6 +149,18 @@ function Hero() {
 
               <span className="hero-button-icon">↗</span>
             </a>
+
+            {siteConfig.links.resume && (
+              <a
+                href={siteConfig.links.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8b9690] underline-offset-4 transition-colors duration-300 hover:text-[#39ff88]"
+                style={{ marginLeft: 20 }}
+              >
+                Resume
+              </a>
+            )}
           </div>
 
           <div className="hero-meta hero-reveal">
@@ -167,7 +180,7 @@ function Hero() {
             </div>
 
             <div>
-              <p className="meta-label">Lagos</p>
+              <p className="meta-label">{siteConfig.location.split(',')[0]}</p>
 
               <p className="meta-value meta-time">
                 {time || '--:--:--'}
