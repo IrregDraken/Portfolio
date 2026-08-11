@@ -2,17 +2,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// Base path must match the GitHub Pages deployment location.
-// Repo IrregDraken/Portfolio -> site is served at https://irregdraken.github.io/Portfolio/
-const base =
-  typeof process !== 'undefined' &&
-  process.env.NODE_ENV === 'production' &&
-  process.env.CI
-    ? process.env.VITE_BASE_PATH || '/Portfolio/'
-    : '/'
-
+// Vercel serves the site at the root, so the base path is always '/'.
+// (If deploying to GitHub Pages at a subpath instead, set base to the repo
+// name, e.g. '/Portfolio/', before building.)
 export default defineConfig({
-  base,
+  base: '/',
   plugins: [
     react(),
     tailwindcss(),
