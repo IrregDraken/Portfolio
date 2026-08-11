@@ -7,7 +7,7 @@ function AdamResult() {
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-5 bg-[#00ff9c]" />
+              <span className="h-px w-5 bg-[#39ff88]" />
 
               <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
                 05 / Result

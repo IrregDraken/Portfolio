@@ -24,15 +24,15 @@ function Contact() {
             className="pointer-events-none absolute inset-0 opacity-[0.025]"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(0, 255, 156, 0.8) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 156, 0.8) 1px, transparent 1px)
+                linear-gradient(rgba(57, 255, 136, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 255, 136, 0.8) 1px, transparent 1px)
               `,
               backgroundSize: '48px 48px',
             }}
           />
 
           {/* Glow */}
-          <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#00ff9c]/10 blur-[130px]" />
+          <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#39ff88]/10 blur-[130px]" />
 
           <div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
@@ -68,7 +68,7 @@ function Contact() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#00ff9c]/30 hover:text-[#f5f7fa]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
                 >
                   GitHub
                   <span>↗</span>
@@ -79,7 +79,7 @@ function Contact() {
                     href={siteConfig.links.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#00ff9c]/30 hover:text-[#f5f7fa]"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
                   >
                     LinkedIn
                     <span>↗</span>

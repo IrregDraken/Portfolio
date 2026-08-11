@@ -8,7 +8,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
   const hasLinks = Boolean(project.liveUrl) || Boolean(project.githubUrl)
 
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0e0c] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(0,0,0,0.4),0_0_26px_rgba(0,255,156,0.07)]">
+    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0e0c] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(0,0,0,0.4),0_0_26px_rgba(57,255,136,0.07)]">
       {/* Project visual */}
       <div className="relative aspect-[16/9] overflow-hidden border-b border-white/[0.06] bg-[#070a09]">
         {/* Grid */}
@@ -16,15 +16,15 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0, 255, 156, 0.8) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 255, 156, 0.8) 1px, transparent 1px)
+              linear-gradient(rgba(57, 255, 136, 0.8) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(57, 255, 136, 0.8) 1px, transparent 1px)
             `,
             backgroundSize: '48px 48px',
           }}
         />
 
         {/* Ambient project glow */}
-        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00ff9c]/10 blur-[100px] transition-all duration-700 group-hover:bg-[#00ff9c]/15" />
+        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39ff88]/10 blur-[100px] transition-all duration-700 group-hover:bg-[#39ff88]/15" />
 
         {/* Fake system interface */}
         <div className="absolute inset-6 flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#090d0b]/90 shadow-2xl backdrop-blur-sm transition-transform duration-700 group-hover:scale-[1.015] sm:inset-10">
@@ -44,11 +44,11 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           {/* Window body */}
           <div className="relative flex flex-1 items-center justify-center p-6">
             <div className="text-center">
-              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#00ff9c]/20 bg-[#00ff9c]/[0.06] shadow-[0_0_50px_rgba(0,255,156,0.12)]">
-                <div className="h-8 w-8 rounded-full bg-[#00ff9c]/20 shadow-[0_0_30px_rgba(0,255,156,0.4)]" />
+              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#39ff88]/20 bg-[#39ff88]/[0.06] shadow-[0_0_50px_rgba(57,255,136,0.12)]">
+                <div className="h-8 w-8 rounded-full bg-[#39ff88]/20 shadow-[0_0_30px_rgba(57,255,136,0.4)]" />
               </div>
 
-              <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#00ff9c]">
+              <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#39ff88]">
                 {project.category}
               </p>
 
@@ -78,7 +78,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
       <div className="grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <span className="h-px w-5 bg-[#00ff9c]" />
+            <span className="h-px w-5 bg-[#39ff88]" />
 
             <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
               {project.category}
@@ -154,7 +154,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                 key={highlight}
                 className="flex items-start gap-4 text-sm leading-6 text-[#9aa4b2]"
               >
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00ff9c] shadow-[0_0_10px_rgba(0,255,156,0.5)]" />
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#39ff88] shadow-[0_0_10px_rgba(57,255,136,0.5)]" />
 
                 <span>
                   <span className="mr-2 font-mono text-[9px] text-[#626c7a]">
