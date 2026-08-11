@@ -7,7 +7,7 @@ function AdamArchitecture() {
         <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-5 bg-[#4d8dff]" />
+              <span className="h-px w-5 bg-[#39ff88]" />
 
               <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
                 02 / Architecture
@@ -30,13 +30,13 @@ function AdamArchitecture() {
           <div className="grid gap-4 lg:grid-cols-4">
             {adamCaseStudy.architecture.map((layer, index) => (
               <div key={layer.name} className="relative">
-                <div className="relative z-10 h-full rounded-2xl border border-white/[0.07] bg-[#0d1118] p-6 transition-colors duration-300 hover:border-[#4d8dff]/30">
+                <div className="relative z-10 h-full rounded-2xl border border-white/[0.07] bg-[#0d1118] p-6 transition-colors duration-300 hover:border-[#39ff88]/30">
                   <div className="mb-8 flex items-center justify-between">
-                    <span className="font-mono text-[9px] text-[#4d8dff]">
+                    <span className="font-mono text-[9px] text-[#39ff88]">
                       0{index + 1}
                     </span>
 
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#4d8dff]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#39ff88]" />
                   </div>
 
                   <p className="text-lg font-medium tracking-[-0.02em] text-[#f5f7fa]">
@@ -54,7 +54,7 @@ function AdamArchitecture() {
 
                 {index < adamCaseStudy.architecture.length - 1 && (
                   <div className="absolute right-[-10px] top-1/2 z-20 hidden -translate-y-1/2 lg:block">
-                    <span className="text-xs text-[#4d8dff]">→</span>
+                    <span className="text-xs text-[#39ff88]">→</span>
                   </div>
                 )}
               </div>

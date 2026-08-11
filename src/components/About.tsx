@@ -32,20 +32,20 @@ function About() {
 
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
           <div>
-            <p className="max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
+            <p className="reveal max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
               I am a Computer Science developer interested in building
               practical software, AI-powered products, and systems that solve
               real problems.
             </p>
 
-            <p className="mt-7 max-w-2xl text-sm leading-7 text-[#626c7a]">
+            <p className="reveal mt-7 max-w-2xl text-sm leading-7 text-[#626c7a]" data-reveal-delay="100">
               My work sits across application development, backend systems,
               artificial intelligence, and connected hardware. I enjoy
               understanding how the pieces fit together rather than treating
               each technology as an isolated tool.
             </p>
 
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-[#626c7a]">
+            <p className="reveal mt-5 max-w-2xl text-sm leading-7 text-[#626c7a]" data-reveal-delay="180">
               Right now, the focus is on becoming a stronger engineer by
               building, breaking, debugging, and rebuilding things until the
               underlying concepts actually make sense.
@@ -54,10 +54,11 @@ function About() {
 
           <div className="lg:border-l lg:border-white/[0.07] lg:pl-12">
             <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-1">
-              {facts.map((fact) => (
+              {facts.map((fact, index) => (
                 <div
                   key={fact.label}
-                  className="border-b border-white/[0.06] pb-6 last:border-0"
+                  className="reveal border-b border-white/[0.06] pb-6 last:border-0"
+                  data-reveal-delay={index * 90}
                 >
                   <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
                     {fact.label}
@@ -68,14 +69,14 @@ function About() {
               ))}
             </div>
 
-            <div className="mt-10 rounded-2xl border border-[#4d8dff]/10 bg-[#4d8dff]/[0.035] p-6">
+            <div className="reveal mt-10 rounded-2xl border border-[#39ff88]/10 bg-[#39ff88]/[0.035] p-6" data-reveal-delay="270">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4d8dff] opacity-40" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#4d8dff]" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#39ff88] opacity-40" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#39ff88]" />
                 </span>
 
-                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#4d8dff]">
+                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#39ff88]">
                   {siteConfig.availability.status}
                 </span>
               </div>

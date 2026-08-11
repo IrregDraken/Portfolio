@@ -23,7 +23,7 @@ function Footer() {
             href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#f5f7fa]"
+            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#39ff88]"
           >
             GitHub
           </a>
@@ -33,7 +33,7 @@ function Footer() {
               href={siteConfig.links.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#f5f7fa]"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#39ff88]"
             >
               LinkedIn
             </a>
@@ -41,7 +41,7 @@ function Footer() {
 
           <a
             href="#top"
-            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#f5f7fa]"
+            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#39ff88]"
           >
             Back to top ↑
           </a>

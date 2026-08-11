@@ -18,35 +18,35 @@ function Contact() {
           description="Projects, opportunities, collaborations, or technical conversations."
         />
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0d1118] px-7 py-14 sm:px-12 sm:py-20 lg:px-20 lg:py-24">
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0e0c] px-7 py-14 sm:px-12 sm:py-20 lg:px-20 lg:py-24">
           {/* Decorative grid */}
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.025]"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
+                linear-gradient(rgba(57, 255, 136, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 255, 136, 0.8) 1px, transparent 1px)
               `,
               backgroundSize: '48px 48px',
             }}
           />
 
           {/* Glow */}
-          <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#4d8dff]/10 blur-[130px]" />
+          <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#39ff88]/10 blur-[130px]" />
 
           <div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="max-w-2xl text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-4xl sm:leading-tight">
+              <p className="reveal max-w-2xl text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-4xl sm:leading-tight">
                 Good software starts with a problem worth solving.
               </p>
 
-              <p className="mt-6 max-w-xl text-sm leading-7 text-[#626c7a]">
+              <p className="reveal mt-6 max-w-xl text-sm leading-7 text-[#626c7a]" data-reveal-delay="100">
                 If you have a project, opportunity, or idea that needs an
                 engineer, send a message.
               </p>
             </div>
 
-            <div className="flex flex-col items-start gap-3">
+            <div className="reveal flex flex-col items-start gap-3" data-reveal-delay="180">
               {hasEmail ? (
                 <a
                   href={`mailto:${siteConfig.links.email}`}
@@ -68,7 +68,7 @@ function Contact() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-white/20 hover:text-[#f5f7fa]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
                 >
                   GitHub
                   <span>↗</span>
@@ -79,7 +79,7 @@ function Contact() {
                     href={siteConfig.links.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-white/20 hover:text-[#f5f7fa]"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
                   >
                     LinkedIn
                     <span>↗</span>

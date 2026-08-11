@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useActiveSection } from '../hooks/useActiveSection'
 
 const navigation = [
   { label: 'Work', id: 'work' },
@@ -55,9 +56,13 @@ function smoothScrollTo(id: string) {
   window.requestAnimationFrame(animate)
 }
 
+const sectionIds = ['hero', 'work', 'engineering', 'about', 'contact']
+
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const activeId = useActiveSection(sectionIds)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -131,7 +136,9 @@ function Navbar() {
               <button
                 key={item.id}
                 type="button"
-                className="nav-link"
+                className={`nav-link ${
+                  activeId === item.id ? 'is-active' : ''
+                }`}
                 onClick={() =>
                   handleNavigation(item.id)
                 }

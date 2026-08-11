@@ -5,27 +5,29 @@ interface FeaturedProjectProps {
 }
 
 function FeaturedProject({ project }: FeaturedProjectProps) {
+  const hasLinks = Boolean(project.liveUrl) || Boolean(project.githubUrl)
+
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0d1118]">
+    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0e0c]">
       {/* Project visual */}
-      <div className="relative aspect-[16/9] overflow-hidden border-b border-white/[0.06] bg-[#090d13]">
+      <div className="relative aspect-[16/9] overflow-hidden border-b border-white/[0.06] bg-[#070a09]">
         {/* Grid */}
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
+              linear-gradient(rgba(57, 255, 136, 0.8) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(57, 255, 136, 0.8) 1px, transparent 1px)
             `,
             backgroundSize: '48px 48px',
           }}
         />
 
         {/* Ambient project glow */}
-        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4d8dff]/10 blur-[100px] transition-all duration-700 group-hover:bg-[#4d8dff]/15" />
+        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39ff88]/10 blur-[100px] transition-all duration-700 group-hover:bg-[#39ff88]/15" />
 
         {/* Fake system interface */}
-        <div className="absolute inset-6 flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0f15]/90 shadow-2xl backdrop-blur-sm transition-transform duration-700 group-hover:scale-[1.015] sm:inset-10">
+        <div className="absolute inset-6 flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#090d0b]/90 shadow-2xl backdrop-blur-sm transition-transform duration-700 group-hover:scale-[1.015] sm:inset-10">
           {/* Window header */}
           <div className="flex h-10 items-center border-b border-white/[0.06] px-4">
             <div className="flex gap-1.5">
@@ -42,11 +44,11 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           {/* Window body */}
           <div className="relative flex flex-1 items-center justify-center p-6">
             <div className="text-center">
-              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#4d8dff]/20 bg-[#4d8dff]/[0.06] shadow-[0_0_50px_rgba(77,141,255,0.12)]">
-                <div className="h-8 w-8 rounded-full bg-[#4d8dff]/20 shadow-[0_0_30px_rgba(77,141,255,0.4)]" />
+              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#39ff88]/20 bg-[#39ff88]/[0.06] shadow-[0_0_50px_rgba(57,255,136,0.12)]">
+                <div className="h-8 w-8 rounded-full bg-[#39ff88]/20 shadow-[0_0_30px_rgba(57,255,136,0.4)]" />
               </div>
 
-              <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#4d8dff]">
+              <p className="font-mono text-[9px] uppercase tracking-[0.35em] text-[#39ff88]">
                 {project.category}
               </p>
 
@@ -76,7 +78,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
       <div className="grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <span className="h-px w-5 bg-[#4d8dff]" />
+            <span className="h-px w-5 bg-[#39ff88]" />
 
             <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
               {project.category}
@@ -91,9 +93,12 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
             {project.description}
           </p>
 
-          <p className="mt-4 max-w-xl text-sm leading-7 text-[#626c7a]">
-            {project.description}
-          </p>
+          {project.longdescription &&
+            project.longdescription !== project.description && (
+              <p className="mt-4 max-w-xl text-sm leading-7 text-[#626c7a]">
+                {project.longdescription}
+              </p>
+            )}
 
           <div className="mt-7 flex flex-wrap gap-2">
             {project.technologies.map((technology) => (
@@ -106,33 +111,35 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="group/link inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080a0f] transition-all duration-300 hover:bg-white"
-              >
-                Live project
-                <span className="transition-transform duration-300 group-hover/link:translate-x-0.5">
-                  ↗
-                </span>
-              </a>
-            )}
+          {hasLinks && (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group/link inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080a0f] transition-all duration-300 hover:bg-white"
+                >
+                  Live project
+                  <span className="transition-transform duration-300 group-hover/link:translate-x-0.5">
+                    ↗
+                  </span>
+                </a>
+              )}
 
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-[#f5f7fa] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.03]"
-              >
-                Source
-                <span>↗</span>
-              </a>
-            )}
-          </div>
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-[#f5f7fa] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.03]"
+                >
+                  Source
+                  <span>↗</span>
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Highlights */}
@@ -147,7 +154,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                 key={highlight}
                 className="flex items-start gap-4 text-sm leading-6 text-[#9aa4b2]"
               >
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4d8dff] shadow-[0_0_10px_rgba(77,141,255,0.5)]" />
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#39ff88] shadow-[0_0_10px_rgba(57,255,136,0.5)]" />
 
                 <span>
                   <span className="mr-2 font-mono text-[9px] text-[#626c7a]">

@@ -65,14 +65,15 @@ function Engineering() {
           description="The technologies and engineering areas behind the work."
         />
 
-        <div className="grid overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
-          {engineeringGroups.map((group) => (
+        <div className="grid overflow-hidden rounded-3xl border border-white/[0.06] bg-[#0a0e0c] sm:grid-cols-2 lg:grid-cols-4">
+          {engineeringGroups.map((group, groupIndex) => (
             <article
               key={group.number}
-              className="group relative bg-[#0d1118] p-7 transition-colors duration-500 hover:bg-[#111722] sm:p-8"
+              className="reveal group relative bg-[#0d1210] p-7 transition-colors duration-500 hover:bg-[#111713] sm:p-8"
+              data-reveal-delay={groupIndex * 90}
             >
               <div className="flex items-start justify-between">
-                <span className="font-mono text-[9px] tracking-[0.25em] text-[#4d8dff]">
+                <span className="font-mono text-[9px] tracking-[0.25em] text-[#39ff88]">
                   {group.number}
                 </span>
 
@@ -95,7 +96,7 @@ function Engineering() {
                     key={technology}
                     className="flex items-center gap-3 text-sm text-[#9aa4b2]"
                   >
-                    <span className="h-1 w-1 rounded-full bg-[#4d8dff]/70" />
+                    <span className="h-1 w-1 rounded-full bg-[#39ff88]/70" />
                     {technology}
                   </li>
                 ))}
@@ -104,7 +105,7 @@ function Engineering() {
           ))}
         </div>
 
-        <div className="mt-6 rounded-3xl border border-white/[0.06] bg-[#0d1118] p-7 sm:p-8">
+        <div className="reveal mt-6 rounded-3xl border border-white/[0.06] bg-[#0d1210] p-7 sm:p-8">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
@@ -118,7 +119,7 @@ function Engineering() {
               </p>
             </div>
 
-            <div className="shrink-0 font-mono text-[10px] uppercase tracking-[0.25em] text-[#4d8dff]">
+            <div className="shrink-0 font-mono text-[10px] uppercase tracking-[0.25em] text-[#39ff88]">
               Learn → Build → Refine
             </div>
           </div>
