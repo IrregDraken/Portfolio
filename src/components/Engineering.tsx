@@ -55,7 +55,7 @@ function Engineering() {
   return (
     <section
       id="engineering"
-      className="border-t border-white/[0.06] px-6 py-24 sm:py-32 lg:px-8 lg:py-40"
+      className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -65,7 +65,7 @@ function Engineering() {
           description="The technologies and engineering areas behind the work."
         />
 
-        <div className="grid overflow-hidden rounded-3xl border border-white/[0.06] bg-[#0a0e0c] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid overflow-hidden rounded-3xl border border-white/[0.06] bg-[#080d0a] sm:grid-cols-2 lg:grid-cols-4">
           {engineeringGroups.map((group, groupIndex) => (
             <article
               key={group.number}
@@ -77,7 +77,7 @@ function Engineering() {
                   {group.number}
                 </span>
 
-                <span className="text-[#626c7a] transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="text-[#8b9690] transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
                   ↗
                 </span>
               </div>
@@ -86,7 +86,7 @@ function Engineering() {
                 {group.title}
               </h3>
 
-              <p className="mt-3 text-sm leading-6 text-[#626c7a]">
+              <p className="mt-3 text-sm leading-6 text-[#8b9690]">
                 {group.description}
               </p>
 
@@ -94,7 +94,7 @@ function Engineering() {
                 {group.technologies.map((technology) => (
                   <li
                     key={technology}
-                    className="flex items-center gap-3 text-sm text-[#9aa4b2]"
+                    className="flex items-center gap-3 text-sm text-[#8b9690]"
                   >
                     <span className="h-1 w-1 rounded-full bg-[#39ff88]/70" />
                     {technology}
@@ -108,11 +108,11 @@ function Engineering() {
         <div className="reveal mt-6 rounded-3xl border border-white/[0.06] bg-[#0d1210] p-7 sm:p-8">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+              <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
                 Philosophy
               </p>
 
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-[#9aa4b2]">
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-[#8b9690]">
                 I care about understanding what I build, not just getting it to
                 run. The goal is software that can be explained, maintained,
                 tested, and improved.

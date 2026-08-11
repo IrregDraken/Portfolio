@@ -8,7 +8,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
   const hasLinks = Boolean(project.liveUrl) || Boolean(project.githubUrl)
 
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0e0c] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(0,0,0,0.4),0_0_26px_rgba(57,255,136,0.07)]">
+    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(0,0,0,0.4),0_0_26px_rgba(57,255,136,0.07)]">
       {/* Project visual */}
       <div className="relative aspect-[16/9] overflow-hidden border-b border-white/[0.06] bg-[#070a09]">
         {/* Grid */}
@@ -36,7 +36,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
               <span className="h-2 w-2 rounded-full bg-white/10" />
             </div>
 
-            <span className="ml-4 font-mono text-[8px] uppercase tracking-[0.2em] text-[#626c7a]">
+            <span className="ml-4 font-mono text-[8px] uppercase tracking-[0.2em] text-[#8b9690]">
               {project.name} / SYSTEM
             </span>
           </div>
@@ -58,18 +58,18 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
             </div>
 
             {/* Decorative data points */}
-            <span className="absolute left-6 top-6 font-mono text-[8px] text-[#626c7a]">
+            <span className="absolute left-6 top-6 font-mono text-[8px] text-[#8b9690]">
               01 / 04
             </span>
 
-            <span className="absolute bottom-6 right-6 font-mono text-[8px] text-[#626c7a]">
+            <span className="absolute bottom-6 right-6 font-mono text-[8px] text-[#8b9690]">
               ONLINE
             </span>
           </div>
         </div>
 
         {/* Project number */}
-        <span className="absolute right-6 top-5 font-mono text-[9px] tracking-[0.2em] text-[#626c7a]">
+        <span className="absolute right-6 top-5 font-mono text-[9px] tracking-[0.2em] text-[#8b9690]">
           PROJECT {project.number}
         </span>
       </div>
@@ -80,7 +80,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           <div className="mb-4 flex items-center gap-3">
             <span className="h-px w-5 bg-[#39ff88]" />
 
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
               {project.category}
             </span>
           </div>
@@ -95,7 +95,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
 
           {project.longdescription &&
             project.longdescription !== project.description && (
-              <p className="mt-4 max-w-xl text-sm leading-7 text-[#626c7a]">
+              <p className="mt-4 max-w-xl text-sm leading-7 text-[#8b9690]">
                 {project.longdescription}
               </p>
             )}
@@ -104,7 +104,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
             {project.technologies.map((technology) => (
               <span
                 key={technology}
-                className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 font-mono text-[9px] text-[#9aa4b2]"
+                className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 font-mono text-[9px] text-[#8b9690]"
               >
                 {technology}
               </span>
@@ -118,7 +118,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="group/link inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080a0f] transition-all duration-300 hover:bg-white"
+                  className="group/link inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white"
                 >
                   Live project
                   <span className="transition-transform duration-300 group-hover/link:translate-x-0.5">
@@ -144,7 +144,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
 
         {/* Highlights */}
         <div className="lg:border-l lg:border-white/[0.06] lg:pl-10">
-          <p className="mb-5 font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+          <p className="mb-5 font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
             Engineering highlights
           </p>
 
@@ -152,12 +152,12 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
             {project.highlights.map((highlight, index) => (
               <li
                 key={highlight}
-                className="flex items-start gap-4 text-sm leading-6 text-[#9aa4b2]"
+                className="flex items-start gap-4 text-sm leading-6 text-[#8b9690]"
               >
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#39ff88] shadow-[0_0_10px_rgba(57,255,136,0.5)]" />
 
                 <span>
-                  <span className="mr-2 font-mono text-[9px] text-[#626c7a]">
+                  <span className="mr-2 font-mono text-[9px] text-[#8b9690]">
                     0{index + 1}
                   </span>
                   {highlight}

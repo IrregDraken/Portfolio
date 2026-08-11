@@ -8,7 +8,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-white/[0.06] px-6 py-24 sm:py-32 lg:px-8 lg:py-40"
+      className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -18,7 +18,7 @@ function Contact() {
           description="Projects, opportunities, collaborations, or technical conversations."
         />
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0a0e0c] px-7 py-14 sm:px-12 sm:py-20 lg:px-20 lg:py-24">
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] px-7 py-14 sm:px-12 sm:py-20 lg:px-20 lg:py-24">
           {/* Decorative grid */}
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -40,7 +40,7 @@ function Contact() {
                 Good software starts with a problem worth solving.
               </p>
 
-              <p className="reveal mt-6 max-w-xl text-sm leading-7 text-[#626c7a]" data-reveal-delay="100">
+              <p className="reveal mt-6 max-w-xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="100">
                 If you have a project, opportunity, or idea that needs an
                 engineer, send a message.
               </p>
@@ -50,7 +50,7 @@ function Contact() {
               {hasEmail ? (
                 <a
                   href={`mailto:${siteConfig.links.email}`}
-                  className="group inline-flex items-center gap-4 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080a0f] transition-all duration-300 hover:bg-white"
+                  className="group inline-flex items-center gap-4 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white"
                 >
                   Email me
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -58,7 +58,7 @@ function Contact() {
                   </span>
                 </a>
               ) : (
-                <span className="inline-flex cursor-not-allowed items-center gap-4 rounded-full bg-[#f5f7fa]/30 px-6 py-3.5 text-sm font-medium text-[#080a0f]/60">
+                <span className="inline-flex cursor-not-allowed items-center gap-4 rounded-full bg-[#f5f7fa]/30 px-6 py-3.5 text-sm font-medium text-[#080d0a]/60">
                   Email me
                 </span>
               )}
@@ -68,7 +68,7 @@ function Contact() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#8b9690] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
                 >
                   GitHub
                   <span>↗</span>
@@ -79,7 +79,7 @@ function Contact() {
                     href={siteConfig.links.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#9aa4b2] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm text-[#8b9690] transition-all duration-300 hover:border-[#39ff88]/30 hover:text-[#f5f7fa]"
                   >
                     LinkedIn
                     <span>↗</span>

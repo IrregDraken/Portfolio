@@ -6,14 +6,18 @@ const typingPhrases = [
   'Software Engineer',
   'AI Engineer',
   'Creative Technologist',
+  'Backend & Cloud Architect',
+  'IoT & Systems Builder',
+  'Security-Minded Engineer',
 ]
 
 function Hero() {
   const [time, setTime] = useState('')
-  const { text: typedText } = useTypingEffect(typingPhrases, {
-    typeSpeed: 70,
-    deleteSpeed: 30,
-    pauseDelay: 2200,
+  const { text: typedText, phase } = useTypingEffect(typingPhrases, {
+    typeSpeed: 62,
+    deleteSpeed: 34,
+    pauseDelay: 2600,
+    fadeDelay: 420,
   })
 
   useEffect(() => {
@@ -117,7 +121,11 @@ function Hero() {
             <div className="typing-wrapper">
               <span className="typing-prefix">&gt;_</span>
 
-              <span className="typing-text">{typedText}</span>
+              <span
+                className={`typing-text ${phase === 'fading-out' ? 'typing-fade' : phase === 'paused' ? 'typing-full' : 'typing-fade-in'}`}
+              >
+                {typedText}
+              </span>
 
               <span aria-hidden="true" className="typing-cursor" />
             </div>

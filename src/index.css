@@ -716,6 +716,22 @@ section {
   display: inline;
 
   white-space: nowrap;
+
+  transition: opacity 420ms ease-in-out;
+
+  opacity: 1;
+}
+
+.typing-text.typing-full {
+  opacity: 1;
+}
+
+.typing-text.typing-fade-in {
+  opacity: 0.35;
+}
+
+.typing-text.typing-fade {
+  opacity: 0;
 }
 
 .typing-cursor {
@@ -2429,6 +2445,16 @@ section {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  /*
+   * Typing animation ALWAYS plays, even when the OS requests
+   * reduced motion (user requirement).
+   */
+  .typing-text,
+  .typing-cursor {
+    animation-duration: initial !important;
+    animation-iteration-count: initial !important;
+    transition-duration: 420ms !important;
   }
 }
 

@@ -20,7 +20,7 @@ function About() {
   return (
     <section
       id="about"
-      className="border-t border-white/[0.06] px-6 py-24 sm:py-32 lg:px-8 lg:py-40"
+      className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -38,14 +38,14 @@ function About() {
               real problems.
             </p>
 
-            <p className="reveal mt-7 max-w-2xl text-sm leading-7 text-[#626c7a]" data-reveal-delay="100">
+            <p className="reveal mt-7 max-w-2xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="100">
               My work sits across application development, backend systems,
               artificial intelligence, and connected hardware. I enjoy
               understanding how the pieces fit together rather than treating
               each technology as an isolated tool.
             </p>
 
-            <p className="reveal mt-5 max-w-2xl text-sm leading-7 text-[#626c7a]" data-reveal-delay="180">
+            <p className="reveal mt-5 max-w-2xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="180">
               Right now, the focus is on becoming a stronger engineer by
               building, breaking, debugging, and rebuilding things until the
               underlying concepts actually make sense.
@@ -60,7 +60,7 @@ function About() {
                   className="reveal border-b border-white/[0.06] pb-6 last:border-0"
                   data-reveal-delay={index * 90}
                 >
-                  <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
                     {fact.label}
                   </p>
 
@@ -81,7 +81,7 @@ function About() {
                 </span>
               </div>
 
-              <p className="mt-4 text-sm leading-6 text-[#9aa4b2]">
+              <p className="mt-4 text-sm leading-6 text-[#8b9690]">
                 {siteConfig.availability.label}
               </p>
             </div>

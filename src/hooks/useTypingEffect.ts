@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export type TypingEffectState = {
   text: string
-  isTyping: boolean
+  phase: 'typing' | 'paused' | 'fading-out'
 }
 
 /**
- * Types a list of phrases one character at a time, pauses when a phrase
- * completes, deletes it one character at a time, and moves on to the next.
+ * Types a list of phrases one character at a time, holds the complete
+ * phrase, fades it out, and types the next phrase.
  *
- * Guarantees:
- * - no interval leaks (single request-safe timeout)
- * - resets cleanly when the phrase list or speed changes
- * - skips all animation when prefers-reduced-motion is enabled
+ * Behavior:
+ * - ALWAYS animates: intentionally ignores prefers-reduced-motion so the
+ *   hero typing line never reads as static (user requirement).
+ * - smooth fade transition between phrases (CSS opacity transition)
+ * - single chained setTimeout (no interval leaks)
+ * - resets cleanly when the phrase list or speeds change
  */
 export function useTypingEffect(
   phrases: readonly string[],
@@ -20,41 +22,39 @@ export function useTypingEffect(
     typeSpeed?: number
     deleteSpeed?: number
     pauseDelay?: number
+    fadeDelay?: number
   } = {},
 ): TypingEffectState {
   const {
     typeSpeed = 70,
     deleteSpeed = 30,
     pauseDelay = 2200,
+    fadeDelay = 450,
   } = options
 
-  const isReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia?.('(prefers-reduced-motion: reduce)')
-      .matches
-
   const [text, setText] = useState('')
-  const [isTyping, setIsTyping] = useState(true)
+  const [phase, setPhase] = useState<TypingEffectState['phase']>('typing')
+
+  // Keep latest speeds/options accessible without restarting the effect.
+  const optionsRef = useRef({ typeSpeed, deleteSpeed, pauseDelay, fadeDelay })
+  optionsRef.current = { typeSpeed, deleteSpeed, pauseDelay, fadeDelay }
 
   useEffect(() => {
     if (phrases.length === 0) return
-
-    // Fully visible at rest for users who prefer reduced motion.
-    if (isReducedMotion) {
-      setText(phrases[0])
-      setIsTyping(false)
-      return
-    }
 
     let mounted = true
     let timeoutId = 0
 
     let phraseIndex = 0
     let currentText = ''
-    let deleting = false
+    // Machine states: 'type' | 'hold' | 'untype'
+    let mode: 'type' | 'hold' | 'untype' = 'type'
 
-    const scheduleNext = (delay: number) => {
-      timeoutId = window.setTimeout(step, delay)
+    const scheduleNext = (delay: number, next: () => void) => {
+      timeoutId = window.setTimeout(() => {
+        if (!mounted) return
+        next()
+      }, delay)
     }
 
     const commit = (next: string) => {
@@ -62,42 +62,52 @@ export function useTypingEffect(
       setText(next)
     }
 
-    const step = () => {
-      if (!mounted) return
+    const hold = () => {
+      if (mode !== 'hold') {
+        mode = 'hold'
+        setPhase('paused')
+      }
+      scheduleNext(optionsRef.current.pauseDelay, () => {
+        if (!mounted) return
+        mode = 'untype'
+        setPhase('fading-out')
+        scheduleNext(optionsRef.current.fadeDelay, untype)
+      })
+    }
 
+    const typeNext = () => {
+      mode = 'type'
+      setPhase('typing')
       const phrase = phrases[phraseIndex]
-
-      if (!deleting) {
-        const nextText = phrase.slice(0, currentText.length + 1)
-        commit(nextText)
-
-        if (nextText === phrase) {
-          deleting = true
-          scheduleNext(pauseDelay)
-        } else {
-          scheduleNext(typeSpeed)
-        }
+      const nextText = phrase.slice(0, currentText.length + 1)
+      commit(nextText)
+      if (nextText === phrase) {
+        hold()
       } else {
-        const nextText = phrase.slice(0, currentText.length - 1)
-        commit(nextText)
-
-        if (nextText.length === 0) {
-          deleting = false
-          phraseIndex = (phraseIndex + 1) % phrases.length
-          scheduleNext(typeSpeed)
-        } else {
-          scheduleNext(deleteSpeed)
-        }
+        scheduleNext(optionsRef.current.typeSpeed, typeNext)
       }
     }
 
-    scheduleNext(typeSpeed)
+    const untype = () => {
+      mode = 'untype'
+      const phrase = phrases[phraseIndex]
+      const nextText = phrase.slice(0, currentText.length - 1)
+      commit(nextText)
+      if (nextText.length === 0) {
+        phraseIndex = (phraseIndex + 1) % phrases.length
+        scheduleNext(optionsRef.current.deleteSpeed, typeNext)
+      } else {
+        scheduleNext(optionsRef.current.deleteSpeed, untype)
+      }
+    }
+
+    typeNext()
 
     return () => {
       mounted = false
       window.clearTimeout(timeoutId)
     }
-  }, [phrases, typeSpeed, deleteSpeed, pauseDelay, isReducedMotion])
+  }, [phrases])
 
-  return { text, isTyping }
+  return { text, phase }
 }

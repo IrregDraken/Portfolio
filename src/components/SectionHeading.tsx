@@ -17,7 +17,7 @@ function SectionHeading({
         <div className="mb-5 flex items-center gap-3">
           <span className="h-px w-6 bg-[#39ff88]" />
 
-          <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#626c7a]">
+          <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
             {eyebrow}
           </span>
 
@@ -34,7 +34,7 @@ function SectionHeading({
       </div>
 
       {description && (
-        <p className="max-w-md text-sm leading-7 text-[#9aa4b2] md:pb-1">
+        <p className="max-w-md text-sm leading-7 text-[#8b9690] md:pb-1">
           {description}
         </p>
       )}

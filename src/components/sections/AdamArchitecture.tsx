@@ -2,14 +2,14 @@ import { adamCaseStudy } from '../../data/adam'
 
 function AdamArchitecture() {
   return (
-    <section className="border-t border-white/[0.06] px-6 py-24 sm:py-32 lg:px-8">
+    <section className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-5 bg-[#39ff88]" />
 
-              <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
                 02 / Architecture
               </span>
             </div>
@@ -19,7 +19,7 @@ function AdamArchitecture() {
             </h2>
           </div>
 
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a]">
+          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690]">
             Event → Process → Persist → Notify
           </span>
         </div>
@@ -43,11 +43,11 @@ function AdamArchitecture() {
                     {layer.name}
                   </p>
 
-                  <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-[#626c7a]">
+                  <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.15em] text-[#8b9690]">
                     {layer.technology}
                   </p>
 
-                  <p className="mt-6 text-sm leading-7 text-[#626c7a]">
+                  <p className="mt-6 text-sm leading-7 text-[#8b9690]">
                     {layer.description}
                   </p>
                 </div>

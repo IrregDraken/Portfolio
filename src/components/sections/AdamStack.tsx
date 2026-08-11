@@ -2,13 +2,13 @@ import { adamCaseStudy } from '../../data/adam'
 
 function AdamStack() {
   return (
-    <section className="border-t border-white/[0.06] px-6 py-24 sm:py-32 lg:px-8">
+    <section className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
         <div>
           <div className="mb-5 flex items-center gap-3">
             <span className="h-px w-5 bg-[#39ff88]" />
 
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
               03 / Technology
             </span>
           </div>
@@ -17,7 +17,7 @@ function AdamStack() {
             The stack behind it.
           </h2>
 
-          <p className="mt-5 max-w-md text-sm leading-7 text-[#626c7a]">
+          <p className="mt-5 max-w-md text-sm leading-7 text-[#8b9690]">
             Each technology has a job in the system. The stack is shown as
             evidence of implementation, not decoration.
           </p>

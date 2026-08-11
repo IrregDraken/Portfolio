@@ -2,13 +2,13 @@ import { adamCaseStudy } from '../../data/adam'
 
 function AdamDecisions() {
   return (
-    <section className="border-t border-white/[0.06] px-6 py-24 sm:py-32 lg:px-8">
+    <section className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
           <div className="mb-5 flex items-center gap-3">
             <span className="h-px w-5 bg-[#39ff88]" />
 
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#626c7a]">
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
               04 / Engineering Decisions
             </span>
           </div>
@@ -32,7 +32,7 @@ function AdamDecisions() {
                 {decision.title}
               </h3>
 
-              <p className="text-sm leading-7 text-[#626c7a]">
+              <p className="text-sm leading-7 text-[#8b9690]">
                 {decision.description}
               </p>
             </article>

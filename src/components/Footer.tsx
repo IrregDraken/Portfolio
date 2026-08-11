@@ -13,7 +13,7 @@ function Footer() {
 
           <span className="hidden h-3 w-px bg-white/10 sm:block" />
 
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a]">
+          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690]">
             {currentYear}
           </span>
         </div>
@@ -23,7 +23,7 @@ function Footer() {
             href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#39ff88]"
+            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
           >
             GitHub
           </a>
@@ -33,7 +33,7 @@ function Footer() {
               href={siteConfig.links.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#39ff88]"
+              className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
             >
               LinkedIn
             </a>
@@ -41,7 +41,7 @@ function Footer() {
 
           <a
             href="#top"
-            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#626c7a] transition-colors duration-300 hover:text-[#39ff88]"
+            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88]"
           >
             Back to top ↑
           </a>

@@ -17,7 +17,7 @@ function App() {
   return (
     <div
       id="top"
-      className={`min-h-screen bg-[#080a0f] text-[#f5f7fa] transition-opacity duration-700 ${
+      className={`min-h-screen bg-[#080d0a] text-[#f5f7fa] transition-opacity duration-700 ${
         loaded ? 'opacity-100' : 'opacity-0'
       }`}
     >
