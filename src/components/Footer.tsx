@@ -2,7 +2,6 @@ import { siteConfig } from '../config/site'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
-  const hasEmail = Boolean(siteConfig.links.email)
 
   return (
     <footer className="border-t border-white/[0.06] px-6 py-8 lg:px-8">
