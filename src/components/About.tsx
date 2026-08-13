@@ -136,7 +136,7 @@ function About() {
               </p>
 
               <div className="mt-6 space-y-0">
-                {timeline.map((item, index) => (
+                {timeline.map((item) => (
                   <div
                     key={item.period + item.title}
                     className="relative border-b border-white/[0.06] pb-6 last:border-0 last:pb-0"
