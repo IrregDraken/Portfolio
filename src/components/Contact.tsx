@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import {
   Mail,
-  Phone,
   MapPin,
   Send,
 } from 'lucide-react'
+import { MessageCircle, Phone } from './IconMarks'
 import {
   GithubMark,
   LinkedinMark,
@@ -23,12 +23,19 @@ const contactInfo = [
     href: `mailto:${siteConfig.links.email}`,
   },
   {
-    key: 'phone',
-    icon: Phone,
-    label: 'Phone',
+    key: 'whatsapp',
+    icon: MessageCircle,
+    label: 'WhatsApp',
     value: siteConfig.links.phone,
-    secondary: siteConfig.links.phoneSecondary,
-    href: `tel:${siteConfig.links.phone.replace(/\s+/g, '')}`,
+    href: `https://wa.me/${siteConfig.links.phone.replace(/\s+/g, '')}`,
+    external: true,
+  },
+  {
+    key: 'call',
+    icon: Phone,
+    label: 'Call',
+    value: siteConfig.links.phoneSecondary,
+    href: `tel:${siteConfig.links.phoneSecondary.replace(/\s+/g, '')}`,
   },
   {
     key: 'location',
@@ -172,9 +179,9 @@ function Contact() {
                       <a
                         href={info.href}
                         className="min-w-0 flex-1"
-                        target={info.key === 'email' ? '_blank' : undefined}
+                        target={info.external ? '_blank' : undefined}
                         rel={
-                          info.key === 'email' ? 'noreferrer' : undefined
+                          info.external ? 'noreferrer' : undefined
                         }
                       >
                         <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
@@ -183,11 +190,6 @@ function Contact() {
                         <p className="mt-0.5 truncate text-[15px] font-medium text-[#f5f7fa] transition-colors duration-300 group-hover:text-[#39ff88]">
                           {info.value}
                         </p>
-                        {info.secondary && (
-                          <p className="mt-0.5 truncate text-[13px] text-[#8b9690]">
-                            {info.secondary}
-                          </p>
-                        )}
                       </a>
                     ) : (
                       <div className="min-w-0 flex-1">

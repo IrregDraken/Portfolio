@@ -48,7 +48,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-3">
             {featuredProjects.map((project) => (
               <FeaturedProject key={project.id} project={project} />
             ))}

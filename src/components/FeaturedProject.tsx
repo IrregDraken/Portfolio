@@ -17,7 +17,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
       <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#39ff88]/[0.07] blur-[110px] transition-all duration-700 group-hover:bg-[#39ff88]/10" />
 
       {/* Project image header */}
-      <div className="relative h-44 overflow-hidden sm:h-52">
+      <div className="relative h-40 flex-shrink-0 overflow-hidden sm:h-48 lg:h-44">
         <img
           src={project.image}
           alt={`${project.name} visual`}
@@ -42,7 +42,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
         </div>
       </div>
 
-      <div className="relative p-7 sm:p-9">
+      <div className="relative flex h-full flex-col p-6 lg:p-7">
         <div className="mb-4 flex items-center gap-3">
           <span className="h-px w-5 bg-[#39ff88]" />
 
@@ -55,7 +55,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           {project.name}
         </h3>
 
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-[#8b9690]">
+        <p className="mt-2 text-[13px] leading-6 text-[#8b9690] lg:text-sm">
           {project.description}
         </p>
 
@@ -63,7 +63,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
         <button
           type="button"
           onClick={() => setExpanded((current) => !current)}
-          className="reveal-link mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[#39ff88]/80 transition-colors duration-300 hover:text-[#39ff88]"
+          className="reveal-link mt-3 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[#39ff88]/80 transition-colors duration-300 hover:text-[#39ff88]"
           aria-expanded={expanded}
         >
           <Lightbulb className="h-3.5 w-3.5" />
@@ -95,14 +95,14 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           </div>
         </div>
 
-        {/* Interactive tech chips — link to repo tech search */}
-        <div className="mt-5 flex flex-wrap gap-2">
+        {/* Interactive tech chips — link to repository */}
+        <div className="mt-4 flex flex-wrap gap-1.5">
           {project.technologies.map((technology) => (
             <a
               key={technology}
               href={project.githubUrl}
               title={`Explore ${technology} in the repository`}
-              className="group/chip rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 font-mono text-[9px] text-[#8b9690] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
+              className="group/chip rounded-full border border-white/[0.07] bg-white/[0.02] px-2.5 py-1 font-mono text-[9px] text-[#8b9690] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
             >
               {technology}
               <ArrowUpRight className="ml-1 inline h-2.5 w-2.5 opacity-0 transition-opacity duration-300 group-hover/chip:opacity-100" />
@@ -112,17 +112,17 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
 
         {/* Action links */}
         {hasLinks && (
-          <div className="mt-7 flex flex-wrap gap-3 border-t border-white/[0.06] pt-6">
+          <div className="mt-auto flex flex-wrap items-center gap-2.5 border-t border-white/[0.06] pt-5">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)]"
+                className="inline-flex items-center gap-2 rounded-full bg-[#f5f7fa] px-4 py-2.5 text-[13px] font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)]"
               >
-                <Globe className="h-4 w-4" />
-                Live project
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <Globe className="h-3.5 w-3.5" />
+                Live
+                <ArrowUpRight className="h-3 w-3" />
               </a>
             )}
 
@@ -131,11 +131,11 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-[#f5f7fa] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-[13px] font-medium text-[#f5f7fa] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
               >
-                <GithubMark className="h-4 w-4" />
-                Source code
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <GithubMark className="h-3.5 w-3.5" />
+                Source
+                <ArrowUpRight className="h-3 w-3" />
               </a>
             )}
           </div>

@@ -6,13 +6,6 @@ import { useEffect } from 'react'
  */
 export function useReveal() {
   useEffect(() => {
-    const isReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia?.('(prefers-reduced-motion: reduce)')
-        .matches
-
-    if (isReducedMotion) return
-
     const targets = document.querySelectorAll<HTMLElement>(
       '.reveal',
     )
@@ -38,12 +31,21 @@ export function useReveal() {
       },
       {
         rootMargin: '0px 0px -8% 0px',
-        threshold: 0.12,
+        threshold: 0.01,
       },
     )
 
     for (const target of targets) {
-      observer.observe(target)
+      const rect = target.getBoundingClientRect()
+      if (
+        rect.top >= 0 &&
+        rect.bottom <= window.innerHeight &&
+        rect.bottom > 0
+      ) {
+        target.classList.add('reveal--visible')
+      } else {
+        observer.observe(target)
+      }
     }
 
     return () => observer.disconnect()
