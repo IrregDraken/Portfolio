@@ -134,7 +134,20 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                 className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-[13px] font-medium text-[#f5f7fa] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
               >
                 <GithubMark className="h-3.5 w-3.5" />
-                Source
+                Frontend Source
+                <ArrowUpRight className="h-3 w-3" />
+              </a>
+            )}
+
+            {project.backendUrl && (
+              <a
+                href={project.backendUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[#39ff88]/20 px-4 py-2.5 text-[13px] font-medium text-[#39ff88]/90 transition-all duration-300 hover:border-[#39ff88]/50 hover:bg-[#39ff88]/[0.06]"
+              >
+                <GithubMark className="h-3.5 w-3.5" />
+                Backend Source
                 <ArrowUpRight className="h-3 w-3" />
               </a>
             )}

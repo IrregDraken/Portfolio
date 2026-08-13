@@ -20,6 +20,8 @@ export const siteConfig = {
     phone: '+234 913 215 8874',
     phoneSecondary: '+234 916 035 5431',
     resume: '/Nwodim_Nnamdi_Obinna_CV.pdf',
+    /** Separate inbox for form submissions (delivered server-side via Formspree). */
+    formEmail: 'imleedax7@gmail.com',
   },
 
   availability: {

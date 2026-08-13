@@ -3,6 +3,7 @@ import { useActiveSection } from '../hooks/useActiveSection'
 
 const navigation = [
   { label: 'Work', id: 'work' },
+  { label: 'Stack', id: 'stack' },
   { label: 'About', id: 'about' },
   { label: 'Contact', id: 'contact' },
 ]
@@ -56,7 +57,7 @@ function smoothScrollTo(id: string) {
   window.requestAnimationFrame(animate)
 }
 
-const sectionIds = ['hero', 'work', 'engineering', 'about', 'contact']
+const sectionIds = ['hero', 'work', 'stack', 'about', 'contact']
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)

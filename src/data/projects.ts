@@ -10,6 +10,7 @@ export type Project = {
   featured: boolean
   githubUrl: string
   liveUrl: string
+  backendUrl?: string
   image: string
 }
 
@@ -120,5 +121,41 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/IrregDraken/E-learning-backend',
     liveUrl: '',
     image: '/images/adaptive.jpg',
+  },
+
+  {
+    id: 'medical-appointment',
+    number: '04',
+    name: 'Medical Appointment System',
+    category: 'Healthcare Platform',
+
+    description:
+      'A healthcare management system that handles patient appointments, scheduling, and medical records through a web dashboard.',
+
+    longdescription:
+      'The Medical Appointment System is a two-part healthcare platform with a React and TypeScript dashboard frontend and a Flask and PostgreSQL backend. It covers the core clinical workflow: patient registration, appointment booking and scheduling, and secure access to records, with JWT-based authentication protecting the API layer.',
+
+    technologies: [
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Flask',
+      'PostgreSQL',
+      'JWT Auth',
+    ],
+
+    highlights: [
+      'Patient registration and profile management',
+      'Appointment booking and scheduling',
+      'JWT-secured REST API',
+      'React TypeScript dashboard frontend',
+    ],
+
+    featured: true,
+
+    githubUrl: 'https://github.com/IrregDraken/Medical_system.Frontend',
+    backendUrl: 'https://github.com/IrregDraken/Medical_system.Backend',
+    liveUrl: '',
+    image: '/images/medical.jpg',
   },
 ]

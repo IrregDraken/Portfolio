@@ -86,19 +86,57 @@ const socials = [
 
 const hasLinks = socials.some((social) => Boolean(social.url))
 
+/**
+ * Delivery is delegated to a server-side form endpoint.
+ * VITE_FORMSPREE_ID — a Formspree form id (e.g. "xmwpzqle") whose target
+ * mailbox is imleedax7@gmail.com, configured in Vercel environment variables.
+ * No mailbox credentials ever reach the browser; Formspree is the
+ * recipient-facing relay with its own spam filtering.
+ */
+function resolveEndpoint(): string | null {
+  const id = import.meta.env.VITE_FORMSPREE_ID?.trim()
+  if (!id) return null
+  return `https://formspree.io/f/${id}`
+}
+
+type FormState = {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
+
+const INITIAL_FORM: FormState = {
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+}
+
+type DeliveryStatus = 'idle' | 'submitting' | 'sent' | 'error'
+
+function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+}
+
 function Contact() {
   const hasEmail = Boolean(siteConfig.links.email)
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-  const [sent, setSent] = useState(false)
+  const [form, setForm] = useState<FormState>(INITIAL_FORM)
+  const [status, setStatus] = useState<DeliveryStatus>('idle')
+  const [errorNote, setErrorNote] = useState('')
+  const [lastSubmittedAt, setLastSubmittedAt] = useState(0)
+
+  const endpoint = resolveEndpoint()
+  const canServerDeliver = Boolean(endpoint)
+
+  const setField = (field: keyof FormState, value: string) => {
+    setForm((state) => ({ ...state, [field]: value }))
+  }
 
   const buildMailto = () => {
     const subject = encodeURIComponent(
-      form.name
-        ? `Portfolio inquiry from ${form.name}`
+      form.subject || form.name
+        ? `Portfolio inquiry${form.name ? ` from ${form.name}` : ''}${form.subject ? ` — ${form.subject}` : ''}`
         : 'Portfolio inquiry',
     )
     const bodyLines = [form.message]
@@ -109,16 +147,77 @@ function Contact() {
     return `mailto:${siteConfig.links.email}?subject=${subject}&body=${body}`
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault()
+
+    const now = Date.now()
+    if (now - lastSubmittedAt < 5000) {
+      return
+    }
+
+    const nameError = form.name.trim().length < 2
+    const emailError = !isValidEmail(form.email)
+    const messageError = form.message.trim().length < 5
+
+    if (nameError || emailError || messageError) {
+      setErrorNote(
+        nameError
+          ? 'Please enter your name.'
+          : emailError
+            ? 'Please enter a valid email address.'
+            : 'Please write a message (at least a few words).',
+      )
+      setStatus('error')
+      return
+    }
+
+    setLastSubmittedAt(now)
+    setStatus('submitting')
+    setErrorNote('')
+
+    if (canServerDeliver) {
+      try {
+        const response = await fetch(endpoint as string, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: form.name.trim(),
+            email: form.email.trim(),
+            _subject: form.subject.trim() || `Portfolio inquiry from ${form.name.trim()}`,
+            message: form.message.trim(),
+            _replyto: form.email.trim(),
+          }),
+        })
+
+        if (response.ok) {
+          setStatus('sent')
+          setForm(INITIAL_FORM)
+          return
+        }
+
+        setErrorNote('The message could not be delivered. Please use the email link below.')
+        setStatus('error')
+      } catch {
+        setErrorNote('The message could not be delivered. Please use the email link below.')
+        setStatus('error')
+      }
+      return
+    }
+
+    // No server endpoint configured: fall back to the local mail client.
     window.location.href = buildMailto()
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
+    setStatus('sent')
   }
 
   return (
     <section
       id="contact"
+      aria-label="Contact"
       className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[92px] pb-8 sm:pt-[108px] sm:pb-10 lg:px-8 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-7xl">
@@ -262,22 +361,39 @@ function Contact() {
               </p>
 
               <p className="mt-2 text-sm leading-7 text-[#8b9690]">
-                Opens your email client with everything pre-filled — or just
-                write to{" "}
-                {hasEmail ? (
-                  <a
-                    href={`mailto:${siteConfig.links.email}`}
-                    className="text-[#39ff88] underline-offset-4 hover:underline"
-                  >
-                    {siteConfig.links.email}
-                  </a>
+                {canServerDeliver ? (
+                  <>
+                    Delivered directly to my inbox — no email client needed.
+                    Your details go to{" "}
+                    <span className="text-[#39ff88]">
+                      {siteConfig.links.email}
+                    </span>{" "}
+                    only.
+                  </>
                 ) : (
-                  'me directly'
-                )}{" "}
-                anytime.
+                  <>
+                    Opens your email client with everything pre-filled — or
+                    just write to{" "}
+                    {hasEmail ? (
+                      <a
+                        href={`mailto:${siteConfig.links.email}`}
+                        className="text-[#39ff88] underline-offset-4 hover:underline"
+                      >
+                        {siteConfig.links.email}
+                      </a>
+                    ) : (
+                      'me directly'
+                    )}{" "}
+                    anytime.
+                  </>
+                )}
               </p>
 
-              <form onSubmit={handleSubmit} className="mt-7 space-y-4">
+              <form
+                onSubmit={handleSubmit}
+                className="mt-7 space-y-4"
+                noValidate={status === 'error'}
+              >
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="block">
                     <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
@@ -286,12 +402,11 @@ function Contact() {
 
                     <input
                       type="text"
+                      autoComplete="name"
+                      required
                       value={form.name}
                       onChange={(event) =>
-                        setForm((state) => ({
-                          ...state,
-                          name: event.target.value,
-                        }))
+                        setField('name', event.target.value)
                       }
                       placeholder="Alex Okonkwo"
                       className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
@@ -305,12 +420,11 @@ function Contact() {
 
                     <input
                       type="email"
+                      autoComplete="email"
+                      required
                       value={form.email}
                       onChange={(event) =>
-                        setForm((state) => ({
-                          ...state,
-                          email: event.target.value,
-                        }))
+                        setField('email', event.target.value)
                       }
                       placeholder="alex@example.com"
                       className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
@@ -320,16 +434,30 @@ function Contact() {
 
                 <label className="block">
                   <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                    Subject
+                  </span>
+
+                  <input
+                    type="text"
+                    value={form.subject}
+                    onChange={(event) =>
+                      setField('subject', event.target.value)
+                    }
+                    placeholder="Project, role, or collaboration"
+                    className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
                     Message
                   </span>
 
                   <textarea
+                    required
                     value={form.message}
                     onChange={(event) =>
-                      setForm((state) => ({
-                        ...state,
-                        message: event.target.value,
-                      }))
+                      setField('message', event.target.value)
                     }
                     rows={5}
                     placeholder="Tell me about the project, the idea, or the problem..."
@@ -337,18 +465,46 @@ function Contact() {
                   />
                 </label>
 
+                {status === 'error' && errorNote && (
+                  <p
+                    role="alert"
+                    className="rounded-xl border border-red-500/20 bg-red-500/[0.06] px-4 py-3 text-[13px] text-red-300"
+                  >
+                    {errorNote}
+                  </p>
+                )}
+
                 <div className="flex items-center gap-4 pt-1">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)]"
+                    disabled={status === 'submitting'}
+                    aria-disabled={status === 'submitting'}
+                    className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-[#f5f7fa] disabled:hover:shadow-none"
                   >
-                    <Send className="h-4 w-4" strokeWidth={2} />
-                    {sent ? 'Opening your email…' : 'Send message'}
+                    {status === 'submitting' ? (
+                      <span className="inline-flex h-4 w-4 items-center justify-center">
+                        <span className="h-3 w-3 animate-spin rounded-full border-2 border-[#080d0a]/25 border-t-[#080d0a]" />
+                      </span>
+                    ) : (
+                      <Send className="h-4 w-4" strokeWidth={2} />
+                    )}
+                    {status === 'submitting'
+                      ? 'Sending…'
+                      : status === 'sent'
+                        ? canServerDeliver
+                          ? 'Message sent'
+                          : 'Opening your email…'
+                        : 'Send message'}
                   </button>
 
-                  {sent && (
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/80">
-                      Email client launched — hit send to finish.
+                  {status === 'sent' && (
+                    <span
+                      role="status"
+                      className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/80"
+                    >
+                      {canServerDeliver
+                        ? 'Delivered — I will reply soon.'
+                        : 'Email client launched — hit send to finish.'}
                     </span>
                   )}
                 </div>
