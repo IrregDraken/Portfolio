@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { GithubMark } from './BrandIcons'
+import { Globe, Lightbulb, ChevronsDown, ArrowUpRight } from './IconMarks'
 import type { Project } from '../data/projects'
 
 interface FeaturedProjectProps {
@@ -5,6 +8,7 @@ interface FeaturedProjectProps {
 }
 
 function FeaturedProject({ project }: FeaturedProjectProps) {
+  const [expanded, setExpanded] = useState(false)
   const hasLinks = Boolean(project.liveUrl) || Boolean(project.githubUrl)
 
   return (
@@ -21,53 +25,104 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080d0a] via-[#080d0a]/30 to-transparent" />
+
+        {/* Number badge */}
         <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-black/50 px-3 py-1 font-mono text-[9px] tracking-[0.2em] text-[#39ff88] backdrop-blur-sm">
           / {String(project.number).padStart(2, '0')}
         </span>
+
+        {/* Hover reveal: quick overlay info on the image */}
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 py-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:px-5">
+          <span className="rounded-full border border-[#39ff88]/30 bg-black/60 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#39ff88] backdrop-blur-sm">
+            {project.technologies.length} tech stacks
+          </span>
+          <span className="rounded-full border border-[#39ff88]/30 bg-black/60 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#39ff88] backdrop-blur-sm">
+            {project.highlights.length} highlights
+          </span>
+        </div>
       </div>
 
-      <div className="relative grid gap-8 p-7 sm:p-9 lg:grid-cols-[1fr_auto] lg:items-end">
-        <div>
-          <div className="mb-4 flex items-center gap-3">
-            <span className="h-px w-5 bg-[#39ff88]" />
+      <div className="relative p-7 sm:p-9">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="h-px w-5 bg-[#39ff88]" />
 
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
-              {project.category}
-            </span>
+          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+            {project.category}
+          </span>
+        </div>
 
-          </div>
+        <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[#f5f7fa] sm:text-3xl">
+          {project.name}
+        </h3>
 
-          <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[#f5f7fa] sm:text-3xl">
-            {project.name}
-          </h3>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-[#8b9690]">
+          {project.description}
+        </p>
 
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-[#8b9690]">
-            {project.description}
-          </p>
+        {/* Expandable highlights */}
+        <button
+          type="button"
+          onClick={() => setExpanded((current) => !current)}
+          className="reveal-link mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[#39ff88]/80 transition-colors duration-300 hover:text-[#39ff88]"
+          aria-expanded={expanded}
+        >
+          <Lightbulb className="h-3.5 w-3.5" />
+          {expanded ? 'Hide highlights' : 'Key highlights'}
+          <ChevronsDown
+            className={`h-3.5 w-3.5 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+          />
+        </button>
 
-          <div className="mt-5 flex flex-wrap gap-2">
-            {project.technologies.map((technology) => (
-              <span
-                key={technology}
-                className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 font-mono text-[9px] text-[#8b9690]"
-              >
-                {technology}
-              </span>
-            ))}
+        <div
+          className={`grid transition-all duration-500 ease-out ${
+            expanded
+              ? 'mt-4 grid-rows-[1fr] opacity-100'
+              : 'grid-rows-[0fr] opacity-0'
+          }`}
+        >
+          <div className="overflow-hidden">
+            <ul className="space-y-2 border-l border-[#39ff88]/15 pl-4">
+              {project.highlights.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex items-start gap-2 text-[13px] leading-6 text-[#c7d1cc]"
+                >
+                  <span className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-[#39ff88]" />
+                  {highlight}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
+        {/* Interactive tech chips — link to repo tech search */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          {project.technologies.map((technology) => (
+            <a
+              key={technology}
+              href={project.githubUrl}
+              title={`Explore ${technology} in the repository`}
+              className="group/chip rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 font-mono text-[9px] text-[#8b9690] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
+            >
+              {technology}
+              <ArrowUpRight className="ml-1 inline h-2.5 w-2.5 opacity-0 transition-opacity duration-300 group-hover/chip:opacity-100" />
+            </a>
+          ))}
+        </div>
+
+        {/* Action links */}
         {hasLinks && (
-          <div className="flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3 border-t border-white/[0.06] pt-6">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white"
+                className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-5 py-3 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)]"
               >
+                <Globe className="h-4 w-4" />
                 Live project
-                <span>↗</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             )}
 
@@ -76,10 +131,11 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-[#f5f7fa] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.03]"
+                className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-[#f5f7fa] transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#39ff88]/[0.06] hover:text-[#39ff88]"
               >
-                Source
-                <span>↗</span>
+                <GithubMark className="h-4 w-4" />
+                Source code
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             )}
           </div>
