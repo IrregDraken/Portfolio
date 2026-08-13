@@ -91,7 +91,7 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
+:where(button:not([class*="bg-"])) {
   border: 0;
   background: transparent;
   cursor: pointer;

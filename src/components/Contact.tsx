@@ -359,14 +359,6 @@ function Contact() {
                 Send a message.
               </p>
 
-              <p className="mt-2 text-sm leading-7 text-[#8b9690]">
-                Your message lands directly in my inbox at{" "}
-                <span className="text-[#39ff88]">
-                  {siteConfig.links.formEmail}
-                </span>{" "}
-                — no email client needed.
-              </p>
-
               <form
                 onSubmit={handleSubmit}
                 className="mt-5 space-y-3"
@@ -457,14 +449,14 @@ function Contact() {
                     type="submit"
                     disabled={status === 'submitting'}
                     aria-disabled={status === 'submitting'}
-                    className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#39ff88] px-8 py-4 text-sm font-semibold tracking-wide text-[#080d0a] shadow-[0_8px_32px_rgba(57,255,136,0.18)] transition-all duration-300 hover:bg-[#5effa0] hover:shadow-[0_10px_40px_rgba(57,255,136,0.3)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-[#39ff88] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#39ff88] px-8 py-4 text-sm font-bold tracking-wide text-[#06100a] drop-shadow-[0_1px_2px_rgba(6,16,10,0.6)] shadow-[0_8px_32px_rgba(57,255,136,0.18)] transition-all duration-300 hover:bg-[#5effa0] hover:shadow-[0_10px_40px_rgba(57,255,136,0.3)] hover:scale-[1.01] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 sm:w-auto"
                   >
                     {status === 'submitting' ? (
                       <span className="inline-flex h-4 w-4 items-center justify-center">
                         <span className="h-3 w-3 animate-spin rounded-full border-2 border-[#080d0a]/25 border-t-[#080d0a]" />
                       </span>
                     ) : (
-                      <Send className="h-4 w-4" strokeWidth={2} />
+                      <Send className="h-4 w-4 shrink-0 text-[#06100a]" strokeWidth={2.5} />
                     )}
                     {status === 'submitting'
                       ? 'Sending…'
