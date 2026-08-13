@@ -17,32 +17,29 @@ const facts = [
 
 const timeline = [
   {
-    period: '2026',
-    title: 'B.Sc. Computer Science (Expected)',
+    period: '2026 (Expected)',
+    title: 'B.Sc. Computer Science',
     organization: 'Michael & Cecilia Ibru University',
-    detail:
-      'Final-year coursework in software engineering, databases, and systems. Tutoring peers in C programming.',
   },
   {
     period: '2024',
     title: 'Project Manager & Full-Stack Developer',
-    organization: 'Lumora Devs (Remote)',
-    detail:
-      'Led a seven-member remote team planning and delivering web and mobile applications. Owned architecture, UI design, backend implementation, and deployment.',
+    organization: 'Lumora Devs (Remote Startup)',
   },
   {
     period: '2024',
     title: 'Technology Lead',
     organization: 'Tech Pantheon',
-    detail:
-      'Technical leadership for the community, mentoring members and coordinating engineering initiatives.',
   },
   {
-    period: '2021 – 2022',
+    period: '2024',
+    title: 'University Coding Tutor',
+    organization: 'C Programming',
+  },
+  {
+    period: 'Oct 2021 – Oct 2022',
     title: 'Hardware Engineer',
     organization: 'Gigabyte Services',
-    detail:
-      'Diagnosed, repaired, and upgraded computer systems. Configured networks, operating systems, and peripherals — the first real lesson in how systems fail and how to debug them.',
   },
 ]
 
@@ -50,7 +47,7 @@ function About() {
   return (
     <section
       id="about"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start items-center border-t border-white/[0.06] px-6 py-16 sm:py-20 lg:px-8"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[104px] pb-8 sm:pt-[116px] sm:pb-10 lg:px-8 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}
@@ -69,7 +66,7 @@ function About() {
             </div>
 
             <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-5xl lg:text-6xl">
-              Still building.
+              {siteConfig.about.title}
             </h2>
           </div>
 
@@ -80,21 +77,11 @@ function About() {
 
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div>
-              <p className="reveal max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
-              I am a final-year Computer Science student based in Port
-              Harcourt, Nigeria, interested in building
-              practical software, AI-powered products, and systems that solve
-              real problems.
+                            <p className="reveal max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
+              {siteConfig.about.summary}
             </p>
-
             <p className="reveal mt-7 max-w-2xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="100">
-              My work sits across application development, backend systems,
-              AI, and connected hardware. I have led a seven-member remote
-              development team, shipped end-to-end web and mobile applications,
-              and built AI assistants, IoT security systems, and workflow
-              automation tools that people actually use. Right now, the focus
-              is on becoming a stronger engineer by building, breaking,
-              debugging, and rebuilding until the concepts actually make sense.
+              {siteConfig.about.detail}
             </p>
 
             {siteConfig.links.resume && (

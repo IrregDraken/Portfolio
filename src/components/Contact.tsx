@@ -41,7 +41,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start items-center border-t border-white/[0.06] px-6 py-16 sm:py-20 lg:px-8"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[104px] pb-8 sm:pt-[116px] sm:pb-10 lg:px-8 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}

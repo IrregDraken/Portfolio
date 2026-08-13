@@ -2,50 +2,50 @@
 const engineeringGroups = [
   {
     number: '01',
-    title: 'Frontend',
-    description: 'Interfaces that are deliberate, responsive, and usable.',
+    title: 'Backend & AI',
+    description:
+      'Python and Flask APIs, authentication, and OpenAI-driven assistants and agents.',
+    technologies: [
+      'Python',
+      'Flask',
+      'REST APIs',
+      'SQLite',
+      'OpenAI API',
+      'AI Agents',
+    ],
+  },
+  {
+    number: '02',
+    title: 'Automation',
+    description:
+      'Intelligent workflows that remove repetitive work across tools and platforms.',
+    technologies: [
+      'Google Apps Script',
+      'Zapier',
+      'n8n',
+      'Telegram Bot API',
+      'Webhooks',
+    ],
+  },
+  {
+    number: '03',
+    title: 'IoT & Embedded',
+    description:
+      'ESP32 and Arduino systems with sensor integration and hardware debugging.',
+    technologies: ['ESP32', 'Arduino', 'Sensor Integration', 'Electronics', 'C'],
+  },
+  {
+    number: '04',
+    title: 'Frontend & Design',
+    description:
+      'Deliberate, responsive interfaces designed in Figma and built to ship.',
     technologies: [
       'React',
       'TypeScript',
       'Tailwind CSS',
       'Flutter',
       'Figma',
-    ],
-  },
-  {
-    number: '02',
-    title: 'Backend',
-    description: 'APIs and application logic built around clear architecture.',
-    technologies: [
-      'Python',
-      'Flask',
-      'REST APIs',
-      'PostgreSQL',
-      'SQLAlchemy',
-    ],
-  },
-  {
-    number: '03',
-    title: 'AI',
-    description: 'Practical AI integrations and intelligent application features.',
-    technologies: [
-      'OpenAI',
-      'Whisper',
-      'Machine Learning',
-      'Computer Vision',
-      'AI APIs',
-    ],
-  },
-  {
-    number: '04',
-    title: 'Systems',
-    description: 'The infrastructure and hardware underneath the application.',
-    technologies: [
-      'Git',
-      'Docker',
-      'Cloud',
-      'IoT',
-      'ESP32',
+      'HTML5 / CSS3',
     ],
   },
 ]
@@ -54,7 +54,7 @@ function Engineering() {
   return (
     <section
       id="engineering"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start items-center border-t border-white/[0.06] px-6 py-16 sm:py-20 lg:px-8"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[104px] pb-8 sm:pt-[116px] sm:pb-10 lg:px-8 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}
