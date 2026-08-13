@@ -155,10 +155,10 @@ function Hero() {
                 href={siteConfig.links.resume}
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8b9690] underline-offset-4 transition-colors duration-300 hover:text-[#39ff88]"
-                style={{ marginLeft: 20 }}
+                className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88] max-[640px]:hidden"
               >
-                Resume
+                <span className="mr-2 hidden h-4 w-px bg-white/[0.14] align-middle sm:inline-block" />
+                Resume <span className="text-[9px] text-[#39ff88]/60">↗</span>
               </a>
             )}
           </div>

@@ -2290,6 +2290,16 @@ section {
 
   .hero-actions {
     margin-top: 24px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .hero-button {
+    height: 44px;
+    padding: 0 13px 0 15px;
+    font-size: 12px;
+    white-space: nowrap;
+    gap: 10px;
   }
 
   .hero-meta {
@@ -2297,12 +2307,12 @@ section {
   }
 
   .orb-stage {
-    min-height: 420px;
+    min-height: 340px;
   }
 
   .orb-aura {
-    width: 360px;
-    height: 360px;
+    width: 320px;
+    height: 320px;
   }
 
   .orb-ring-outer {
@@ -2331,16 +2341,16 @@ section {
   }
 
   .profile-orb {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
 
-    min-width: 250px;
-    min-height: 250px;
+    min-width: 220px;
+    min-height: 220px;
   }
 
   .orb-edge {
-    width: 270px;
-    height: 270px;
+    width: 238px;
+    height: 238px;
   }
 
   .scroll-indicator {
@@ -2386,7 +2396,7 @@ section {
   }
 
   .orb-stage {
-    min-height: 380px;
+    min-height: 300px;
   }
 
   .orb-aura {
@@ -2420,16 +2430,16 @@ section {
   }
 
   .profile-orb {
-    width: 230px;
-    height: 230px;
+    width: 200px;
+    height: 200px;
 
-    min-width: 230px;
-    min-height: 230px;
+    min-width: 200px;
+    min-height: 200px;
   }
 
   .orb-edge {
-    width: 248px;
-    height: 248px;
+    width: 216px;
+    height: 216px;
   }
 }
 

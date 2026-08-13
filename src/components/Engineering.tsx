@@ -177,7 +177,14 @@ function Engineering() {
           </div>
         </div>
 
-        <div className="grid overflow-hidden rounded-3xl border border-white/[0.06] bg-[#080d0a] sm:grid-cols-2 lg:grid-cols-3">
+        {/*
+          Shell with rounded corners + overflow-hidden for the radius,
+          plus a bottom margin so the grid's last row clears the corner
+          curve (mobile single column previously clipped the final chip
+          row of the last card).
+        */}
+        <div className="mb-6 overflow-hidden rounded-3xl border border-white/[0.06] bg-[#080d0a] sm:mb-7">
+          <div className="grid pb-5 sm:grid-cols-2 sm:pb-6 lg:grid-cols-3">
           {stackGroups.map((group, groupIndex) => (
             <article
               key={group.number}
@@ -226,6 +233,7 @@ function Engineering() {
               </ul>
             </article>
           ))}
+          </div>
         </div>
 
         <div className="reveal mt-4 rounded-3xl border border-white/[0.06] bg-[#0d1210] px-6 py-4 sm:px-7">
