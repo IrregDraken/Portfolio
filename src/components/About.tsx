@@ -78,7 +78,7 @@ function About() {
           </p>
         </div>
 
-        <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div>
               <p className="reveal max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
               I am a final-year Computer Science student based in Port
@@ -135,11 +135,11 @@ function About() {
                 Education & experience
               </p>
 
-              <div className="mt-8 space-y-0">
+              <div className="mt-6 space-y-0">
                 {timeline.map((item, index) => (
                   <div
                     key={item.period + item.title}
-                    className="relative border-b border-white/[0.06] pb-8 last:border-0 last:pb-0"
+                    className="relative border-b border-white/[0.06] pb-6 last:border-0 last:pb-0"
                   >
                     <span className="absolute left-0 top-1 h-full w-px bg-gradient-to-b from-[#39ff88]/30 to-transparent" />
 
@@ -149,7 +149,7 @@ function About() {
                       {item.period}
                     </p>
 
-                    <p className="mt-2 text-sm font-medium text-[#f5f7fa]">
+                    <p className="mt-1.5 text-sm font-medium text-[#f5f7fa]">
                       {item.title}
                     </p>
 
@@ -157,17 +157,12 @@ function About() {
                       {item.organization}
                     </p>
 
-                    {index < timeline.length - 1 && (
-                      <p className="mt-3 max-w-md text-[13px] leading-6 text-[#8b9690]/90">
-                        {item.detail}
-                      </p>
-                    )}
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="reveal mt-10 rounded-2xl border border-[#39ff88]/10 bg-[#39ff88]/[0.035] p-6" data-reveal-delay="270">
+            <div className="reveal mt-8 rounded-2xl border border-[#39ff88]/10 bg-[#39ff88]/[0.035] p-6" data-reveal-delay="270">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#39ff88] opacity-40" />
