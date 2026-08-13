@@ -120,7 +120,6 @@ function isValidEmail(value: string): boolean {
 }
 
 function Contact() {
-  const hasEmail = Boolean(siteConfig.links.email)
   const [form, setForm] = useState<FormState>(INITIAL_FORM)
   const [status, setStatus] = useState<DeliveryStatus>('idle')
   const [errorNote, setErrorNote] = useState('')
@@ -144,7 +143,7 @@ function Contact() {
       bodyLines.push('', `— ${form.name}`, `Reply-to: ${form.email}`)
     }
     const body = encodeURIComponent(bodyLines.filter(Boolean).join('\n'))
-    return `mailto:${siteConfig.links.email}?subject=${subject}&body=${body}`
+    return `mailto:${siteConfig.links.formEmail}?subject=${subject}&body=${body}`
   }
 
   const handleSubmit = async (
@@ -200,10 +199,10 @@ function Contact() {
           return
         }
 
-        setErrorNote('The message could not be delivered. Please use the email link below.')
+        setErrorNote('The message could not be delivered. Please email me directly below.')
         setStatus('error')
       } catch {
-        setErrorNote('The message could not be delivered. Please use the email link below.')
+        setErrorNote('The message could not be delivered. Please email me directly below.')
         setStatus('error')
       }
       return
@@ -218,11 +217,11 @@ function Contact() {
     <section
       id="contact"
       aria-label="Contact"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[92px] pb-8 sm:pt-[108px] sm:pb-10 lg:px-8 lg:pb-12"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[88px] pb-6 sm:pt-[100px] sm:pb-8 lg:px-8 lg:pb-8"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}
-        <div className="mb-7 flex flex-col gap-6 lg:mb-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-5 flex flex-col gap-5 lg:mb-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px w-6 bg-[#39ff88]" />
@@ -234,7 +233,7 @@ function Contact() {
               </span>
             </div>
 
-            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-5xl lg:text-6xl">
+            <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-4xl lg:text-5xl">
               Let&apos;s build something.
             </h2>
           </div>
@@ -247,29 +246,29 @@ function Contact() {
 
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
           {/* Left: intro + contact channels */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] p-7 sm:p-9">
+          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] p-6 sm:p-8">
             <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#39ff88]/10 blur-[120px]" />
 
             <div className="relative">
-              <p className="text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-[26px] sm:leading-tight">
+              <p className="text-xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-[22px] sm:leading-tight">
                 Good software starts with a problem worth solving.
               </p>
 
-              <p className="mt-4 max-w-xl text-sm leading-7 text-[#8b9690]">
+              <p className="mt-3 max-w-xl text-[13px] leading-6 text-[#8b9690]">
                 If you have a project, opportunity, or idea that needs an
                 engineer, reach out — or find me on the platforms below.
               </p>
 
               {/* Contact info cards */}
-              <div className="mt-7 space-y-3">
+              <div className="mt-5 space-y-2.5">
                 {contactInfo.map((info) => (
                   <div
                     key={info.key}
-                    className="group flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-[#0d1210] px-5 py-4 transition-all duration-300 hover:border-[#39ff88]/25 hover:bg-[#101712]"
+                    className="group flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-[#0d1210] px-4 py-3 transition-all duration-300 hover:border-[#39ff88]/25 hover:bg-[#101712]"
                   >
-                    <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-[#39ff88]/20 bg-[#39ff88]/[0.06]">
+                    <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-[#39ff88]/20 bg-[#39ff88]/[0.06]">
                       <info.icon
-                        className="h-4.5 w-4.5 text-[#39ff88]"
+                        className="h-4 w-4 text-[#39ff88]"
                         strokeWidth={1.75}
                       />
                     </span>
@@ -306,7 +305,7 @@ function Contact() {
 
               {/* Social row */}
               {hasLinks && (
-                <div className="relative mt-7 border-t border-white/[0.06] pt-6">
+                  <div className="relative mt-5 border-t border-white/[0.06] pt-5">
                   <p className="reveal font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
                     Elsewhere
                   </p>
@@ -340,11 +339,11 @@ function Contact() {
           </div>
 
           {/* Right: compose message card */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] p-7 sm:p-9">
+          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] p-6 sm:p-8">
             <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#39ff88]/[0.07] blur-[130px]" />
 
             <div className="relative">
-              <div className="mb-4 flex items-center gap-3">
+              <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-5 bg-[#39ff88]" />
 
                 <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
@@ -361,37 +360,16 @@ function Contact() {
               </p>
 
               <p className="mt-2 text-sm leading-7 text-[#8b9690]">
-                {canServerDeliver ? (
-                  <>
-                    Delivered directly to my inbox — no email client needed.
-                    Your details go to{" "}
-                    <span className="text-[#39ff88]">
-                      {siteConfig.links.email}
-                    </span>{" "}
-                    only.
-                  </>
-                ) : (
-                  <>
-                    Opens your email client with everything pre-filled — or
-                    just write to{" "}
-                    {hasEmail ? (
-                      <a
-                        href={`mailto:${siteConfig.links.email}`}
-                        className="text-[#39ff88] underline-offset-4 hover:underline"
-                      >
-                        {siteConfig.links.email}
-                      </a>
-                    ) : (
-                      'me directly'
-                    )}{" "}
-                    anytime.
-                  </>
-                )}
+                Your message lands directly in my inbox at{" "}
+                <span className="text-[#39ff88]">
+                  {siteConfig.links.formEmail}
+                </span>{" "}
+                — no email client needed.
               </p>
 
               <form
                 onSubmit={handleSubmit}
-                className="mt-7 space-y-4"
+                className="mt-5 space-y-3"
                 noValidate={status === 'error'}
               >
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -409,7 +387,7 @@ function Contact() {
                         setField('name', event.target.value)
                       }
                       placeholder="Alex Okonkwo"
-                      className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                      className="mt-1.5 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-2.5 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
                     />
                   </label>
 
@@ -427,7 +405,7 @@ function Contact() {
                         setField('email', event.target.value)
                       }
                       placeholder="alex@example.com"
-                      className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                      className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-2.5 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
                     />
                   </label>
                 </div>
@@ -444,7 +422,7 @@ function Contact() {
                       setField('subject', event.target.value)
                     }
                     placeholder="Project, role, or collaboration"
-                    className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                    className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-2.5 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
                   />
                 </label>
 
@@ -459,9 +437,9 @@ function Contact() {
                     onChange={(event) =>
                       setField('message', event.target.value)
                     }
-                    rows={5}
+                    rows={4}
                     placeholder="Tell me about the project, the idea, or the problem..."
-                    className="mt-2 w-full resize-none rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm leading-6 text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                    className="mt-2 w-full resize-none rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-2.5 text-sm leading-6 text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
                   />
                 </label>
 
@@ -474,12 +452,12 @@ function Contact() {
                   </p>
                 )}
 
-                <div className="flex items-center gap-4 pt-1">
+                <div className="pt-1">
                   <button
                     type="submit"
                     disabled={status === 'submitting'}
                     aria-disabled={status === 'submitting'}
-                    className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-[#f5f7fa] disabled:hover:shadow-none"
+                    className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#39ff88] px-8 py-4 text-sm font-semibold tracking-wide text-[#080d0a] shadow-[0_8px_32px_rgba(57,255,136,0.18)] transition-all duration-300 hover:bg-[#5effa0] hover:shadow-[0_10px_40px_rgba(57,255,136,0.3)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-[#39ff88] sm:w-auto"
                   >
                     {status === 'submitting' ? (
                       <span className="inline-flex h-4 w-4 items-center justify-center">
@@ -491,20 +469,18 @@ function Contact() {
                     {status === 'submitting'
                       ? 'Sending…'
                       : status === 'sent'
-                        ? canServerDeliver
-                          ? 'Message sent'
-                          : 'Opening your email…'
+                        ? 'Message sent'
                         : 'Send message'}
                   </button>
 
                   {status === 'sent' && (
                     <span
                       role="status"
-                      className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/80"
+                      className="mt-3 block font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/80 sm:mt-0 sm:inline-block sm:ml-4"
                     >
                       {canServerDeliver
-                        ? 'Delivered — I will reply soon.'
-                        : 'Email client launched — hit send to finish.'}
+                        ? 'Delivered to my inbox — I will reply soon.'
+                        : 'Opening your email — hit send to finish.'}
                     </span>
                   )}
                 </div>

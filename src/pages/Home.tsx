@@ -19,13 +19,13 @@ function Home() {
 
       <section
         id="work"
-        className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[104px] pb-8 sm:pt-[116px] sm:pb-10 lg:px-8 lg:pb-12"
+        className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[88px] pb-6 sm:pt-[100px] sm:pb-8 lg:px-8 lg:pb-8"
       >
         <div className="mx-auto w-full max-w-7xl">
           {/* Section header row */}
-          <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="mb-5 flex flex-col gap-5 lg:mb-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <div className="mb-5 flex items-center gap-3">
+              <div className="mb-4 flex items-center gap-3">
                 <span className="h-px w-6 bg-[#39ff88]" />
 
                 <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
@@ -37,7 +37,7 @@ function Home() {
                 </span>
               </div>
 
-              <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-5xl lg:text-6xl">
+              <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-4xl lg:text-5xl">
                 Things I&apos;ve built.
               </h2>
             </div>
@@ -48,7 +48,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid auto-rows-fr grid-cols-1 gap-4 lg:mt-7 lg:grid-cols-4">
             {featuredProjects.map((project) => (
               <FeaturedProject key={project.id} project={project} />
             ))}
