@@ -1,4 +1,3 @@
-import SectionHeading from './SectionHeading'
 import { siteConfig } from '../config/site'
 
 const facts = [
@@ -51,36 +50,51 @@ function About() {
   return (
     <section
       id="about"
-      className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8 lg:py-28"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start items-center border-t border-white/[0.06] px-6 py-16 sm:py-20 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="About"
-          number="03"
-          title="Nnamdi Nwodim."
-          description="A little context about the person behind the systems."
-        />
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Section header row */}
+        <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-6 bg-[#39ff88]" />
+
+              <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
+                About
+              </span>
+
+              <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
+                / 03
+              </span>
+            </div>
+
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-5xl lg:text-6xl">
+              Still building.
+            </h2>
+          </div>
+
+          <p className="max-w-md text-sm leading-7 text-[#8b9690]">
+            A little context about the person behind the systems.
+          </p>
+        </div>
 
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
           <div>
-            <p className="reveal max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
-              I am a final-year Computer Science student interested in building
+              <p className="reveal max-w-3xl text-xl leading-9 tracking-[-0.025em] text-[#dce1e8] sm:text-2xl sm:leading-10">
+              I am a final-year Computer Science student based in Port
+              Harcourt, Nigeria, interested in building
               practical software, AI-powered products, and systems that solve
               real problems.
             </p>
 
             <p className="reveal mt-7 max-w-2xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="100">
               My work sits across application development, backend systems,
-              artificial intelligence, and connected hardware. I have led a
-              seven-member remote development team, shipped end-to-end web and
-              mobile applications, and built AI assistants, IoT security
-              systems, and workflow automation tools that people actually use.
-            </p>
-
-            <p className="reveal mt-5 max-w-2xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="180">
-              Right now, the focus is on becoming a stronger engineer by
-              building, breaking, debugging, and rebuilding things until the
-              underlying concepts actually make sense.
+              AI, and connected hardware. I have led a seven-member remote
+              development team, shipped end-to-end web and mobile applications,
+              and built AI assistants, IoT security systems, and workflow
+              automation tools that people actually use. Right now, the focus
+              is on becoming a stronger engineer by building, breaking,
+              debugging, and rebuilding until the concepts actually make sense.
             </p>
 
             {siteConfig.links.resume && (

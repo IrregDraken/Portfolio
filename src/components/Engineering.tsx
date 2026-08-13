@@ -1,4 +1,3 @@
-import SectionHeading from './SectionHeading'
 
 const engineeringGroups = [
   {
@@ -55,15 +54,33 @@ function Engineering() {
   return (
     <section
       id="engineering"
-      className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8 lg:py-28"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start items-center border-t border-white/[0.06] px-6 py-16 sm:py-20 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="Engineering"
-          number="02"
-          title="How I build."
-          description="The technologies and engineering areas behind the work."
-        />
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Section header row */}
+        <div className="mb-10 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-6 bg-[#39ff88]" />
+
+              <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
+                Engineering
+              </span>
+
+              <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
+                / 02
+              </span>
+            </div>
+
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-5xl lg:text-6xl">
+              How I build.
+            </h2>
+          </div>
+
+          <p className="max-w-md text-sm leading-7 text-[#8b9690]">
+            The technologies and engineering areas behind the work.
+          </p>
+        </div>
 
         <div className="grid overflow-hidden rounded-3xl border border-white/[0.06] bg-[#080d0a] sm:grid-cols-2 lg:grid-cols-4">
           {engineeringGroups.map((group, groupIndex) => (

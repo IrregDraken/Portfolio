@@ -57,6 +57,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  scroll-snap-type: y proximity;
   background: var(--bg);
 }
 
@@ -2429,41 +2430,25 @@ section {
    REDUCED MOTION
 ========================================================= */
 
+/*
+ * Motion ALWAYS plays: orbital rings, floating orb, traveling node,
+ * drifting grid, particles, typing — all run regardless of the OS
+ * prefers-reduced-motion setting (user requirement).
+ *
+ * The only accommodation kept is instant scroll for anchor jumps
+ * (accessibility: no involuntary scrolling motion).
+ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
   /*
-   * Typing animation ALWAYS plays, even when the OS requests
-   * reduced motion (user requirement).
+   * Motion ALWAYS plays: typing, orbs, rings, grid, particles all run
+   * regardless of the OS prefers-reduced-motion setting (user requirement).
+   * The only accommodation is instant scroll for anchor jumps.
    */
   .typing-text,
-  .typing-cursor {
-    animation-duration: initial !important;
-    animation-iteration-count: initial !important;
-    transition-duration: 420ms !important;
-  }
-
-  /*
-   * The hero orb system (rings, satellite, traveler, nodes, pulse,
-   * scanline, glow) is signature motion for this portfolio. It always
-   * plays at its natural speed, even under prefers-reduced-motion.
-   * It is slow, looping, ambient motion rather than content-movement,
-   * so it is excluded from the blanket kill above.
-   */
+  .typing-cursor,
   .orb-ring,
   .orb-ring-outer,
   .orb-ring-dashed,
@@ -2484,7 +2469,7 @@ section {
   .particle {
     animation-duration: initial !important;
     animation-iteration-count: initial !important;
-    transition-duration: initial !important;
+    transition-duration: 420ms !important;
   }
 }
 

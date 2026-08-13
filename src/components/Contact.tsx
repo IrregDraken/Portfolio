@@ -1,4 +1,3 @@
-import SectionHeading from './SectionHeading'
 import { siteConfig } from '../config/site'
 
 const socials = [
@@ -42,59 +41,61 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-white/[0.06] px-6 py-20 sm:py-24 lg:px-8 lg:py-28"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start items-center border-t border-white/[0.06] px-6 py-16 sm:py-20 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="Contact"
-          number="04"
-          title="Let's build something."
-          description="Projects, opportunities, collaborations, or technical conversations."
-        />
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Section header row */}
+        <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-6 bg-[#39ff88]" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
+                Contact
+              </span>
+              <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
+                / 04
+              </span>
+            </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] px-7 py-14 sm:px-12 sm:py-20 lg:px-20 lg:py-24">
-          {/* Decorative grid */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.025]"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(57, 255, 136, 0.8) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(57, 255, 136, 0.8) 1px, transparent 1px)
-              `,
-              backgroundSize: '48px 48px',
-            }}
-          />
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-5xl lg:text-6xl">
+              Let&apos;s build something.
+            </h2>
+          </div>
 
-          {/* Glow */}
-          <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#39ff88]/10 blur-[130px]" />
+          <p className="max-w-md text-sm leading-7 text-[#8b9690]">
+            Projects, opportunities, collaborations, or technical
+            conversations.
+          </p>
+        </div>
 
-          {/* Main call to action */}
-          <div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
+        {/* Content card */}
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] px-7 py-12 sm:px-12 sm:py-14 lg:px-16">
+          {/* Subtle green edge glow */}
+          <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#39ff88]/10 blur-[130px]" />
+
+          <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="reveal max-w-2xl text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-4xl sm:leading-tight">
+              <p className="max-w-2xl text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-4xl sm:leading-tight">
                 Good software starts with a problem worth solving.
               </p>
 
-              <p className="reveal mt-6 max-w-xl text-sm leading-7 text-[#8b9690]" data-reveal-delay="100">
+              <p className="mt-5 max-w-xl text-sm leading-7 text-[#8b9690]">
                 If you have a project, opportunity, or idea that needs an
-                engineer, send a message. The fastest way to reach me is by
-                email.
+                engineer, send a message — or find me on the platforms below.
               </p>
             </div>
 
-            <div className="reveal flex flex-col items-start gap-3" data-reveal-delay="180">
+            <div className="flex flex-col items-start gap-3">
               {hasEmail ? (
                 <a
                   href={`mailto:${siteConfig.links.email}`}
-                  className="group inline-flex items-center gap-4 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white"
+                  className="inline-flex items-center gap-4 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white"
                 >
                   {siteConfig.links.email}
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
-                    ↗
-                  </span>
+                  <span>↗</span>
                 </a>
               ) : (
-                <span className="inline-flex cursor-not-allowed items-center gap-4 rounded-full bg-[#f5f7fa]/30 px-6 py-3.5 text-sm font-medium text-[#080d0a]/60">
+                <span className="inline-flex cursor-default items-center gap-4 rounded-full bg-[#f5f7fa]/30 px-6 py-3.5 text-sm font-medium text-[#080d0a]/60">
                   Email me
                 </span>
               )}
@@ -103,12 +104,12 @@ function Contact() {
 
           {/* Social links */}
           {hasLinks && (
-            <div className="relative mt-14 border-t border-white/[0.06] pt-10">
+            <div className="relative mt-10 border-t border-white/[0.06] pt-8">
               <p className="reveal font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
                 Elsewhere
               </p>
 
-              <div className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.04] sm:grid-cols-2 lg:grid-cols-5">
+              <div className="mt-5 grid gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.04] sm:grid-cols-2 lg:grid-cols-5">
                 {socials.map((social, index) =>
                   social.url ? (
                     <a
