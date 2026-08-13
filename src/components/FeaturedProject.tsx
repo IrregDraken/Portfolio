@@ -12,6 +12,20 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
       {/* Subtle green edge glow */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#39ff88]/[0.07] blur-[110px] transition-all duration-700 group-hover:bg-[#39ff88]/10" />
 
+      {/* Project image header */}
+      <div className="relative h-44 overflow-hidden sm:h-52">
+        <img
+          src={project.image}
+          alt={`${project.name} visual`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080d0a] via-[#080d0a]/30 to-transparent" />
+        <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-black/50 px-3 py-1 font-mono text-[9px] tracking-[0.2em] text-[#39ff88] backdrop-blur-sm">
+          / {String(project.number).padStart(2, '0')}
+        </span>
+      </div>
+
       <div className="relative grid gap-8 p-7 sm:p-9 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
           <div className="mb-4 flex items-center gap-3">
@@ -21,9 +35,6 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
               {project.category}
             </span>
 
-            <span className="font-mono text-[9px] tracking-[0.2em] text-[#39ff88]/50">
-              / {String(project.number).padStart(2, '0')}
-            </span>
           </div>
 
           <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[#f5f7fa] sm:text-3xl">

@@ -108,7 +108,7 @@ function Hero() {
           </div>
 
           <h1 className="hero-title hero-reveal">
-            <span className="hero-name">DRΛKEN</span>
+            <span className="hero-name">Ð&nbsp;R&nbsp;ƛ&nbsp;K&nbsp;E&nbsp;N</span>
             <span className="hero-name-accent">他</span>
           </h1>
 

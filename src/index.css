@@ -57,7 +57,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
+  /*
+   * PROXIMITY snap (not mandatory): free wheel / trackpad scrolling
+   * always moves in smooth continuous steps; the page only "settles"
+   * on a section edge when the scroll naturally stops near one.
+   * This removes the forced one-section-per-wheel-tick behavior.
+   */
   scroll-snap-type: y proximity;
+  scroll-snap-stop: normal;
   background: var(--bg);
 }
 

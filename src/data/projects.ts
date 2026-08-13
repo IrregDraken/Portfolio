@@ -10,6 +10,7 @@ export type Project = {
   featured: boolean
   githubUrl: string
   liveUrl: string
+  image: string
 }
 
 export const projects: Project[] = [
@@ -46,6 +47,7 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/A.D.A.M-V1.0',
     liveUrl: '',
+    image: '/images/adam.jpg',
   },
 
   {
@@ -81,6 +83,7 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/Rune-OS-prototype',
     liveUrl: '',
+    image: '/images/rune.jpg',
   },
 
   {
@@ -116,5 +119,6 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/E-learning-backend',
     liveUrl: '',
+    image: '/images/adaptive.jpg',
   },
 ]

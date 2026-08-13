@@ -17,6 +17,8 @@ export const siteConfig = {
     x: 'https://x.com/IrregDrak3n',
     youtube: 'https://youtube.com/@irreg.draken',
     email: 'leedax7@gmail.com',
+    phone: '+234 913 215 8874',
+    phoneSecondary: '+234 916 035 5431',
     resume: '/Nwodim_Nnamdi_Obinna_CV.pdf',
   },
 

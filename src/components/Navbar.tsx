@@ -115,7 +115,7 @@ function Navbar() {
             }}
           >
             <span className="navbar-brand-name">
-              DRAKEN
+              Ð&nbsp;R&nbsp;ƛ&nbsp;K&nbsp;E&nbsp;N
             </span>
 
             <span className="navbar-brand-accent">

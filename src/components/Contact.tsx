@@ -1,35 +1,79 @@
+import { useState } from 'react'
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+} from 'lucide-react'
+import {
+  GithubMark,
+  LinkedinMark,
+  InstagramMark,
+  YoutubeMark,
+  XMark,
+} from './BrandIcons'
 import { siteConfig } from '../config/site'
+
+const contactInfo = [
+  {
+    key: 'email',
+    icon: Mail,
+    label: 'Email',
+    value: siteConfig.links.email,
+    href: `mailto:${siteConfig.links.email}`,
+  },
+  {
+    key: 'phone',
+    icon: Phone,
+    label: 'Phone',
+    value: siteConfig.links.phone,
+    secondary: siteConfig.links.phoneSecondary,
+    href: `tel:${siteConfig.links.phone.replace(/\s+/g, '')}`,
+  },
+  {
+    key: 'location',
+    icon: MapPin,
+    label: 'Location',
+    value: siteConfig.location,
+    href: '',
+  },
+]
 
 const socials = [
   {
     key: 'github',
-    label: siteConfig.social.github,
+    label: 'GitHub',
     handle: 'IrregDraken',
     url: siteConfig.links.github,
+    icon: GithubMark,
   },
   {
     key: 'linkedin',
-    label: siteConfig.social.linkedin,
+    label: 'LinkedIn',
     handle: 'nnamdi-nwodim',
     url: siteConfig.links.linkedin,
+    icon: LinkedinMark,
   },
   {
     key: 'x',
-    label: siteConfig.social.x,
+    label: 'X',
     handle: '@IrregDrak3n',
     url: siteConfig.links.x,
+    icon: XMark,
   },
   {
     key: 'instagram',
-    label: siteConfig.social.instagram,
+    label: 'Instagram',
     handle: '@irreg.draken',
     url: siteConfig.links.instagram,
+    icon: InstagramMark,
   },
   {
     key: 'youtube',
-    label: siteConfig.social.youtube,
+    label: 'YouTube',
     handle: '@irreg.draken',
     url: siteConfig.links.youtube,
+    icon: YoutubeMark,
   },
 ]
 
@@ -37,17 +81,44 @@ const hasLinks = socials.some((social) => Boolean(social.url))
 
 function Contact() {
   const hasEmail = Boolean(siteConfig.links.email)
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [sent, setSent] = useState(false)
+
+  const buildMailto = () => {
+    const subject = encodeURIComponent(
+      form.name
+        ? `Portfolio inquiry from ${form.name}`
+        : 'Portfolio inquiry',
+    )
+    const bodyLines = [form.message]
+    if (form.email) {
+      bodyLines.push('', `— ${form.name}`, `Reply-to: ${form.email}`)
+    }
+    const body = encodeURIComponent(bodyLines.filter(Boolean).join('\n'))
+    return `mailto:${siteConfig.links.email}?subject=${subject}&body=${body}`
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    window.location.href = buildMailto()
+    setSent(true)
+    setTimeout(() => setSent(false), 4000)
+  }
 
   return (
     <section
       id="contact"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[104px] pb-8 sm:pt-[116px] sm:pb-10 lg:px-8 lg:pb-12"
+      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[92px] pb-8 sm:pt-[108px] sm:pb-10 lg:px-8 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}
-        <div className="mb-8 flex flex-col gap-6 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-7 flex flex-col gap-6 lg:mb-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <div className="mb-5 flex items-center gap-3">
+            <div className="mb-4 flex items-center gap-3">
               <span className="h-px w-6 bg-[#39ff88]" />
               <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
                 Contact
@@ -68,77 +139,220 @@ function Contact() {
           </p>
         </div>
 
-        {/* Content card */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] px-7 py-12 sm:px-12 sm:py-14 lg:px-16">
-          {/* Subtle green edge glow */}
-          <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#39ff88]/10 blur-[130px]" />
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          {/* Left: intro + contact channels */}
+          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] p-7 sm:p-9">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#39ff88]/10 blur-[120px]" />
 
-          <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <p className="max-w-2xl text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-4xl sm:leading-tight">
+            <div className="relative">
+              <p className="text-2xl font-medium tracking-[-0.035em] text-[#f5f7fa] sm:text-[26px] sm:leading-tight">
                 Good software starts with a problem worth solving.
               </p>
 
-              <p className="mt-5 max-w-xl text-sm leading-7 text-[#8b9690]">
+              <p className="mt-4 max-w-xl text-sm leading-7 text-[#8b9690]">
                 If you have a project, opportunity, or idea that needs an
-                engineer, send a message — or find me on the platforms below.
+                engineer, reach out — or find me on the platforms below.
               </p>
-            </div>
 
-            <div className="flex flex-col items-start gap-3">
-              {hasEmail ? (
-                <a
-                  href={`mailto:${siteConfig.links.email}`}
-                  className="inline-flex items-center gap-4 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white"
-                >
-                  {siteConfig.links.email}
-                  <span>↗</span>
-                </a>
-              ) : (
-                <span className="inline-flex cursor-default items-center gap-4 rounded-full bg-[#f5f7fa]/30 px-6 py-3.5 text-sm font-medium text-[#080d0a]/60">
-                  Email me
-                </span>
+              {/* Contact info cards */}
+              <div className="mt-7 space-y-3">
+                {contactInfo.map((info) => (
+                  <div
+                    key={info.key}
+                    className="group flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-[#0d1210] px-5 py-4 transition-all duration-300 hover:border-[#39ff88]/25 hover:bg-[#101712]"
+                  >
+                    <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-[#39ff88]/20 bg-[#39ff88]/[0.06]">
+                      <info.icon
+                        className="h-4.5 w-4.5 text-[#39ff88]"
+                        strokeWidth={1.75}
+                      />
+                    </span>
+
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="min-w-0 flex-1"
+                        target={info.key === 'email' ? '_blank' : undefined}
+                        rel={
+                          info.key === 'email' ? 'noreferrer' : undefined
+                        }
+                      >
+                        <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                          {info.label}
+                        </p>
+                        <p className="mt-0.5 truncate text-[15px] font-medium text-[#f5f7fa] transition-colors duration-300 group-hover:text-[#39ff88]">
+                          {info.value}
+                        </p>
+                        {info.secondary && (
+                          <p className="mt-0.5 truncate text-[13px] text-[#8b9690]">
+                            {info.secondary}
+                          </p>
+                        )}
+                      </a>
+                    ) : (
+                      <div className="min-w-0 flex-1">
+                        <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                          {info.label}
+                        </p>
+                        <p className="mt-0.5 truncate text-[15px] font-medium text-[#f5f7fa]">
+                          {info.value}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Social row */}
+              {hasLinks && (
+                <div className="relative mt-7 border-t border-white/[0.06] pt-6">
+                  <p className="reveal font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                    Elsewhere
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-5 gap-2">
+                    {socials.map(
+                      (social) =>
+                        social.url && (
+                          <a
+                            key={social.key}
+                            href={social.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={`${social.label} — ${social.handle}`}
+                            className="reveal group relative flex flex-col items-center gap-2 rounded-2xl border border-white/[0.06] bg-[#0d1210] px-2 py-4 transition-all duration-300 hover:border-[#39ff88]/30 hover:bg-[#101712]"
+                          >
+                    <social.icon
+                      className="h-4.5 w-4.5 text-[#8b9690] transition-colors duration-300 group-hover:text-[#39ff88]"
+                    />
+
+                            <span className="truncate font-mono text-[8px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 group-hover:text-[#39ff88]/80">
+                              {social.label}
+                            </span>
+                          </a>
+                        ),
+                    )}
+                  </div>
+                </div>
               )}
             </div>
           </div>
 
-          {/* Social links */}
-          {hasLinks && (
-            <div className="relative mt-10 border-t border-white/[0.06] pt-8">
-              <p className="reveal font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
-                Elsewhere
+          {/* Right: compose message card */}
+          <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] p-7 sm:p-9">
+            <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#39ff88]/[0.07] blur-[130px]" />
+
+            <div className="relative">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="h-px w-5 bg-[#39ff88]" />
+
+                <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                  Compose
+                </span>
+
+                <span className="font-mono text-[9px] tracking-[0.2em] text-[#39ff88]/50">
+                  / MSG
+                </span>
+              </div>
+
+              <p className="text-xl font-medium tracking-[-0.03em] text-[#f5f7fa] sm:text-2xl">
+                Send a message.
               </p>
 
-              <div className="mt-5 grid gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.04] sm:grid-cols-2 lg:grid-cols-5">
-                {socials.map((social, index) =>
-                  social.url ? (
-                    <a
-                      key={social.key}
-                      href={social.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      data-reveal-delay={String(index * 80)}
-                      className="reveal group relative flex items-center justify-between gap-3 bg-[#0d1210] p-4 transition-all duration-300 hover:bg-[#111713]"
-                    >
-                      <div>
-                        <p className="text-sm font-medium tracking-[-0.02em] text-[#f5f7fa] transition-colors duration-300 group-hover:text-[#39ff88]">
-                          {social.label}
-                        </p>
+              <p className="mt-2 text-sm leading-7 text-[#8b9690]">
+                Opens your email client with everything pre-filled — or just
+                write to{" "}
+                {hasEmail ? (
+                  <a
+                    href={`mailto:${siteConfig.links.email}`}
+                    className="text-[#39ff88] underline-offset-4 hover:underline"
+                  >
+                    {siteConfig.links.email}
+                  </a>
+                ) : (
+                  'me directly'
+                )}{" "}
+                anytime.
+              </p>
 
-                        <p className="mt-0.5 truncate font-mono text-[10px] text-[#8b9690] transition-colors duration-300 group-hover:text-[#39ff88]/80">
-                          {social.handle}
-                        </p>
-                      </div>
+              <form onSubmit={handleSubmit} className="mt-7 space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="block">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                      Your name
+                    </span>
 
-                      <span className="text-[#8b9690] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#39ff88]">
-                        ↗
-                      </span>
-                    </a>
-                  ) : null,
-                )}
-              </div>
+                    <input
+                      type="text"
+                      value={form.name}
+                      onChange={(event) =>
+                        setForm((state) => ({
+                          ...state,
+                          name: event.target.value,
+                        }))
+                      }
+                      placeholder="Alex Okonkwo"
+                      className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                      Your email
+                    </span>
+
+                    <input
+                      type="email"
+                      value={form.email}
+                      onChange={(event) =>
+                        setForm((state) => ({
+                          ...state,
+                          email: event.target.value,
+                        }))
+                      }
+                      placeholder="alex@example.com"
+                      className="mt-2 w-full rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                    />
+                  </label>
+                </div>
+
+                <label className="block">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#8b9690]">
+                    Message
+                  </span>
+
+                  <textarea
+                    value={form.message}
+                    onChange={(event) =>
+                      setForm((state) => ({
+                        ...state,
+                        message: event.target.value,
+                      }))
+                    }
+                    rows={5}
+                    placeholder="Tell me about the project, the idea, or the problem..."
+                    className="mt-2 w-full resize-none rounded-xl border border-white/[0.08] bg-[#0d1210] px-4 py-3 text-sm leading-6 text-[#f5f7fa] outline-none transition-all duration-300 placeholder:text-[#5a6660] focus:border-[#39ff88]/40 focus:ring-1 focus:ring-[#39ff88]/20"
+                  />
+                </label>
+
+                <div className="flex items-center gap-4 pt-1">
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-3 rounded-full bg-[#f5f7fa] px-6 py-3.5 text-sm font-medium text-[#080d0a] transition-all duration-300 hover:bg-white hover:shadow-[0_6px_24px_rgba(57,255,136,0.15)]"
+                  >
+                    <Send className="h-4 w-4" strokeWidth={2} />
+                    {sent ? 'Opening your email…' : 'Send message'}
+                  </button>
+
+                  {sent && (
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/80">
+                      Email client launched — hit send to finish.
+                    </span>
+                  )}
+                </div>
+              </form>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>
