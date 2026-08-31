@@ -1,3 +1,5 @@
+import { assetPath } from '../utils/assets'
+
 export type Project = {
   id: string
   number: string
@@ -49,7 +51,7 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/A.D.A.M-V1.0',
     liveUrl: '',
-    image: '/images/adam.webp',
+    image: assetPath('images/adam.webp'),
     imageAlt: 'A.D.A.M IoT security system project visual',
   },
 
@@ -86,7 +88,7 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/Rune-OS-prototype',
     liveUrl: '',
-    image: '/images/rune.webp',
+    image: assetPath('images/rune.webp'),
     imageAlt: 'Rune personal AI assistant project visual',
   },
 
@@ -123,7 +125,7 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/E-learning-backend',
     liveUrl: '',
-    image: '/images/adaptive.webp',
+    image: assetPath('images/adaptive.webp'),
     imageAlt: 'Adaptive learning platform project visual',
   },
 
@@ -160,7 +162,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/IrregDraken/Medical_system.Frontend',
     backendUrl: 'https://github.com/IrregDraken/Medical_system.Backend',
     liveUrl: '',
-    image: '/images/medical.webp',
+    image: assetPath('images/medical.webp'),
     imageAlt: 'Medical appointment system project visual',
   },
 ]

@@ -4,7 +4,7 @@ Personal portfolio website for **Nwodim Nnamdi Obinna**, a full-stack developer 
 
 ## Live site
 
-[Open the portfolio](https://portfolio-black-delta-78.vercel.app/)
+[Open the portfolio](https://irregdraken.github.io/Portfolio/)
 
 ## Featured work
 

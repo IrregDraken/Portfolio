@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTypingEffect } from '../hooks/useTypingEffect'
 import { siteConfig } from '../config/site'
+import { assetPath } from '../utils/assets'
 
 const typingPhrases = [
   'Full Stack Developer',
@@ -230,7 +231,7 @@ function Hero() {
           {/* Profile */}
           <div className="profile-orb">
             <img
-              src="/draken.webp"
+              src={assetPath('draken.webp')}
               alt="Nwodim Nnamdi Obinna"
               width="960"
               height="1280"

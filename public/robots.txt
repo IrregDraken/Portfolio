@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-black-delta-78.vercel.app/sitemap.xml
+Sitemap: https://irregdraken.github.io/Portfolio/sitemap.xml
