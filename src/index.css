@@ -114,6 +114,26 @@ a {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 14px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  color: #06100a;
+  background: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  transform: translateY(-180%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 ::selection {
   background: var(--green);
   color: #06100a;
@@ -2381,6 +2401,16 @@ section {
 
     right: -38%;
     top: 45%;
+  }
+
+  .hero-scanline,
+  .hero-particles,
+  .grain-layer {
+    display: none;
+  }
+
+  .hero-glow {
+    filter: blur(70px);
   }
 }
 

@@ -21,9 +21,13 @@ function App() {
         loaded ? 'opacity-100' : 'opacity-0'
       }`}
     >
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <Home />
       </main>
 

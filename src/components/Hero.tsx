@@ -123,9 +123,14 @@ function Hero() {
               <span className="typing-prefix">&gt;_</span>
 
               <span
+                aria-hidden="true"
                 className={`typing-text ${phase === 'fading-out' ? 'typing-fade' : phase === 'paused' ? 'typing-full' : 'typing-fade-in'}`}
               >
                 {typedText}
+              </span>
+
+              <span className="sr-only">
+                Full-stack developer and AI engineer
               </span>
 
               <span aria-hidden="true" className="typing-cursor" />
@@ -224,7 +229,15 @@ function Hero() {
 
           {/* Profile */}
           <div className="profile-orb">
-            <img src="/draken.jpg" alt="Draken" className="profile-image" />
+            <img
+              src="/draken.webp"
+              alt="Nwodim Nnamdi Obinna"
+              width="960"
+              height="1280"
+              fetchPriority="high"
+              decoding="async"
+              className="profile-image"
+            />
 
             <div aria-hidden="true" className="profile-overlay" />
 

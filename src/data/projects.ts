@@ -12,6 +12,7 @@ export type Project = {
   liveUrl: string
   backendUrl?: string
   image: string
+  imageAlt: string
 }
 
 export const projects: Project[] = [
@@ -48,7 +49,8 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/A.D.A.M-V1.0',
     liveUrl: '',
-    image: '/images/adam.jpg',
+    image: '/images/adam.webp',
+    imageAlt: 'A.D.A.M IoT security system project visual',
   },
 
   {
@@ -84,7 +86,8 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/Rune-OS-prototype',
     liveUrl: '',
-    image: '/images/rune.jpg',
+    image: '/images/rune.webp',
+    imageAlt: 'Rune personal AI assistant project visual',
   },
 
   {
@@ -120,7 +123,8 @@ export const projects: Project[] = [
 
     githubUrl: 'https://github.com/IrregDraken/E-learning-backend',
     liveUrl: '',
-    image: '/images/adaptive.jpg',
+    image: '/images/adaptive.webp',
+    imageAlt: 'Adaptive learning platform project visual',
   },
 
   {
@@ -156,6 +160,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/IrregDraken/Medical_system.Frontend',
     backendUrl: 'https://github.com/IrregDraken/Medical_system.Backend',
     liveUrl: '',
-    image: '/images/medical.jpg',
+    image: '/images/medical.webp',
+    imageAlt: 'Medical appointment system project visual',
   },
 ]

@@ -20,8 +20,11 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
       <div className="relative h-40 flex-shrink-0 overflow-hidden sm:h-48 lg:h-44">
         <img
           src={project.image}
-          alt={`${project.name} visual`}
+          alt={project.imageAlt}
           loading="lazy"
+          decoding="async"
+          width="1600"
+          height="900"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080d0a] via-[#080d0a]/30 to-transparent" />
