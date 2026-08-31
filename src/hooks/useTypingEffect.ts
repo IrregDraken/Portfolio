@@ -37,7 +37,10 @@ export function useTypingEffect(
 
   // Keep latest speeds/options accessible without restarting the effect.
   const optionsRef = useRef({ typeSpeed, deleteSpeed, pauseDelay, fadeDelay })
-  optionsRef.current = { typeSpeed, deleteSpeed, pauseDelay, fadeDelay }
+
+  useEffect(() => {
+    optionsRef.current = { typeSpeed, deleteSpeed, pauseDelay, fadeDelay }
+  }, [typeSpeed, deleteSpeed, pauseDelay, fadeDelay])
 
   useEffect(() => {
     if (phrases.length === 0) return

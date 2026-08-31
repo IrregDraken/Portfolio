@@ -1,75 +1,57 @@
-# React + TypeScript + Vite
+# Draken Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website for **Nwodim Nnamdi Obinna**, a full-stack developer building software, AI systems, IoT solutions, and workflow automation tools.
 
-Currently, two official plugins are available:
+## Live site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Open the portfolio](https://portfolio-black-delta-78.vercel.app/)
 
-## React Compiler
+## Featured work
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **A.D.A.M** — IoT security monitoring system using ESP32, Flask, SQLite, and Telegram alerts.
+- **Rune** — Personal AI assistant combining a Flask backend, Flutter client, speech interfaces, memory, and external services.
+- **Adaptive Learning Platform** — React, TypeScript, Flask, PostgreSQL, and AI-assisted learning workflows.
+- **Medical Appointment System** — React and TypeScript dashboard with a Flask/PostgreSQL API and JWT authentication.
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+React 19, TypeScript, Vite, Tailwind CSS, and Lucide React. The site includes responsive layouts, accessible navigation, project data cards, SEO metadata, Open Graph sharing assets, a downloadable CV, and a Formspree-backed contact form.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Local development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Requirements: Node.js 22 or newer and npm.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The development server is available at `http://localhost:5173` by default.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Validation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
+npm run lint
 ```
+
+## Project structure
+
+```text
+src/
+├── components/   # Hero, navigation, project, about, engineering, and contact UI
+├── config/       # Site identity, links, availability, and skills
+├── data/         # Featured project records
+├── hooks/        # Scroll, reveal, and typing behavior
+├── pages/        # Page-level composition
+└── App.tsx
+public/           # Images, CV, favicon, sitemap, robots.txt, and sharing card
+```
+
+## Contact
+
+- GitHub: [IrregDraken](https://github.com/IrregDraken)
+- LinkedIn: [Nwodim Nnamdi Obinna](https://www.linkedin.com/in/nnamdi-nwodim-5a183425b/)
+- Email: [leedax7@gmail.com](mailto:leedax7@gmail.com)
+
+Built with React, TypeScript, and Vite.

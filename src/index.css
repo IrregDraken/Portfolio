@@ -66,6 +66,7 @@ html {
   scroll-snap-type: y proximity;
   scroll-snap-stop: normal;
   background: var(--bg);
+  overflow-x: clip;
 }
 
 body {
@@ -76,6 +77,12 @@ body {
 
   background: var(--bg);
   color: var(--text);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body,
@@ -1052,6 +1059,10 @@ section {
 
 .orb-stage {
   position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 
   display: flex;
 
@@ -2291,7 +2302,7 @@ section {
   .hero-actions {
     margin-top: 24px;
     gap: 8px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 
   .hero-button {
@@ -2447,46 +2458,18 @@ section {
    REDUCED MOTION
 ========================================================= */
 
-/*
- * Motion ALWAYS plays: orbital rings, floating orb, traveling node,
- * drifting grid, particles, typing — all run regardless of the OS
- * prefers-reduced-motion setting (user requirement).
- *
- * The only accommodation kept is instant scroll for anchor jumps
- * (accessibility: no involuntary scrolling motion).
- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  /*
-   * Motion ALWAYS plays: typing, orbs, rings, grid, particles all run
-   * regardless of the OS prefers-reduced-motion setting (user requirement).
-   * The only accommodation is instant scroll for anchor jumps.
-   */
-  .typing-text,
-  .typing-cursor,
-  .orb-ring,
-  .orb-ring-outer,
-  .orb-ring-dashed,
-  .orb-ring-middle,
-  .orb-ring-inner,
-  .orb-satellite,
-  .orb-traveler,
-  .orb-node,
-  .orb-edge,
-  .orb-aura,
-  .orb-scan,
-  .profile-orb,
-  .hero-glow,
-  .hero-grid,
-  .hero-horizon,
-  .hero-stars,
-  .hero-particles,
-  .particle {
-    animation-duration: initial !important;
-    animation-iteration-count: initial !important;
-    transition-duration: 420ms !important;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
