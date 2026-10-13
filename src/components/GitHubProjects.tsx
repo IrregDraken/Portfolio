@@ -189,7 +189,10 @@ function GitHubProjects() {
   }
 
   useEffect(() => {
-    void loadRepositories()
+    const timer = window.setTimeout(() => {
+      void loadRepositories()
+    }, 0)
+    return () => window.clearTimeout(timer)
   }, [])
 
   const projectsToday = useMemo(() => dailyProjects(repositories), [repositories])
