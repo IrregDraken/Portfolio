@@ -17,17 +17,32 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
       <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#39ff88]/[0.07] blur-[110px] transition-all duration-700 group-hover:bg-[#39ff88]/10" />
 
       {/* Project image header */}
-      <div className="relative h-40 flex-shrink-0 overflow-hidden sm:h-48 lg:h-44">
-        <img
-          src={project.image}
-          alt={project.imageAlt}
-          loading="lazy"
-          decoding="async"
-          width="1600"
-          height="900"
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080d0a] via-[#080d0a]/30 to-transparent" />
+      <div className="relative h-40 flex-shrink-0 overflow-hidden border-b border-white/[0.04] sm:h-48 lg:h-44">
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.imageAlt}
+            loading="lazy"
+            decoding="async"
+            width="1600"
+            height="900"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div
+            aria-label={project.imageAlt}
+            role="img"
+            className="project-art flex h-full items-center justify-center overflow-hidden"
+          >
+            <span className="project-art-grid" aria-hidden="true" />
+            <span className="project-art-orbit project-art-orbit-one" aria-hidden="true" />
+            <span className="project-art-orbit project-art-orbit-two" aria-hidden="true" />
+            <span className="project-art-index">SYSTEM / {String(project.number).padStart(2, '0')}</span>
+            <span className="project-art-mark">{project.name === 'Eazy' ? 'E' : project.name === 'Orion' ? 'O' : 'Ð'}</span>
+            <span className="project-art-caption">{project.category}</span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080d0a] via-[#080d0a]/20 to-transparent pointer-events-none" />
 
         {/* Number badge */}
         <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-black/50 px-3 py-1 font-mono text-[9px] tracking-[0.2em] text-[#39ff88] backdrop-blur-sm">
