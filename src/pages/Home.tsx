@@ -2,6 +2,7 @@ import About from '../components/About'
 import Contact from '../components/Contact'
 import Engineering from '../components/Engineering'
 import FeaturedProject from '../components/FeaturedProject'
+import GitHubProjects from '../components/GitHubProjects'
 import Hero from '../components/Hero'
 import { useReveal } from '../hooks/useReveal'
 import { projects } from '../data/projects'
@@ -55,6 +56,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <GitHubProjects />
 
       <Engineering />
 
