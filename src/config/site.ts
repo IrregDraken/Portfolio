@@ -36,9 +36,9 @@ export const siteConfig = {
   about: {
     title: 'Nwodim Nnamdi Obinna.',
     summary:
-      'I am a final-year B.Sc. Computer Science student with practical experience developing AI-powered applications, backend systems, IoT solutions, workflow automation tools, and intuitive user interfaces.',
+      'I am a Computer Science graduate with practical experience building AI-powered applications, backend systems, IoT solutions, workflow automation, and thoughtful user interfaces.',
     detail:
-      'I have led a seven-member remote development team while delivering end-to-end web and mobile applications. I am passionate about solving real-world problems through Artificial Intelligence, Backend Engineering, Intelligent Automation, and Embedded Systems — and I am continuously learning modern software engineering practices to build production-ready applications.',
+      'I have led a remote development team and delivered end-to-end web and mobile applications. My work spans Artificial Intelligence, Backend Engineering, Intelligent Automation, and Embedded Systems, with a focus on turning complex ideas into useful, reliable software.',
   },
 
   /**
