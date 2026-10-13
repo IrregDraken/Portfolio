@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowDownToLine, ArrowUpRight, Clock3, GitFork, Github, RefreshCw, Search, Star } from 'lucide-react'
+import { ArrowDownToLine, ArrowUpRight, Clock3, GitBranch, GitFork, RefreshCw, Search, Star } from 'lucide-react'
 
 type GitHubRepository = {
   id: number
@@ -97,7 +97,7 @@ function ProjectCard({ repository }: { repository: GitHubRepository }) {
       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#39ff88]/[0.06] blur-3xl transition-colors group-hover:bg-[#39ff88]/[0.12]" />
       <div className="relative mb-5 flex items-start justify-between gap-4">
         <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#39ff88]/20 bg-[#39ff88]/[0.06] text-[#39ff88]">
-          <Github size={20} strokeWidth={1.7} />
+          <GitBranch size={20} strokeWidth={1.7} />
         </span>
         <span className="rounded-full border border-white/[0.08] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[#8b9690]">
           Public repository
