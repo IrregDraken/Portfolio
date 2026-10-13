@@ -18,14 +18,14 @@ const facts = [
   },
   {
     label: 'Currently',
-    value: 'Final-year Computer Science student',
+    value: 'Computer Science graduate',
   },
 ]
 
 const education = [
   {
     icon: GraduationCap,
-    period: '2023 – 2026 (Expected)',
+    period: '2023 – 2026',
     title: 'B.Sc. Computer Science',
     organization: 'Michael & Cecilia Ibru University',
   },
