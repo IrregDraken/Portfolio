@@ -165,4 +165,92 @@ export const projects: Project[] = [
     image: assetPath('images/medical.webp'),
     imageAlt: 'Medical appointment system project visual',
   },
+
+  {
+    id: 'eazy',
+    number: '05',
+    name: 'Eazy',
+    category: 'Social Utility Platform',
+    description:
+      'A connected mobile product concept bringing social communication, everyday utility, and payments into one coherent experience.',
+    longdescription:
+      'Eazy is a product-engineering effort focused on making communication and useful daily actions feel like one connected experience. The wider system spans mobile interfaces, backend APIs, account workflows, media, messaging, and provider integrations.',
+    technologies: [
+      'React Native',
+      'TypeScript',
+      'Node.js',
+      'REST APIs',
+      'Supabase',
+      'Product Design',
+    ],
+    highlights: [
+      'Mobile-first product experience',
+      'Social and communication workflows',
+      'API-driven backend integration',
+      'Authentication and media foundations',
+    ],
+    featured: true,
+    githubUrl: 'https://github.com/IrregDraken/eazy-website',
+    liveUrl: '',
+    image: '',
+    imageAlt: 'Eazy social utility platform visual',
+  },
+
+  {
+    id: 'draken-os',
+    number: '06',
+    name: 'Draken Company OS',
+    category: 'AI-Ready Business Systems',
+    description:
+      'An evolving digital workspace concept for organizing company operations, projects, and team workflows.',
+    longdescription:
+      'Draken Company OS explores how a software-defined company workspace can connect operational workflows, project context, and assistant-driven interaction. The goal is a coherent working environment rather than a collection of disconnected tools.',
+    technologies: [
+      'TypeScript',
+      'Supabase',
+      'PostgreSQL',
+      'Authentication',
+      'Row-Level Security',
+      'Workflow Design',
+    ],
+    highlights: [
+      'Structured company and project context',
+      'Database-backed application foundations',
+      'Access-aware data architecture',
+      'Workflow-first product direction',
+    ],
+    featured: true,
+    githubUrl: 'https://github.com/IrregDraken/draken-company-os',
+    liveUrl: '',
+    image: '',
+    imageAlt: 'Draken Company OS project visual',
+  },
+
+  {
+    id: 'orion',
+    number: '07',
+    name: 'Orion',
+    category: 'Software Product',
+    description:
+      'A multi-part software project in the Draken ecosystem, developed with an emphasis on clear architecture and purposeful product experience.',
+    longdescription:
+      'Orion is part of an expanding portfolio of independent software experiments. It reflects an iterative approach to product development: establish a clear problem space, build the core system, and evolve the experience around practical use.',
+    technologies: [
+      'TypeScript',
+      'Application Architecture',
+      'API Integration',
+      'Product Engineering',
+    ],
+    highlights: [
+      'Independent product development',
+      'Modular engineering approach',
+      'Iterative feature development',
+      'Part of the broader Draken project ecosystem',
+    ],
+    featured: true,
+    githubUrl: 'https://github.com/IrregDraken/Orion',
+    liveUrl: '',
+    image: '',
+    imageAlt: 'Orion software project visual',
+  },
 ]
