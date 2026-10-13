@@ -43,12 +43,12 @@ function Home() {
             </div>
 
             <p className="max-w-md text-sm leading-7 text-[#8b9690]">
-              A selection of systems, applications, and experiments built to
-              solve actual problems.
+              Seven selected builds across AI, product engineering, connected devices,
+              and the systems that make software useful.
             </p>
           </div>
 
-          <div className="mt-6 grid auto-rows-fr grid-cols-1 gap-4 lg:mt-7 lg:grid-cols-4">
+          <div className="mt-6 grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-7 xl:grid-cols-3">
             {featuredProjects.map((project) => (
               <FeaturedProject key={project.id} project={project} />
             ))}
