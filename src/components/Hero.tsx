@@ -108,9 +108,10 @@ function Hero() {
             <p>Full-Stack Developer</p>
           </div>
 
+          <div className="hero-brandline hero-reveal">ÐRAKEN <span> / INDEPENDENT ENGINEERING</span></div>
           <h1 className="hero-title hero-reveal">
-            <span className="hero-name">Ð&nbsp;R&nbsp;ƛ&nbsp;K&nbsp;E&nbsp;N</span>
-            <span className="hero-name-accent">他</span>
+            <span className="hero-headline-line">I BUILD WHAT</span>
+            <span className="hero-headline-line hero-headline-accent">COMES NEXT.</span>
           </h1>
 
           <div className="hero-statement hero-reveal">
