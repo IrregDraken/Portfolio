@@ -2640,3 +2640,12 @@ section:not(.hero-section) [class*=text-\\[\\#39ff88\\]]{color:#d6b15e!important
 @media(prefers-reduced-motion:reduce){.hero-background:before,.orb-ring,.profile-orb,.hero-glow,.hero-stars,.hero-reveal{animation:none!important}html{scroll-behavior:auto}}
 @media(max-width:900px){.hero-layout{grid-template-columns:1fr;gap:0;padding-top:112px;padding-bottom:88px}.orb-stage{min-height:min(82vw,560px);margin-top:8px}.profile-orb{width:min(62vw,410px);height:min(62vw,410px);min-width:0;min-height:0}.orb-ring-outer{width:min(78vw,540px);height:min(78vw,540px)}.orb-ring-dashed{width:min(70vw,480px);height:min(70vw,480px)}.orb-ring-middle{width:min(64vw,440px);height:min(64vw,440px)}.orb-ring-inner{width:min(56vw,385px);height:min(56vw,385px)}}
 @media(max-width:640px){.hero-layout{padding:108px 24px 86px}.hero-title{font-size:clamp(2.25rem,10vw,3.5rem)}.hero-statement>p br{display:none}.hero-marker{display:none}.orb-stage{min-height:92vw;margin-inline:-12px}}
+
+/* Palette bridge for legacy component utility classes during the full rebuild. */
+[class*="text-[#39ff88]"]{color:#d6b15e!important}
+[class*="border-[#39ff88]"]{border-color:rgba(214,177,94,.25)!important}
+[class*="bg-[#39ff88]"]{background-color:rgba(8,122,80,.14)!important}
+[class*="hover:text-[#39ff88]"]:hover{color:#e8c879!important}
+[class*="hover:border-[#39ff88]"]:hover{border-color:rgba(214,177,94,.55)!important}
+[class*="hover:bg-[#39ff88]"]:hover{background-color:#0e9b68!important}
+[class*="shadow-[0_16px_50px"]{box-shadow:0 18px 55px rgba(0,0,0,.42)}
