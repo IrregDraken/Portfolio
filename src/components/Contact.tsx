@@ -229,7 +229,7 @@ function Contact() {
                 Contact
               </span>
               <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
-                / 04
+                / 05
               </span>
             </div>
 
