@@ -3,288 +3,48 @@ import { useTypingEffect } from '../hooks/useTypingEffect'
 import { siteConfig } from '../config/site'
 import { assetPath } from '../utils/assets'
 
-const typingPhrases = [
-  'Full Stack Developer',
-  'Software Engineer',
-  'AI Engineer',
-  'Creative Technologist',
-  'Backend & Cloud Architect',
-  'IoT & Systems Builder',
-  'Security-Minded Engineer',
-]
+const roles = ['Software Engineer', 'AI Systems Builder', 'Full-Stack Developer', 'Automation Engineer', 'Creative Technologist']
 
 function Hero() {
   const [time, setTime] = useState('')
-  const { text: typedText, phase } = useTypingEffect(typingPhrases, {
-    typeSpeed: 62,
-    deleteSpeed: 34,
-    pauseDelay: 2600,
-    fadeDelay: 420,
-  })
-
+  const { text } = useTypingEffect(roles, { typeSpeed: 62, deleteSpeed: 34, pauseDelay: 2600, fadeDelay: 420 })
   useEffect(() => {
-    const updateTime = () => {
-      setTime(
-        new Intl.DateTimeFormat('en-NG', {
-          timeZone: 'Africa/Lagos', // WAT; same offset as user's location
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false,
-        }).format(new Date()),
-      )
-    }
-
-    updateTime()
-
-    const interval = window.setInterval(updateTime, 1000)
-
-    return () => window.clearInterval(interval)
+    const update = () => setTime(new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date()))
+    update()
+    const timer = window.setInterval(update, 1000)
+    return () => window.clearInterval(timer)
   }, [])
 
   return (
-    <section
-      id="hero"
-      className="hero-section relative isolate min-h-[100svh] w-full overflow-hidden"
-    >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
-
-      <div aria-hidden="true" className="hero-background">
-        <div className="hero-grid hero-grid-far" />
-        <div className="hero-grid hero-grid-near" />
-        <div className="hero-horizon" />
-        <div className="hero-grid-glow" />
-        <div className="hero-vignette" />
-        <div className="hero-stars" />
-
-        <div className="hero-glow hero-glow-primary" />
-        <div className="hero-glow hero-glow-secondary" />
-
-        <div className="hero-scanline" />
-
-        <div className="hero-particles">
-          {Array.from({ length: 16 }).map((_, index) => (
-            <span
-              key={index}
-              className={`particle particle-${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Full-page noise grain */}
-      <div aria-hidden="true" className="grain-layer" />
-
-      {/* =====================================================
-          TECHNICAL MARKERS
-      ===================================================== */}
-
-      <div className="hero-marker hero-marker-left">
-        <span>SYS_01</span>
-        <br />
-        PORTFOLIO / CORE
-      </div>
-
-      <div className="hero-marker hero-marker-right">
-        <span>STATUS</span>
-        <br />
-        ONLINE
-      </div>
-
-      {/* =====================================================
-          MAIN HERO
-      ===================================================== */}
-
-      <div className="hero-layout">
-        {/* =================================================
-            LEFT CONTENT
-        ================================================= */}
-
-        <div className="hero-copy">
-          <div className="hero-eyebrow hero-reveal">
-            <span />
-            <p>Full-Stack Developer</p>
-          </div>
-
-          <div className="hero-brandline hero-reveal">ÐRAKEN <span> / INDEPENDENT ENGINEERING</span></div>
-          <h1 className="hero-title hero-reveal">
-            <span className="hero-headline-line">I BUILD WHAT</span>
-            <span className="hero-headline-line hero-headline-accent">COMES NEXT.</span>
-          </h1>
-
-          <div className="hero-statement hero-reveal">
-            <p>
-              I build software, AI systems,
-              <br />
-              and the infrastructure behind them.
-            </p>
-
-            <div className="typing-wrapper">
-              <span className="typing-prefix">&gt;_</span>
-
-              <span
-                aria-hidden="true"
-                className={`typing-text ${phase === 'fading-out' ? 'typing-fade' : phase === 'paused' ? 'typing-full' : 'typing-fade-in'}`}
-              >
-                {typedText}
-              </span>
-
-              <span className="sr-only">
-                Full-stack developer and AI engineer
-              </span>
-
-              <span aria-hidden="true" className="typing-cursor" />
-            </div>
-          </div>
-
-          <div className="hero-actions hero-reveal">
-            <a href="#work" className="hero-button hero-button-primary">
-              <span>View my work</span>
-
-              <span className="hero-button-icon">→</span>
-            </a>
-
-            <a
-              href="https://github.com/IrregDraken"
-              target="_blank"
-              rel="noreferrer"
-              className="hero-button hero-button-secondary"
-            >
-              <span>GitHub</span>
-
-              <span className="hero-button-icon">↗</span>
-            </a>
-
-            {siteConfig.links.resume && (
-              <a
-                href={siteConfig.links.resume}
-                target="_blank"
-                rel="noreferrer"
-                className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8b9690] transition-colors duration-300 hover:text-[#39ff88] max-[640px]:hidden"
-              >
-                <span className="mr-2 hidden h-4 w-px bg-white/[0.14] align-middle sm:inline-block" />
-                Resume <span className="text-[9px] text-[#39ff88]/60">↗</span>
-              </a>
-            )}
-          </div>
-
-          <div className="hero-meta hero-reveal">
-            <div>
-              <p className="meta-label">Focus</p>
-
-              <p className="meta-value">AI · Backend</p>
-            </div>
-
-            <div>
-              <p className="meta-label">Status</p>
-
-              <div className="meta-value meta-status">
-                <span className="status-dot" />
-                <span>Building</span>
-              </div>
-            </div>
-
-            <div>
-              <p className="meta-label">{siteConfig.location.split(',')[0]}</p>
-
-              <p className="meta-value meta-time">
-                {time || '--:--:--'}
-              </p>
+    <section id="hero" className="hero-section cinematic-hero">
+      <div className="hero-grain" aria-hidden="true" />
+      <div className="hero-topline"><span>ÐRAKEN 他</span><span>INDEPENDENT ENGINEERING / 2026</span></div>
+      <div className="cinematic-hero-grid">
+        <div className="cinematic-hero-copy">
+          <p className="editorial-kicker reveal"><span /> SOFTWARE · AI · SYSTEMS</p>
+          <p className="hero-pretitle reveal" data-reveal-delay="80">Curious. Unyielding. Becoming.</p>
+          <h1 className="cinematic-title reveal" data-reveal-delay="140">I build<br /><span>what comes</span><br />next<span className="title-period">.</span></h1>
+          <div className="hero-bottom-copy reveal" data-reveal-delay="240">
+            <p className="hero-description">I’m Nnamdi Obinna. I turn complex ideas into useful software, intelligent systems, and experiences built to matter.</p>
+            <p className="hero-role"><span>Currently exploring</span> {text}<i aria-hidden="true" /></p>
+            <div className="hero-cta-row">
+              <a href="#work" className="editorial-link editorial-link-solid">Explore selected work <span>↘</span></a>
+              <a href="#contact" className="editorial-link">Start a conversation <span>↗</span></a>
+              {siteConfig.links.resume && <a href={siteConfig.links.resume} target="_blank" rel="noreferrer" className="editorial-link">Resume <span>↗</span></a>}
             </div>
           </div>
         </div>
-
-        {/* =================================================
-            RIGHT ORB
-        ================================================= */}
-
-        <div className="orb-stage">
-          <div aria-hidden="true" className="orb-aura" />
-
-          {/* Traveling node on the outer ring */}
-          <div aria-hidden="true" className="orb-traveler">
-            <span />
+        <div className="cinematic-portrait-wrap reveal" data-reveal-delay="180">
+          <div className="portrait-index"><span>01 / 06</span><span>THE BUILDER</span></div>
+          <div className="cinematic-portrait">
+            <img src={assetPath('draken.webp')} alt="Nwodim Nnamdi Obinna" width="960" height="1280" fetchPriority="high" decoding="async" />
+            <div className="portrait-caption"><span>NWODIM NNAMDI OBINNA</span><span>PORT HARCOURT, NG</span></div>
           </div>
-
-          {/* Outer ring */}
-          <div aria-hidden="true" className="orb-ring orb-ring-outer">
-            <span className="orb-dot orb-dot-one" />
-          </div>
-
-          {/* Dashed ring */}
-          <div aria-hidden="true" className="orb-ring orb-ring-dashed">
-            <span className="orb-dot orb-dot-two" />
-          </div>
-
-          {/* Middle ring */}
-          <div aria-hidden="true" className="orb-ring orb-ring-middle" />
-
-          {/* Inner tilted ring */}
-          <div aria-hidden="true" className="orb-ring orb-ring-inner" />
-
-          {/* Satellite orbit */}
-          <div aria-hidden="true" className="orb-satellite">
-            <span />
-          </div>
-
-          {/* Profile */}
-          <div className="profile-orb">
-            <img
-              src={assetPath('draken.webp')}
-              alt="Nwodim Nnamdi Obinna"
-              width="960"
-              height="1280"
-              fetchPriority="high"
-              decoding="async"
-              className="profile-image"
-            />
-
-            <div aria-hidden="true" className="profile-overlay" />
-
-            <div aria-hidden="true" className="profile-inner-glow" />
-
-            <div aria-hidden="true" className="orb-shine" />
-
-            <div aria-hidden="true" className="orb-scan" />
-          </div>
-
-          {/* Outer profile rim */}
-          <div aria-hidden="true" className="orb-edge" />
-
-          {/* Floating nodes */}
-          <span aria-hidden="true" className="orb-node node-one" />
-
-          <span aria-hidden="true" className="orb-node node-two" />
-
-          <span aria-hidden="true" className="orb-node node-three" />
-
-          <span aria-hidden="true" className="orb-node node-four" />
-
-          {/* Orb labels */}
-          <div className="orb-label orb-label-left">
-            <span>01</span>
-            IDENTITY
-          </div>
-
-          <div className="orb-label orb-label-right">
-            <span>ONLINE</span>
-            BUILD / CREATE
-          </div>
+          <p className="portrait-side-note">A practice of learning, building, and becoming.</p>
         </div>
       </div>
-
-      {/* =====================================================
-          SCROLL
-      ===================================================== */}
-
-      <a href="#work" className="scroll-indicator" aria-label="Scroll to selected work">
-        <span>Scroll</span>
-        <i />
-      </a>
+      <div className="hero-footerline"><span>SCROLL TO EXPLORE</span><span className="hero-scroll-line" aria-hidden="true" /><span>{time || '––:––'} WAT</span></div>
     </section>
   )
 }
-
 export default Hero
