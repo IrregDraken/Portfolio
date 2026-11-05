@@ -113,7 +113,7 @@ const INITIAL_FORM: FormState = {
   message: '',
 }
 
-type DeliveryStatus = 'idle' | 'submitting' | 'sent' | 'error'
+type DeliveryStatus = 'idle' | 'submitting' | 'sent' | 'draft-opened' | 'error'
 
 function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
@@ -210,7 +210,7 @@ function Contact() {
 
     // No server endpoint configured: fall back to the local mail client.
     window.location.href = buildMailto()
-    setStatus('sent')
+    setStatus('draft-opened')
   }
 
   return (
@@ -449,30 +449,32 @@ function Contact() {
                     type="submit"
                     disabled={status === 'submitting'}
                     aria-disabled={status === 'submitting'}
-                    className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#39ff88] px-8 py-4 text-sm font-bold tracking-wide text-[#06100a] drop-shadow-[0_1px_2px_rgba(6,16,10,0.6)] shadow-[0_8px_32px_rgba(57,255,136,0.18)] transition-all duration-300 hover:bg-[#5effa0] hover:shadow-[0_10px_40px_rgba(57,255,136,0.3)] hover:scale-[1.01] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#c7b99f] px-8 py-4 text-sm font-bold tracking-wide text-[#171715] drop-shadow-[0_1px_2px_rgba(6,16,10,0.6)] shadow-[0_8px_32px_rgba(57,255,136,0.18)] transition-all duration-300 hover:bg-[#e3d7c2] hover:shadow-[0_10px_40px_rgba(57,255,136,0.3)] hover:scale-[1.01] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 sm:w-auto"
                   >
                     {status === 'submitting' ? (
                       <span className="inline-flex h-4 w-4 items-center justify-center">
                         <span className="h-3 w-3 animate-spin rounded-full border-2 border-[#080d0a]/25 border-t-[#080d0a]" />
                       </span>
                     ) : (
-                      <Send className="h-4 w-4 shrink-0 text-[#06100a]" strokeWidth={2.5} />
+                      <Send className="h-4 w-4 shrink-0 text-[#171715]" strokeWidth={2.5} />
                     )}
                     {status === 'submitting'
                       ? 'Sending…'
-                      : status === 'sent'
+                       : status === 'sent'
                         ? 'Message sent'
-                        : 'Send message'}
+                        : status === 'draft-opened'
+                          ? 'Draft opened'
+                          : 'Send message'}
                   </button>
 
-                  {status === 'sent' && (
+                  {(status === 'sent' || status === 'draft-opened') && (
                     <span
                       role="status"
                       className="mt-3 block font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/80 sm:mt-0 sm:inline-block sm:ml-4"
                     >
-                      {canServerDeliver
-                        ? 'Delivered to my inbox — I will reply soon.'
-                        : 'Opening your email — hit send to finish.'}
+                      {status === 'draft-opened'
+                        ? 'Draft prepared in your email app. Press Send there to deliver it.'
+                        : 'Delivered to my inbox — I will reply soon.'}
                     </span>
                   )}
                 </div>
