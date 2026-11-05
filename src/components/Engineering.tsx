@@ -151,7 +151,7 @@ function Engineering() {
               </span>
 
               <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
-                / 02
+                / 03
               </span>
             </div>
 

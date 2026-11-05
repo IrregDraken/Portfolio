@@ -9,60 +9,29 @@ import { projects } from '../data/projects'
 
 function Home() {
   useReveal()
-
-  const featuredProjects = projects.filter(
-    (project) => project.featured,
-  )
+  const featuredProjects = projects.filter((project) => project.featured)
 
   return (
     <>
       <Hero />
-
-      <section
-        id="work"
-        className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[88px] pb-6 sm:pt-[100px] sm:pb-8 lg:px-8 lg:pb-8"
-      >
+      <section id="work" className="snap-section cinematic-work border-t border-white/[0.06] px-6 lg:px-8">
         <div className="mx-auto w-full max-w-7xl">
-          {/* Section header row */}
-          <div className="mb-5 flex flex-col gap-5 lg:mb-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="work-heading">
             <div>
-              <div className="mb-4 flex items-center gap-3">
-                <span className="h-px w-6 bg-[#39ff88]" />
-
-                <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#8b9690]">
-                  Selected Work
-                </span>
-
-                <span className="font-mono text-[10px] tracking-[0.2em] text-[#39ff88]/60">
-                  / 01
-                </span>
-              </div>
-
-              <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.045em] text-[#f5f7fa] sm:text-4xl lg:text-5xl">
-                Things I&apos;ve built.
-              </h2>
+              <p className="section-kicker"><span /> SELECTED WORK <span className="section-number">/ 01</span></p>
+              <h2>Things I've <em>made.</em></h2>
             </div>
-
-            <p className="max-w-md text-sm leading-7 text-[#8b9690]">
-              Seven selected builds across AI, product engineering, connected devices,
-              and the systems that make software useful.
-            </p>
+            <p className="work-intro">A selection of systems, products, and experiments shaped by curiosity and built through hands-on engineering.</p>
           </div>
-
-          <div className="cinematic-project-grid mt-8 grid auto-rows-fr grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-10">
-            {featuredProjects.map((project) => (
-              <FeaturedProject key={project.id} project={project} />
-            ))}
+          <div className="cinematic-project-grid">
+            {featuredProjects.map((project) => <FeaturedProject key={project.id} project={project} />)}
           </div>
+          <p className="work-footnote">A selection, not the whole archive. More experiments live in the observatory below.</p>
         </div>
       </section>
-
       <GitHubProjects />
-
       <Engineering />
-
       <About />
-
       <Contact />
     </>
   )
