@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ArrowDown, ArrowUpRight, ExternalLink, Github, Layers3 } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, ExternalLink, Layers3 } from 'lucide-react'
+import { GithubMark } from './BrandIcons'
 import type { Project } from '../data/projects'
 
 interface FeaturedProjectProps {
@@ -59,7 +60,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
 
         <div className="project-actions mt-auto">
           {hasLive && <a href={project.liveUrl} target="_blank" rel="noreferrer"><ExternalLink size={14} /> Live experience</a>}
-          {hasSource && <a href={project.githubUrl} target="_blank" rel="noreferrer"><Github size={14} /> Source code <ArrowUpRight size={13} /></a>}
+          {hasSource && <a href={project.githubUrl} target="_blank" rel="noreferrer"><GithubMark className="h-3.5 w-3.5" /> Source code <ArrowUpRight size={13} /></a>}
           {hasBackend && <a href={project.backendUrl} target="_blank" rel="noreferrer"><Layers3 size={14} /> Backend <ArrowUpRight size={13} /></a>}
           {!hasLive && !hasSource && !hasBackend && <span className="project-private-note">Project details available on request</span>}
         </div>
