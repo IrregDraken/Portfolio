@@ -12,7 +12,7 @@ function FeaturedProject({ project }: FeaturedProjectProps) {
   const hasLinks = Boolean(project.liveUrl) || Boolean(project.githubUrl)
 
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(0,0,0,0.4),0_0_26px_rgba(57,255,136,0.07)]">
+    <article className="reveal cinematic-project-card group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#080d0a] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_42px_rgba(0,0,0,0.4),0_0_26px_rgba(57,255,136,0.07)]">
       {/* Subtle green edge glow */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#39ff88]/[0.07] blur-[110px] transition-all duration-700 group-hover:bg-[#39ff88]/10" />
 

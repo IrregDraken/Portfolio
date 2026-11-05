@@ -49,7 +49,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="mt-6 grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-7 xl:grid-cols-3">
+          <div className="cinematic-project-grid mt-8 grid auto-rows-fr grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-10">
             {featuredProjects.map((project) => (
               <FeaturedProject key={project.id} project={project} />
             ))}

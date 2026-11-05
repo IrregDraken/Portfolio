@@ -93,7 +93,7 @@ function ProjectCard({ repository }: { repository: GitHubRepository }) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase())
 
   return (
-    <article className="group relative flex min-h-[270px] flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-[#080d0a] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#39ff88]/30 hover:shadow-[0_16px_50px_rgba(0,0,0,0.35)] sm:p-6">
+    <article className="reveal observatory-card group relative flex min-h-[270px] flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-[#080d0a] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#39ff88]/30 hover:shadow-[0_16px_50px_rgba(0,0,0,0.35)] sm:p-6">
       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#39ff88]/[0.06] blur-3xl transition-colors group-hover:bg-[#39ff88]/[0.12]" />
       <div className="relative mb-5 flex items-start justify-between gap-4">
         <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#39ff88]/20 bg-[#39ff88]/[0.06] text-[#39ff88]">

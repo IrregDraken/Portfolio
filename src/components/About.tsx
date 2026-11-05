@@ -73,7 +73,7 @@ function Entry({
 }) {
   return (
     <div
-      className="reveal group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#080d0a] px-4.5 py-4 transition-all duration-500 hover:-translate-y-0.5 hover:border-[#39ff88]/25 hover:bg-[#0a110d]"
+      className="reveal editorial-entry group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#080d0a] px-4.5 py-4 transition-all duration-500 hover:-translate-y-0.5 hover:border-[#39ff88]/25 hover:bg-[#0a110d]"
       data-reveal-delay={String(index * 70)}
     >
       {/* Subtle green edge glow */}
@@ -106,7 +106,7 @@ function About() {
   return (
     <section
       id="about"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[88px] pb-6 sm:pt-[100px] sm:pb-8 lg:px-8 lg:pb-8"
+      className="snap-section editorial-about flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[88px] pb-6 sm:pt-[100px] sm:pb-8 lg:px-8 lg:pb-8"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}
