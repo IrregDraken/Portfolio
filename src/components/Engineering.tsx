@@ -137,7 +137,7 @@ function Engineering() {
     <section
       id="stack"
       aria-label="Technology stack"
-      className="snap-section flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[92px] pb-6 sm:pt-[108px] sm:pb-8 lg:px-8 lg:pb-8"
+      className="snap-section editorial-stack flex min-h-[100svh] scroll-snap-align-start border-t border-white/[0.06] px-6 pt-[92px] pb-6 sm:pt-[108px] sm:pb-8 lg:px-8 lg:pb-8"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section header row */}
