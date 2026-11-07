@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { ArrowDown, ArrowUpRight, Github } from 'lucide-react'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
 import { siteConfig } from '../config/site'
 
 function ParticleField() {
