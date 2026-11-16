@@ -118,3 +118,45 @@ body{margin:0;overflow-x:hidden}
 @media(max-width:850px){.portrait-hero{padding-top:104px!important;padding-bottom:78px!important}.portrait-hero-inner{grid-template-columns:1fr;gap:26px;min-height:auto}.portrait-hero-copy{padding:26px 0 0}.portrait-eyebrow{margin-bottom:30px}.portrait-title{font-size:clamp(4.2rem,15vw,7rem)!important}.portrait-hero-visual{width:min(100%,480px);justify-self:center;padding:0 12px 34px 0}.portrait-frame{max-height:none;aspect-ratio:.9}.portrait-hero-bottom{bottom:18px}.portrait-hero-bottom span:first-child{display:none}}
 @media(max-width:480px){.portrait-hero{padding-inline:20px!important}.portrait-eyebrow{font-size:7px;letter-spacing:.12em;gap:8px}.portrait-title{margin-bottom:22px!important}.portrait-social-proof{font-size:7px;letter-spacing:.1em;flex-wrap:wrap;margin-top:30px}.portrait-actions{gap:8px}.portrait-button{padding:13px 14px;font-size:8px}.portrait-hero-bottom{left:20px;right:20px;font-size:7px}.portrait-hero-bottom a{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.portrait-hero-copy,.portrait-role-line strong{animation:none}.portrait-button{transition:none}}
+
+/* Reference-video rebuild: monochrome editorial portfolio */
+.reference-hero{min-height:100svh!important;padding:112px clamp(22px,6vw,88px) 70px!important;background:#090909!important;color:#f5f5f2!important;position:relative!important;overflow:hidden!important}
+.reference-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 76% 44%,rgba(255,255,255,.075),transparent 38%),linear-gradient(110deg,#090909 0%,#101010 58%,#090909 100%);z-index:-2}
+.reference-hero-grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.reference-hero-inner{position:relative;z-index:1;max-width:1360px;min-height:calc(100svh - 182px);margin:auto;display:grid;grid-template-columns:.96fr 1.04fr;align-items:center;gap:clamp(28px,5vw,78px)}
+.reference-hero-copy{padding:24px 0 35px;animation:referenceEnter .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes referenceEnter{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.reference-hero-meta{display:flex;align-items:center;gap:12px;color:#858585;font:9px 'DM Mono',monospace;letter-spacing:.17em;margin-bottom:clamp(35px,5vw,70px)}
+.reference-meta-dot{width:4px;height:4px;border-radius:50%;background:#c9b184}
+.reference-hello{margin:0 0 8px;color:#b9b9b5;font:400 clamp(17px,1.8vw,23px) 'Manrope',sans-serif;letter-spacing:-.03em}
+.reference-name{margin:0 0 28px!important;color:#f5f5f2!important;font:600 clamp(4.6rem,8.2vw,8.2rem)/.86 'Manrope',sans-serif!important;letter-spacing:-.095em!important}
+.reference-name span{color:#a7a7a1}
+.reference-role{display:flex;align-items:center;gap:14px;min-height:32px;margin-bottom:18px}
+.reference-role-prefix{font:9px 'DM Mono',monospace;letter-spacing:.18em;color:#888}
+.reference-role strong{font:500 clamp(17px,1.8vw,23px) 'Manrope',sans-serif;color:#e8e8e4;animation:referenceRole .45s ease both}
+@keyframes referenceRole{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.reference-description{max-width:475px;margin:0;color:#a3a39e;font-size:clamp(14px,1.12vw,16px);line-height:1.9}
+.reference-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:31px}
+.reference-primary-link,.reference-secondary-link{display:inline-flex;align-items:center;gap:13px;text-transform:uppercase;font:9px 'DM Mono',monospace;letter-spacing:.1em;transition:color .25s,transform .25s}
+.reference-primary-link{padding:15px 18px;background:#f0f0ec;color:#111;border:1px solid #f0f0ec}
+.reference-primary-link:hover{background:#c9b184;border-color:#c9b184;transform:translateY(-2px)}
+.reference-secondary-link{color:#c5c5bf}.reference-secondary-link:hover{color:#fff;transform:translateY(-2px)}
+.reference-availability{display:flex;align-items:center;gap:10px;margin-top:43px;color:#858580;font:8px 'DM Mono',monospace;letter-spacing:.15em}
+.reference-availability-dot{width:6px;height:6px;border-radius:50%;background:#b9b9a7;box-shadow:0 0 10px rgba(220,220,190,.55)}
+.reference-portrait-column{position:relative;width:100%;max-width:640px;justify-self:end;padding:10px 18px 36px 0}
+.reference-portrait{position:relative;width:100%;height:min(69svh,700px);min-height:440px;overflow:hidden;background:#191919;border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 90px rgba(0,0,0,.48)}
+.reference-portrait:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.14);pointer-events:none}
+.reference-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:grayscale(100%) contrast(1.04);transform:scale(1.015);transition:filter .8s,transform 1.2s}
+.reference-portrait:hover img{filter:grayscale(65%) contrast(1.06);transform:scale(1.045)}
+.reference-portrait-overlay{position:absolute;inset:42% 0 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78))}
+.reference-portrait-caption{position:absolute;z-index:2;left:30px;right:30px;bottom:29px;display:flex;flex-direction:column;gap:9px}
+.reference-portrait-caption span{font:8px 'DM Mono',monospace;letter-spacing:.18em;color:#b4b4ae}
+.reference-portrait-caption strong{font:500 clamp(17px,2vw,24px) 'Manrope',sans-serif;letter-spacing:-.04em;color:#f2f2ed}
+.reference-portrait-index{position:absolute;right:0;bottom:10px;color:#777;font:8px 'DM Mono',monospace;letter-spacing:.16em}
+.reference-portrait-index span{color:#d1c5ae}
+.reference-portrait-orbit{position:absolute;width:112px;height:112px;right:-34px;top:-28px;border:1px solid rgba(201,177,132,.28);border-radius:50%;pointer-events:none}
+.reference-hero-footer{position:absolute;left:clamp(22px,6vw,88px);right:clamp(22px,6vw,88px);bottom:23px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:#696965;font:8px 'DM Mono',monospace;letter-spacing:.14em}
+.reference-hero-footer a{display:flex;align-items:center;gap:10px;color:#c9b184}
+@media(max-width:850px){.reference-hero{padding-top:105px!important;padding-bottom:82px!important}.reference-hero-inner{grid-template-columns:1fr;gap:35px;min-height:auto}.reference-hero-copy{padding:20px 0 0}.reference-hero-meta{margin-bottom:34px}.reference-name{font-size:clamp(4.3rem,14vw,7rem)!important}.reference-portrait-column{width:min(100%,540px);justify-self:center;padding:0 12px 34px 0}.reference-portrait{height:auto;min-height:0;aspect-ratio:.92}.reference-hero-footer{bottom:17px}.reference-hero-footer span:first-child{display:none}}
+@media(max-width:480px){.reference-hero{padding-inline:20px!important}.reference-hero-meta{font-size:7px;letter-spacing:.1em;gap:8px}.reference-name{font-size:clamp(4rem,16vw,5.8rem)!important}.reference-role{gap:10px}.reference-role strong{font-size:17px}.reference-actions{gap:17px}.reference-primary-link{padding:14px 13px;font-size:8px}.reference-secondary-link{font-size:8px}.reference-availability{font-size:7px;letter-spacing:.1em;margin-top:32px}.reference-portrait-caption{left:22px;bottom:22px}.reference-hero-footer{font-size:7px;letter-spacing:.08em}}
+@media(prefers-reduced-motion:reduce){.reference-hero-copy,.reference-role strong{animation:none!important}.reference-portrait img{transition:none!important}}
